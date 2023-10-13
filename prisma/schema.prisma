@@ -1,0 +1,61 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                   Int           @id @default(autoincrement())
+  firstName            String           @map("first_name")
+  lastName             String           @map("last_name")
+  email                String
+  userFeatures         HomeFeature[]
+  userRatings          FeatureRating[]
+  initiatedConnections UserConnection[] @relation("initatingUser")
+  acceptedConnections  UserConnection[] @relation("acceptingUser")
+}
+
+model HomeFeature {
+  id             Int          @id @default(autoincrement()) 
+  feature        String
+  userId         Int?
+  user           User?           @relation(fields: [userId], references: [id])
+  featureRatings FeatureRating[]
+
+  @@map("home_features")
+}
+
+model FeatureRating {
+  id        Int      @id @default(autoincrement()) 
+  userId    Int
+  user      User        @relation(fields: [userId], references: [id])
+  featureId Int
+  rating    Rating
+  feature   HomeFeature @relation(fields: [featureId], references: [id])
+
+  @@map("feature_ratings")
+}
+
+model UserConnection {
+  id              Int @id @default(autoincrement())
+  initiatingUser  User   @relation(fields: [initatingUserId], references: [id], name: "initatingUser")
+  initatingUserId Int
+  acceptingUser   User   @relation(fields: [acceptingUserId], references: [id], name: "acceptingUser")
+  acceptingUserId Int
+
+  @@map("user_connections")
+}
+
+enum Rating {
+  NOT_ESSENTIAL
+  NICE_BONUS
+  FAIRLY_IMPORTANT
+  VERY_DESIRABLE
+  NON_NEGOTIABLE
+}
