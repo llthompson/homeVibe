@@ -1,6 +1,26 @@
 version: "3"
 
+volumes:
+  pg-data:
+    name: homevibe-pg-data
+networks:
+  homevibe:
+    name: homevibe
 services:
+  db:
+    container_name: homevibe-postgres
+    image: postgres:14.3
+    networks:
+      - homevibe
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+      PGDATA: /var/lib/postgresql/data
+    volumes:
+      - pg-data:/var/lib/postgresql/data
   api:
     build:
       context: ./backend
@@ -9,6 +29,8 @@ services:
       - ./backend:/api
     ports:
       - "8000:8000"
+    networks:
+      - homevibe
   app:
     build:
       context: ./frontend
