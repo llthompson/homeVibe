@@ -4,12 +4,12 @@ import express, { Express, Request, Response } from "express";
 // dotenv.config();
 
 const app: Express = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8000;
 
 app.get("/", (req: Request, res: Response) => {
-  res.send("homeVibe Server");
+  res.send("homeVibe Server LFGOOOOO ");
 });
 
 app.listen(port, () => {
-  console.log(`[server]: We're chillin' at port http://localhost:${port}`);
+  console.log(`[server]: We're chillin' at port http://localhost:8000`);
 });

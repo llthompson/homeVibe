@@ -8,4 +8,12 @@ services:
     volumes:
       - ./backend:/api
     ports:
+      - "8000:8000"
+  app:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    volumes:
+      - ./frontend:/app
+    ports:
       - "3000:3000"
