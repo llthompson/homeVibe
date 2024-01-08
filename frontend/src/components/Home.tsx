@@ -1,10 +1,15 @@
+//frontend/src/components/Home.tsx
+
 import React, { useEffect, useState } from 'react';
+import Box from '@mui/material/Box';
+import { useTheme } from '@mui/system';
+import { Typography } from '@mui/material';
 // import './Home.css';
 // import LoginButton from './login-button';
 
 
 function Home() {
-
+    const theme = useTheme();
     const [features, setFeatures] = useState([])
 
     useEffect(() => {
@@ -25,23 +30,32 @@ function Home() {
     }, []);
 
     return (
+        <Box
+            sx={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                '& > :not(style)': {
+                    m: 1,
+                    width: 128,
+                    height: 128,
+                },
+            }}
+        >
+            <Typography variant="h6" style={{ flexGrow: '1' }}>
+                am i in a box homeVibe
+            </Typography>
 
-
-        <div className="Home">
-            <header className="Home-header">
-                <div>
-                    {/* <LoginButton></LoginButton> */}
-                </div>
-                <p>
-                    <ul>
-                        {features.map((item: any) => <li key={item.id}>{item.feature}</li>)}
-                    </ul>
-                </p>
-
-            </header>
-
-
-        </div>
+            {/* <div className="Home">
+                    <h1>head</h1>
+                    <h3>middle</h3>
+                    <p>para</p>
+                    <p>
+                        <ul>
+                            {features.map((item: any) => <li key={item.id}>{item.feature}</li>)}
+                        </ul>
+                    </p>
+                </div> */}
+        </Box>
     );
 }
 
