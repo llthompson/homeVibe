@@ -28,18 +28,45 @@ const Navigation = () => {
                 <Typography variant="h6" style={{ flexGrow: '1', textAlign: 'center' }}>
                     homeVibe
                 </Typography>
+
                 <List className="nav-list">
                     <ListItem>
-                            <Link to="/">
-                                <Typography variant="h6" style={{ flexGrow: '1' }}>
-                                    Home
-                                </Typography>
-                            </Link>
+                        <Link to="/Dashboard">
+                            <Typography variant="h6" style={{ flexGrow: '1' }}>
+                                Dashboard
+                            </Typography>
+                        </Link>
                     </ListItem>
+
+                    <ListItem>
+                        <Link to="/Features">
+                            <Typography variant="h6" style={{ flexGrow: '1' }}>
+                                Features
+                            </Typography>
+                        </Link>
+                    </ListItem>
+
+                    <ListItem>
+                        <Link to="/">
+                            <Typography variant="h6" style={{ flexGrow: '1' }}>
+                                Home
+                            </Typography>
+                        </Link>
+                    </ListItem>
+
+                    <ListItem>
+                        <Link to="/LearnMore">
+                            <Typography variant="h6" style={{ flexGrow: '1' }}>
+                                Learn More
+                            </Typography>
+                        </Link>
+                    </ListItem>
+
                     <ListItem className='login'>
                         <LoginButton></LoginButton>
                     </ListItem>
                 </List>
+
             </Toolbar>
         </AppBar>
     );
