@@ -25,6 +25,24 @@ const theme = createTheme({
     typography: {
         fontFamily: 'Quicksand, sans-serif',
     },
+    components: {
+        MuiTypography: {
+            defaultProps: {
+                variantMapping: {
+                    h1: 'h1',
+                    h2: 'h2',
+                    h3: 'h3',
+                    h4: 'h4',
+                    h5: 'h5',
+                    h6: 'h6',
+                    subtitle1: 'sub1',
+                    subtitle2: 'sub2',
+                    body1: 'span1',
+                    body2: 'span2',
+                },
+            },
+        },
+    },
 });
 
 export default theme;
