@@ -50,27 +50,9 @@ function Home() {
 
     return (
         <Container >
-            {/* 
-
-            <Typography variant="h6" style={{ flexGrow: '1' }}>
-                am i in a box homeVibe
-            </Typography> */}
-
-
-
-            {/* <div className="Home">
-                    <h1>head</h1>
-                    <h3>middle</h3>
-                    <p>para</p>
-                    <p>
-                        <ul>
-                            {features.map((item: any) => <li key={item.id}>{item.feature}</li>)}
-                        </ul>
-                    </p>
-                </div> */}
 
             <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-                <Grid item xs={12}>
+                <Grid item xs={12} className='card for logo'>
                     <Card>
                         <CardMedia
                             component="img"
@@ -78,19 +60,18 @@ function Home() {
                             image="../../homeVibelogo1.png"
                             alt="homeVibe logo"
                         />
-                        {/* <img src='../../homeVibelogo1.png' /> */}
                     </Card>
                 </Grid>
-                <Grid item xs={4}>
+                <Grid item xs={4} className='slogan 1'>
                     <Item><Typography variant="h2" style={{ flexGrow: '1' }}>what's</Typography></Item>
                 </Grid>
-                <Grid item xs={4}>
+                <Grid item xs={4} className='slogan 2'>
                     <Item><Typography variant="h2" style={{ flexGrow: '1' }}>your</Typography></Item>
                 </Grid>
-                <Grid item xs={4}>
+                <Grid item xs={4} className='slogan 3'>
                     <Item><Typography variant="h2" style={{ flexGrow: '1' }}>vibe</Typography></Item>
                 </Grid>
-                <Grid className='first box' item xs={12}>
+                <Grid item xs={12} className='first box'>
                     <Card sx={{
                         display: 'flex',
                         margin: "0 auto",
@@ -105,20 +86,20 @@ function Home() {
                             image="../../house-icon.png"
                             alt="homeVibe logo"
                         />
-                        <CardContent sx={{ flex: '1 0 auto' }}>
+                        <CardContent className='box 1 content' sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
                             <Typography component="div" variant="h5">
                                 cool content
                             </Typography>
                         </CardContent>
                     </Card>
                 </Grid>
-                <Grid className='second box' item xs={12}>
+                <Grid item xs={12} className='second box'>
                     <Card sx={{
                         display: 'flex',
                         margin: "0 auto",
                         padding: "0.1em",
                     }}>
-                        <CardContent sx={{ flex: '1 0 auto' }}>
+                        <CardContent className='box 2 content' sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
                             <Typography component="div" variant="h5">
                                 cool content
                             </Typography>
@@ -135,42 +116,42 @@ function Home() {
 
                     </Card>
                 </Grid>
-                <Grid className='third box' item xs={12}>
+                <Grid item xs={12} className='third box'>
                     <Card sx={{
                         display: 'flex',
                         margin: "0 auto",
                         padding: "0.1em",
                     }}>
                         <CardMedia
+                            className='box 3 pic'
                             component="img"
                             sx={{ width: 400, height: 250, padding: "1em 1em 0 1em", objectFit: "contain" }}
-                            // height={maxHeight: 20px}
                             height="10%"
-                            // width="20"
                             image="../../house-icon.png"
-                            alt="homeVibe logo"
+                            alt="random pic"
                         />
-                        <CardContent sx={{ flex: '1 0 auto' }}>
-                            <Typography component="div" variant="h5">
-                                cool content
+                        <CardContent className='box 3 content'
+                            sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                            <Typography component="div" variant="h5" sx={{ alignItems: 'center' }}>
+                                cool content #3
                             </Typography>
                         </CardContent>
                     </Card>
                 </Grid>
-                <Grid className='fourth box' item xs={12}>
+                <Grid item xs={12} className='fourth box'>
                     <Card sx={{
                         display: 'flex',
                         margin: "0 auto",
                         padding: "0.1em",
                     }}>
-                        <CardContent sx={{ flex: '1 0 auto' }}>
-                            
-                                <Link to="./LearnMore">
+                        <CardContent className='box 4 content' sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+
+                            <Link to="./LearnMore">
                                 <Typography component="div" variant="h5">
                                     Learn More
-                                    </Typography>
-                                </Link>
-                            
+                                </Typography>
+                            </Link>
+
                         </CardContent>
                         <CardMedia
                             component="img"
@@ -184,18 +165,18 @@ function Home() {
 
                     </Card>
                 </Grid>
-                <Grid item xs={12}>
+                <Grid item xs={12} className='sign up button'>
                     <Item><Typography variant="h1" style={{ flexGrow: '6' }}>sign up to start vibin'</Typography>
-                        <Fab variant="extended" color="primary">
+                        <Fab variant="extended" color="info">
                             <NavigationIcon sx={{ mr: 1 }} />
-                            SIGN UP
+                            <Typography variant="h4" style={{ flexGrow: '6' }}>
+                                SIGN UP
+                            </Typography>
                         </Fab>
                     </Item>
                 </Grid>
 
             </Grid>
-
-
 
         </Container>
     );
