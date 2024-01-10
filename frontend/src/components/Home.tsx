@@ -1,21 +1,19 @@
 //frontend/src/components/Home.tsx
 
 import React, { useEffect, useState } from 'react';
-import { maxHeight, useTheme } from '@mui/system';
+import { useTheme } from '@mui/system';
 import { Card, CardMedia, Typography, CardContent } from '@mui/material';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import { styled } from '@mui/material/styles';
-import Box from '@mui/material/Box';
+// import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
-import { Image } from '@mui/icons-material';
-import Button from '@mui/material/Button';
+// import { Image } from '@mui/icons-material';
+// import Button from '@mui/material/Button';
 import Fab from '@mui/material/Fab';
 import NavigationIcon from '@mui/icons-material/Navigation';
 import { Link } from 'react-router-dom';
 
-// import './Home.css';
-// import LoginButton from './login-button';
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -24,7 +22,6 @@ const Item = styled(Paper)(({ theme }) => ({
     textAlign: 'center',
     color: theme.palette.text.secondary,
 }));
-
 
 
 function Home() {
@@ -52,6 +49,7 @@ function Home() {
         <Container >
 
             <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+
                 <Grid item xs={12} className='card for logo'>
                     <Card>
                         <CardMedia
