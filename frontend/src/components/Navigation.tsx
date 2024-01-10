@@ -29,34 +29,34 @@ const Navigation = () => {
                     homeVibe
                 </Typography>
 
-                <List className="nav-list">
+                <List className="nav-list" sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                     <ListItem>
-                        <Link to="/Dashboard">
-                            <Typography variant="h6" style={{ flexGrow: '1' }}>
+                        <Link to="/Dashboard" style={{ textDecoration: 'underline', textDecorationThickness: '2px', textUnderlineOffset: '4px', textDecorationColor: '#a700c7' }}>
+                            <Typography style={{ fontSize: '18px', marginBottom: 0, color: theme.palette.info.main }}>
                                 Dashboard
                             </Typography>
                         </Link>
                     </ListItem>
 
                     <ListItem>
-                        <Link to="/Features">
-                            <Typography variant="h6" style={{ flexGrow: '1' }}>
+                        <Link to="/Features" style={{ textDecoration: 'underline', textDecorationThickness: '2px', textUnderlineOffset: '4px', textDecorationColor: '#a700c7' }}>
+                            <Typography style={{ fontSize: '18px', marginBottom: 0, color: theme.palette.info.main }}>
                                 Features
                             </Typography>
                         </Link>
                     </ListItem>
 
                     <ListItem>
-                        <Link to="/">
-                            <Typography variant="h6" style={{ flexGrow: '1' }}>
+                        <Link to="/" style={{ textDecoration: 'underline', textDecorationThickness: '2px', textUnderlineOffset: '4px', textDecorationColor: '#a700c7' }}>
+                            <Typography style={{ fontSize: '18px', marginBottom: 0, color: theme.palette.info.main }}>
                                 Home
                             </Typography>
                         </Link>
                     </ListItem>
 
                     <ListItem>
-                        <Link to="/LearnMore">
-                            <Typography variant="h6" style={{ flexGrow: '1' }}>
+                        <Link to="/LearnMore" style={{ textDecoration: 'underline', textDecorationThickness: '2px', textUnderlineOffset: '4px', textDecorationColor: '#a700c7' }}>
+                            <Typography style={{ fontSize: '18px', marginBottom: 0, whiteSpace: 'nowrap', color: theme.palette.info.main }}>
                                 Learn More
                             </Typography>
                         </Link>
