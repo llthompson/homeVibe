@@ -7,6 +7,23 @@ import Paper from '@mui/material/Paper';
 import Fab from '@mui/material/Fab';
 import NavigationIcon from '@mui/icons-material/Navigation';
 import { Link } from 'react-router-dom';
+import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
+
+const fakeData = [
+    { id: 1, feature: 'Feature 1' },
+    { id: 2, feature: 'Feature 2' },
+    { id: 3, feature: 'Feature 3' },
+];
+
+const columns: GridColDef[] = [
+    { field: 'id', headerName: 'ID', width: 70 },
+    { field: 'feature', headerName: 'Feature', width: 130 },
+];
+
+const rows = fakeData.map((row) => ({
+    id: row.id,
+    feature: row.feature,
+}));
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -34,7 +51,22 @@ const Features = () => {
                     </Card>
                 </Grid>
                 <Grid item xs={4} className='empty 1'>
-                    <Item><Typography variant="h2" style={{ flexGrow: '1' }}>empty</Typography></Item>
+                    <Item><Typography variant="h6" style={{ flexGrow: '1' }}><Card>
+                        <CardContent>
+                            <Typography variant="h6" gutterBottom>
+                                Choose Standard Features
+                            </Typography>
+                            <div style={{ height: 400, width: '100%' }}>
+                                <DataGrid
+                                    rows={rows}
+                                    columns={columns}
+                                    // pageSize={5}
+                                    checkboxSelection
+                                />
+                            </div>
+                        </CardContent>
+                    </Card>
+                    </Typography></Item>
                 </Grid>
                 <Grid item xs={4} className='empty 2'>
                     <Item><Typography variant="h2" style={{ flexGrow: '1' }}>empty</Typography></Item>
@@ -76,7 +108,7 @@ const Features = () => {
                         margin: "0 auto",
                         padding: "0.1em",
                     }}>
-                       
+
                         <CardContent className='empty box 3 content'
                             sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
                             <Typography component="div" variant="h5" sx={{ alignItems: 'center' }}>
