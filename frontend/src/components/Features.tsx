@@ -1,3 +1,6 @@
+// frontend/src/components/Features.tsx
+
+import React, { useEffect, useState } from 'react';
 import { Card, CardMedia, Typography, CardContent } from '@mui/material';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
@@ -9,21 +12,7 @@ import NavigationIcon from '@mui/icons-material/Navigation';
 import { Link } from 'react-router-dom';
 import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
 
-const fakeData = [
-    { id: 1, feature: 'Feature 1' },
-    { id: 2, feature: 'Feature 2' },
-    { id: 3, feature: 'Feature 3' },
-];
 
-const columns: GridColDef[] = [
-    { field: 'id', headerName: 'ID', width: 70 },
-    { field: 'feature', headerName: 'Feature', width: 130 },
-];
-
-const rows = fakeData.map((row) => ({
-    id: row.id,
-    feature: row.feature,
-}));
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -36,7 +25,34 @@ const Item = styled(Paper)(({ theme }) => ({
 
 
 const Features = () => {
-    const theme = useTheme();
+    const [features, setFeatures] = useState([])
+
+    useEffect(() => {
+        async function getCenter() {
+            try {
+                let response = await fetch(`http://localhost:8000`);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                const responseJson = await response.json();
+                setFeatures(responseJson);
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        }
+        getCenter();
+    }, []);
+
+    const columns: GridColDef[] = [
+        { field: 'id', headerName: 'ID', width: 70, align: 'left', sortable: false },
+        { field: 'feature', headerName: 'Feature', width: 130, sortable: false },
+        { field: '__check__', headerName: 'Box', align: 'center', headerClassName: 'custom-header', sortable: false },
+    ];
+
+    const rows = features.map((item: any) => ({ id: item.id, feature: item.feature, __check__: false }));
+
+
+
 
     return (
         <Container >
@@ -50,30 +66,73 @@ const Features = () => {
                         </Typography>
                     </Card>
                 </Grid>
+
                 <Grid item xs={4} className='empty 1'>
-                    <Item><Typography variant="h6" style={{ flexGrow: '1' }}><Card>
-                        <CardContent>
-                            <Typography variant="h6" gutterBottom>
-                                Choose Standard Features
-                            </Typography>
-                            <div style={{ height: 400, width: '100%' }}>
-                                <DataGrid
-                                    rows={rows}
-                                    columns={columns}
-                                    // pageSize={5}
-                                    checkboxSelection
-                                />
-                            </div>
-                        </CardContent>
-                    </Card>
-                    </Typography></Item>
+                    <Item>
+                        <Typography variant="h6" style={{ flexGrow: '1' }}>
+                            <Card>
+                                <CardContent>
+                                    <Typography variant="h6" gutterBottom>
+                                        Choose Standard Features
+                                    </Typography>
+                                    <div style={{ height: 400, width: '100%' }}>
+                                        <DataGrid
+                                            rows={rows}
+                                            columns={columns}
+                                            // pageSize={5}
+                                            checkboxSelection
+                                        />
+                                    </div>
+                                </CardContent>
+                            </Card>
+                        </Typography>
+                    </Item>
                 </Grid>
-                <Grid item xs={4} className='empty 2'>
-                    <Item><Typography variant="h2" style={{ flexGrow: '1' }}>empty</Typography></Item>
+
+                <Grid item xs={8} className='user-features-table'>
+                    <Item>
+                        <Typography variant="h6" style={{ flexGrow: '1' }}>
+                            <Card>
+                                <CardContent>
+                                    <Typography variant="h6" gutterBottom>
+                                        Your Features, Your Vibes
+                                    </Typography>
+                                    <div style={{ height: 400, width: '100%' }}>
+                                        <DataGrid
+                                            rows={rows}
+                                            columns={columns}
+                                            // pageSize={5}
+                                            checkboxSelection
+                                        />
+                                    </div>
+                                </CardContent>
+                            </Card>
+                        </Typography>
+                    </Item>
                 </Grid>
+
                 <Grid item xs={4} className='empty 3'>
-                    <Item><Typography variant="h2" style={{ flexGrow: '1' }}>empty</Typography></Item>
+                    <Item>
+                        <Typography variant="h6" style={{ flexGrow: '1' }}>
+                            <Card>
+                                <CardContent>
+                                    <Typography variant="h6" gutterBottom>
+                                        Choose Advanced Features
+                                    </Typography>
+                                    <div style={{ height: 400, width: '100%' }}>
+                                        <DataGrid
+                                            rows={rows}
+                                            columns={columns}
+                                            // pageSize={5}
+                                            checkboxSelection
+                                        />
+                                    </div>
+                                </CardContent>
+                            </Card>
+                        </Typography>
+                    </Item>
                 </Grid>
+
                 <Grid item xs={12} className='first empty box'>
                     <Card sx={{
                         display: 'flex',
@@ -148,7 +207,7 @@ const Features = () => {
 
             </Grid>
 
-        </Container>
+        </Container >
     );
 };
 
