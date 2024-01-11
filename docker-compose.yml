@@ -21,6 +21,20 @@ services:
       PGDATA: /var/lib/postgresql/data
     volumes:
       - pg-data:/var/lib/postgresql/data
+  ngrok:
+    image: shkoliar/ngrok
+    restart: unless-stopped
+    # command:
+    #   - http host.docker.internal:8000
+    ports:
+      - 4551:4551
+      # - 8000:8000
+    environment:
+      - DOMAIN=api
+      - PORT=8000
+      - AUTH_TOKEN=2ameNr5j8PAWCZfbpgBlCx3UemC_HXeu4gQR37J9JKt497dr
+    networks:
+      - homevibe
   api:
     build:
       context: ./backend
