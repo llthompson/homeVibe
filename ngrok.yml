@@ -1,0 +1,7 @@
+authtoken: 2ameNr5j8PAWCZfbpgBlCx3UemC_HXeu4gQR37J9JKt497dr
+version: 2
+tunnels:
+  api:
+    addr: api:8000
+    proto: http
+    domain: united-ultimate-doe.ngrok-free.app

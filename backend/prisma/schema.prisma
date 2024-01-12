@@ -12,9 +12,10 @@ datasource db {
 
 model User {
   id                   Int              @id @default(autoincrement())
-  firstName            String           @map("first_name")
-  lastName             String           @map("last_name")
-  email                String
+  firstName            String?          @map("first_name")
+  lastName             String?          @map("last_name")
+  email                String           
+  auth0ID              String           @map("auth0_id")
   userFeatures         HomeFeature[]
   userRatings          FeatureRating[]
   initiatedConnections UserConnection[] @relation("initatingUser")

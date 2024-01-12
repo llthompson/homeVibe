@@ -22,17 +22,17 @@ services:
     volumes:
       - pg-data:/var/lib/postgresql/data
   ngrok:
-    image: shkoliar/ngrok
+    image: ngrok/ngrok:latest
     restart: unless-stopped
-    # command:
-    #   - http host.docker.internal:8000
+    command:
+      - "start"
+      - "--all"
+      - "--config"
+      - "/etc/ngrok.yml"
+    volumes:
+      - ./ngrok.yml:/etc/ngrok.yml
     ports:
-      - 4551:4551
-      # - 8000:8000
-    environment:
-      - DOMAIN=api
-      - PORT=8000
-      - AUTH_TOKEN=2ameNr5j8PAWCZfbpgBlCx3UemC_HXeu4gQR37J9JKt497dr
+      - 4040:4040
     networks:
       - homevibe
   api:

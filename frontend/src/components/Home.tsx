@@ -54,7 +54,7 @@ function Home() {
                 <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
 
                     <Grid item xs={12} className='card for logo'>
-                        <Card sx={{ maxHeight: 150 }}>
+                        <Card sx={{ maxHeight: 150, boxShadow: ["none"] }}>
                             <CardMedia
                                 component="img"
                                 style={{ transform: 'scale(0.49)' }}
@@ -63,15 +63,20 @@ function Home() {
                             />
                         </Card>
                     </Grid>
-                    <Grid item xs={4} className='slogan 1'>
-                        <Item><Typography variant="h2" style={{ flexGrow: '1' }}>what's</Typography></Item>
+                    <Grid item xs={12} className='slogan 1'>
+                        <Item sx={{ boxShadow: ["none"] }}>
+                            <Typography
+                                variant="h2"
+                                style={{
+                                    flexGrow: '10',
+                                    letterSpacing: 30,
+                                    color: theme.palette.secondary.main
+                                }}>
+                                what's your vibe
+                            </Typography>
+                        </Item>
                     </Grid>
-                    <Grid item xs={4} className='slogan 2'>
-                        <Item><Typography variant="h2" style={{ flexGrow: '1' }}>your</Typography></Item>
-                    </Grid>
-                    <Grid item xs={4} className='slogan 3'>
-                        <Item><Typography variant="h2" style={{ flexGrow: '1' }}>vibe</Typography></Item>
-                    </Grid>
+
                     <Grid item xs={12} className='first box'>
                         <Card sx={{
                             display: 'flex',
@@ -80,10 +85,8 @@ function Home() {
                         }}>
                             <CardMedia
                                 component="img"
-                                sx={{ width: 400, height: 250, padding: "1em 1em 0 1em", objectFit: "contain" }}
-                                // height={maxHeight: 20px}
+                                sx={{ width: 400, height: 150, padding: "1em 1em 0 1em", objectFit: "contain", justifyContent: "right" }}
                                 height="10%"
-                                // width="20"
                                 image="../../house-icon.png"
                                 alt="homeVibe logo"
                             />
@@ -107,7 +110,7 @@ function Home() {
                             </CardContent>
                             <CardMedia
                                 component="img"
-                                sx={{ width: 400, height: 250, padding: "1em 1em 0 1em", objectFit: "contain" }}
+                                sx={{ width: 400, height: 150, padding: "1em 1em 0 1em", objectFit: "contain" }}
                                 // height={maxHeight: 20px}
                                 height="10%"
                                 // width="20"
