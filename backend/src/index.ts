@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import db from "./db";
 import authRouter from './routes/auth'
+import featureRouter from "./routes/features";
 
 import dotenv from "dotenv";
 
@@ -17,6 +18,7 @@ app.use(cors({
 app.use(bodyParser.json())
 
 app.use('/api/auth', authRouter)
+app.use('/api/feature', featureRouter)
 
 app.get("/", async (req: Request, res: Response) => {
   console.log('getting something')

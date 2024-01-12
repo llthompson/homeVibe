@@ -1,4 +1,4 @@
-import { PrismaClient, Rating } from '@prisma/client'
+import { PrismaClient, Rating, FeatureType } from '@prisma/client'
 const prisma = new PrismaClient()
 async function main() {
   // const alice = await prisma.user.create ({
@@ -32,6 +32,13 @@ async function main() {
   const sqFt = await prisma.homeFeature.create({
     data: {
       feature: 'Sq Ft',
+    }
+  })
+
+  const falseDoor = await prisma.homeFeature.create({
+    data: {
+      feature: 'Secret Bookcase Door',
+      type: FeatureType.ADVANCED
     }
   })
 

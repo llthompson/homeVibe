@@ -14,7 +14,7 @@ model User {
   id                   Int              @id @default(autoincrement())
   firstName            String?          @map("first_name")
   lastName             String?          @map("last_name")
-  email                String           
+  email                String
   auth0ID              String           @map("auth0_id")
   userFeatures         HomeFeature[]
   userRatings          FeatureRating[]
@@ -25,6 +25,7 @@ model User {
 model HomeFeature {
   id             Int             @id @default(autoincrement())
   feature        String
+  type           FeatureType     @default(STANDARD)
   userId         Int?
   user           User?           @relation(fields: [userId], references: [id])
   featureRatings FeatureRating[]
@@ -51,6 +52,12 @@ model UserConnection {
   acceptingUserId Int
 
   @@map("user_connections")
+}
+
+enum FeatureType {
+  STANDARD
+  ADVANCED
+  CUSTOM
 }
 
 enum Rating {

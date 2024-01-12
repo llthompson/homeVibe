@@ -12,6 +12,8 @@ import NavigationIcon from '@mui/icons-material/Navigation';
 import { Link } from 'react-router-dom';
 import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
 import { PageLayout } from './Page-Layout';
+import CreateFeatureDialog from './CreateFeature';
+
 
 
 
@@ -133,7 +135,7 @@ const Features = () => {
                         </Item>
                     </Grid>
 
-                    <Grid item xs={12} className='first empty box'>
+                    <Grid item xs={8} className='first empty box'>
                         <Card sx={{
                             display: 'flex',
                             margin: "0 auto",
@@ -141,9 +143,17 @@ const Features = () => {
                         }}>
                             empty card
                             <CardContent className='empty box 1 content' sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                                <Typography component="div" variant="h5">
-                                    blank content #1
-                                </Typography>
+
+                                <CreateFeatureDialog></CreateFeatureDialog>
+
+                                {/* <Typography component="div" variant="h5">
+                                    <Fab variant="extended" color="info">
+                                        <NavigationIcon sx={{ mr: 1 }} />
+                                        <Typography variant="h4" style={{ flexGrow: '6' }}>
+                                            Create Custom Feature
+                                        </Typography>
+                                    </Fab>
+                                </Typography> */}
                             </CardContent>
                         </Card>
                     </Grid>
@@ -196,12 +206,7 @@ const Features = () => {
                     </Grid>
                     <Grid item xs={12} className='pointless button'>
                         <Item><Typography variant="h1" style={{ flexGrow: '6' }}>nothing to see here</Typography>
-                            <Fab variant="extended" color="info">
-                                <NavigationIcon sx={{ mr: 1 }} />
-                                <Typography variant="h4" style={{ flexGrow: '6' }}>
-                                    BIG BUTTON
-                                </Typography>
-                            </Fab>
+
                         </Item>
                     </Grid>
 
