@@ -1,3 +1,5 @@
+// frontend/src/components/Dashboard.tsx
+
 import { Card, CardMedia, Typography, CardContent } from '@mui/material';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
@@ -61,7 +63,7 @@ const Dashboard = () => {
 
                     <Grid item xs={12} className='empty card'>
                         <Card>
-                            <Typography variant="h1" style={{ flexGrow: '1', fontFamily: 'Galada, cursive', textAlign: 'center', paddingTop: '30px' }}>
+                            <Typography variant="h1" style={{ flexGrow: '1', fontFamily: 'Galada, cursive', textAlign: 'center', paddingTop: '30px', color: theme.palette.primary.main }}>
                                 Dashboard
                             </Typography>
                         </Card>
@@ -75,13 +77,12 @@ const Dashboard = () => {
                     <Grid item xs={4} className='empty 3'>
                         <Item><Typography variant="h2" style={{ flexGrow: '1' }}>empty</Typography></Item>
                     </Grid>
-                    <Grid item xs={12} className='first empty box'>
+                    <Grid item xs={12} className='blank1'>
                         <Card sx={{
                             display: 'flex',
                             margin: "0 auto",
                             padding: "0.1em",
                         }}>
-                            empty card
                             <CardContent className='empty box 1 content' sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
                                 <Typography component="div" variant="h5">
                                     blank content #1
@@ -89,7 +90,7 @@ const Dashboard = () => {
                             </CardContent>
                         </Card>
                     </Grid>
-                    <Grid item xs={12} className='second empty box'>
+                    <Grid item xs={12} className='blank2'>
                         <Card sx={{
                             display: 'flex',
                             margin: "0 auto",
@@ -103,7 +104,7 @@ const Dashboard = () => {
 
                         </Card>
                     </Grid>
-                    <Grid item xs={12} className='third empty box'>
+                    <Grid item xs={12} className='blank3'>
                         <Card sx={{
                             display: 'flex',
                             margin: "0 auto",
@@ -118,7 +119,7 @@ const Dashboard = () => {
                             </CardContent>
                         </Card>
                     </Grid>
-                    <Grid item xs={12} className='fourth empty box'>
+                    <Grid item xs={12} className='link to nowhere'>
                         <Card sx={{
                             display: 'flex',
                             margin: "0 auto",
@@ -138,9 +139,9 @@ const Dashboard = () => {
                     </Grid>
                     <Grid item xs={12} className='pointless button'>
                         <Item><Typography variant="h1" style={{ flexGrow: '6' }}>nothing to see here</Typography>
-                            <Fab variant="extended" color="info">
-                                <NavigationIcon sx={{ mr: 1 }} />
-                                <Typography variant="h4" style={{ flexGrow: '6' }}>
+                            <Fab variant="extended" style={{ flexGrow: '6', backgroundColor: theme.palette.info.main }}>
+                                <NavigationIcon sx={{ mr: 1, color: theme.palette.secondary.contrastText }} />
+                                <Typography variant="h4" style={{ flexGrow: '6', color: theme.palette.secondary.contrastText }}>
                                     BIG BUTTON
                                 </Typography>
                             </Fab>

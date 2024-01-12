@@ -54,11 +54,11 @@ function Home() {
                 <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
 
                     <Grid item xs={12} className='card for logo'>
-                        <Card>
+                        <Card sx={{ maxHeight: 150 }}>
                             <CardMedia
                                 component="img"
-                                height="320"
-                                image="../../homeVibelogo1.png"
+                                style={{ transform: 'scale(0.49)' }}
+                                image="../../homeVibelogo2.png"
                                 alt="homeVibe logo"
                             />
                         </Card>

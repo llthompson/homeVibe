@@ -20,43 +20,43 @@ const Navigation = () => {
                     edge="start"
                     color="inherit"
                     aria-label="menu"
-                    sx={{ mr: 2 }}
+                    sx={{ mr: 2, color: theme.palette.info.dark }}
                 >
                     <MenuIcon />
                 </IconButton>
 
-                <Typography variant="h6" style={{ flexGrow: '1', textAlign: 'center' }}>
+                <Typography variant="h6" style={{ flexGrow: '1', textAlign: 'center', color: theme.palette.info.dark }}>
                     homeVibe
                 </Typography>
 
                 <List className="nav-list" sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                     <ListItem>
-                        <Link to="/Dashboard" style={{ textDecoration: 'underline', textDecorationThickness: '2px', textUnderlineOffset: '4px', textDecorationColor: '#a700c7' }}>
-                            <Typography style={{ fontSize: '18px', marginBottom: 0, color: theme.palette.info.main }}>
+                        <Link to="/Dashboard" style={{ textDecoration: 'underline', textDecorationThickness: '2px', textUnderlineOffset: '4px', textDecorationColor: '#8d008d' }}>
+                            <Typography style={{ fontSize: '18px', marginBottom: 0, color: theme.palette.info.dark }}>
                                 Dashboard
                             </Typography>
                         </Link>
                     </ListItem>
 
                     <ListItem>
-                        <Link to="/Features" style={{ textDecoration: 'underline', textDecorationThickness: '2px', textUnderlineOffset: '4px', textDecorationColor: '#a700c7' }}>
-                            <Typography style={{ fontSize: '18px', marginBottom: 0, color: theme.palette.info.main }}>
+                        <Link to="/Features" style={{ textDecoration: 'underline', textDecorationThickness: '2px', textUnderlineOffset: '4px', textDecorationColor: '#8d008d' }}>
+                            <Typography style={{ fontSize: '18px', marginBottom: 0, color: theme.palette.info.dark }}>
                                 Features
                             </Typography>
                         </Link>
                     </ListItem>
 
                     <ListItem>
-                        <Link to="/" style={{ textDecoration: 'underline', textDecorationThickness: '2px', textUnderlineOffset: '4px', textDecorationColor: '#a700c7' }}>
-                            <Typography style={{ fontSize: '18px', marginBottom: 0, color: theme.palette.info.main }}>
+                        <Link to="/" style={{ textDecoration: 'underline', textDecorationThickness: '2px', textUnderlineOffset: '4px', textDecorationColor: '#8d008d' }}>
+                            <Typography style={{ fontSize: '18px', marginBottom: 0, color: theme.palette.info.dark }}>
                                 Home
                             </Typography>
                         </Link>
                     </ListItem>
 
                     <ListItem>
-                        <Link to="/LearnMore" style={{ textDecoration: 'underline', textDecorationThickness: '2px', textUnderlineOffset: '4px', textDecorationColor: '#a700c7' }}>
-                            <Typography style={{ fontSize: '18px', marginBottom: 0, whiteSpace: 'nowrap', color: theme.palette.info.main }}>
+                        <Link to="/LearnMore" style={{ textDecoration: 'underline', textDecorationThickness: '2px', textUnderlineOffset: '4px', textDecorationColor: '#8d008d' }}>
+                            <Typography style={{ fontSize: '18px', marginBottom: 0, whiteSpace: 'nowrap', color: theme.palette.info.dark }}>
                                 Learn More
                             </Typography>
                         </Link>

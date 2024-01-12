@@ -28,7 +28,7 @@ const LearnMore = () => {
 
                     <Grid item xs={12} className='empty card'>
                         <Card>
-                            <Typography variant="h1" style={{ flexGrow: '1', fontFamily: 'Galada, cursive', textAlign: 'center', paddingTop: '30px' }}>
+                            <Typography variant="h1" style={{ flexGrow: '1', fontFamily: 'Galada, cursive', textAlign: 'center', paddingTop: '30px', color: theme.palette.primary.main }}>
                                 Learn More
                             </Typography>
                         </Card>

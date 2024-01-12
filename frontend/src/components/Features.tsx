@@ -25,6 +25,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
 
 const Features = () => {
+    const theme = useTheme();
     const [features, setFeatures] = useState([])
 
     useEffect(() => {
@@ -51,9 +52,6 @@ const Features = () => {
 
     const rows = features.map((item: any) => ({ id: item.id, feature: item.feature, __check__: false }));
 
-
-
-
     return (
 
         <PageLayout>
@@ -63,7 +61,7 @@ const Features = () => {
 
                     <Grid item xs={12} className='empty card'>
                         <Card>
-                            <Typography variant="h1" style={{ flexGrow: '1', fontFamily: 'Galada, cursive', textAlign: 'center', paddingTop: '30px' }}>
+                            <Typography variant="h1" style={{ flexGrow: '1', fontFamily: 'Galada, cursive', textAlign: 'center', paddingTop: '43px', color: theme.palette.primary.main }}>
                                 Features
                             </Typography>
                         </Card>
