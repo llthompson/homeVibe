@@ -52,7 +52,7 @@ const Features = () => {
         { field: '__check__', headerName: 'Box', align: 'center', headerClassName: 'custom-header', sortable: false },
     ];
 
-    const rows = features.map((item: any) => ({ id: item.id, feature: item.feature, __check__: false }));
+    const rows = features.map((item: any) => ({ id: item.id, feature: item.feature, __check__: false, type: item.type }));
 
     return (
 
@@ -95,7 +95,7 @@ const Features = () => {
                                         </Typography>
                                         <div style={{ height: 400, width: '100%' }}>
                                             <DataGrid
-                                                rows={rows}
+                                                rows={rows.filter(r => r.type === 'STANDARD')}
                                                 columns={columns}
                                                 // pageSize={5}
                                                 checkboxSelection
@@ -117,7 +117,7 @@ const Features = () => {
                                         </Typography>
                                         <div style={{ height: 400, width: '100%' }}>
                                             <DataGrid
-                                                rows={rows}
+                                                rows={rows.filter(r => r.type === 'ADVANCED')}
                                                 columns={columns}
                                                 // pageSize={5}
                                                 checkboxSelection
