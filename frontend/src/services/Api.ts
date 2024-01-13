@@ -6,6 +6,7 @@ export const createUserFeature = async (accessToken: string, body: any) => {
             "content-type": "application/json",
             Authorization: `Bearer ${accessToken}`,
         },
-        body
+        body: JSON.stringify(body)
     })
+    return feature
 }

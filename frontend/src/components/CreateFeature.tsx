@@ -1,6 +1,5 @@
 
 
-
 import React, { useEffect, useState } from 'react';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
@@ -10,11 +9,12 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Fab from '@mui/material/Fab';
-import { Card, CardMedia, Typography, CardContent } from '@mui/material';
-import Container from '@mui/material/Container';
-import Grid from '@mui/material/Grid';
-import { styled } from '@mui/material/styles';
-import { useTheme } from '@mui/system';
+import { Typography } from '@mui/material';
+// import { styled } from '@mui/material/styles';
+// import { useTheme } from '@mui/system';
+import * as api from '../services/Api'
+import { useAuth0 } from "@auth0/auth0-react";
+
 
 export default function CreateFeatureDialog() {
     const [open, setOpen] = React.useState(false);
@@ -27,15 +27,7 @@ export default function CreateFeatureDialog() {
         setOpen(false);
     };
 
-
-    {/* <Typography component="div" variant="h5">
-                                    <Fab variant="extended" color="info">
-                                        <NavigationIcon sx={{ mr: 1 }} />
-                                        <Typography variant="h4" style={{ flexGrow: '6' }}>
-                                            Create Custom Feature
-                                        </Typography>
-                                    </Fab>
-                                </Typography> */}
+    const { getAccessTokenSilently } = useAuth0();
 
     return (
         <React.Fragment>
@@ -49,37 +41,50 @@ export default function CreateFeatureDialog() {
                 onClose={handleClose}
                 PaperProps={{
                     component: 'form',
-                    onSubmit: (event: React.FormEvent<HTMLFormElement>) => {
+                    onSubmit: async (event: React.FormEvent<HTMLFormElement>) => {
                         event.preventDefault();
                         const formData = new FormData(event.currentTarget);
                         const formJson = Object.fromEntries((formData as any).entries());
-                        const email = formJson.email;
-                        console.log(email);
+                        console.log('jas', formJson)
+                        // const email = formJson.email;
+                        const accessToken = await getAccessTokenSilently();
+                        const feature = await api.createUserFeature(accessToken, formJson)
+                        console.log(feature);
                         handleClose();
                     },
                 }}
             >
-                <DialogTitle>Subscribe</DialogTitle>
+                <DialogTitle>Create a Custom Home Feature</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
-                        To subscribe to this website, please enter your email address here. We
-                        will send updates occasionally.
+                        What very specific home feature do you just HAVE to have???
                     </DialogContentText>
                     <TextField
                         autoFocus
                         required
                         margin="dense"
                         id="name"
-                        name="email"
-                        label="Email Address"
-                        type="email"
+                        name="feature"
+                        label="What feature would you like?"
+                        type="string"
                         fullWidth
                         variant="standard"
                     />
+                    {/* <TextField
+                        autoFocus
+                        required
+                        margin="dense"
+                        id="name"
+                        name="email"
+                        label="Feature notes"
+                        type="email"
+                        fullWidth
+                        variant="standard"
+                    /> */}
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose}>Cancel</Button>
-                    <Button type="submit">Subscribe</Button>
+                    <Button type="submit">Add Custom Feature</Button>
                 </DialogActions>
             </Dialog>
         </React.Fragment>

@@ -1,14 +1,14 @@
 // frontend/src/components/Features.tsx
 
-import React, { useEffect, useState } from 'react';
-import { Card, CardMedia, Typography, CardContent } from '@mui/material';
+import { useEffect, useState } from 'react';
+import { Card, Typography, CardContent } from '@mui/material';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import { styled } from '@mui/material/styles';
 import { useTheme } from '@mui/system';
 import Paper from '@mui/material/Paper';
-import Fab from '@mui/material/Fab';
-import NavigationIcon from '@mui/icons-material/Navigation';
+// import Fab from '@mui/material/Fab';
+// import NavigationIcon from '@mui/icons-material/Navigation';
 import { Link } from 'react-router-dom';
 import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
 import { PageLayout } from './Page-Layout';
@@ -61,7 +61,7 @@ const Features = () => {
 
                 <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
 
-                    <Grid item xs={12} className='empty card'>
+                    <Grid item xs={12} className='page-header'>
                         <Card>
                             <Typography variant="h1" style={{ flexGrow: '1', fontFamily: 'Galada, cursive', textAlign: 'center', paddingTop: '43px', color: theme.palette.primary.main }}>
                                 Features
@@ -69,7 +69,23 @@ const Features = () => {
                         </Card>
                     </Grid>
 
-                    <Grid item xs={4} className='empty 1'>
+                    <Grid item xs={12} className='add-custom'>
+                        <Card sx={{
+                            display: 'flex',
+                            margin: "0 auto",
+                            padding: "0.1em",
+                            alignItems: 'center',
+                            justifyContent: 'center'
+                        }}>
+                            <CardContent className='add-custom-feature' sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+
+                                <CreateFeatureDialog></CreateFeatureDialog>
+
+                            </CardContent>
+                        </Card>
+                    </Grid>
+
+                    <Grid item xs={6} className='stan-feature'>
                         <Item>
                             <Typography variant="h6" style={{ flexGrow: '1' }}>
                                 <Card>
@@ -91,29 +107,7 @@ const Features = () => {
                         </Item>
                     </Grid>
 
-                    <Grid item xs={8} className='user-features-table'>
-                        <Item>
-                            <Typography variant="h6" style={{ flexGrow: '1' }}>
-                                <Card>
-                                    <CardContent>
-                                        <Typography variant="h6" gutterBottom>
-                                            Your Features, Your Vibes
-                                        </Typography>
-                                        <div style={{ height: 400, width: '100%' }}>
-                                            <DataGrid
-                                                rows={rows}
-                                                columns={columns}
-                                                // pageSize={5}
-                                                checkboxSelection
-                                            />
-                                        </div>
-                                    </CardContent>
-                                </Card>
-                            </Typography>
-                        </Item>
-                    </Grid>
-
-                    <Grid item xs={4} className='empty 3'>
+                    <Grid item xs={6} className='adv-feature'>
                         <Item>
                             <Typography variant="h6" style={{ flexGrow: '1' }}>
                                 <Card>
@@ -135,28 +129,30 @@ const Features = () => {
                         </Item>
                     </Grid>
 
-                    <Grid item xs={8} className='first empty box'>
-                        <Card sx={{
-                            display: 'flex',
-                            margin: "0 auto",
-                            padding: "0.1em",
-                        }}>
-                            empty card
-                            <CardContent className='empty box 1 content' sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-
-                                <CreateFeatureDialog></CreateFeatureDialog>
-
-                                {/* <Typography component="div" variant="h5">
-                                    <Fab variant="extended" color="info">
-                                        <NavigationIcon sx={{ mr: 1 }} />
-                                        <Typography variant="h4" style={{ flexGrow: '6' }}>
-                                            Create Custom Feature
+                    <Grid item xs={12} className='user-features-table'>
+                        <Item>
+                            <Typography variant="h6" style={{ flexGrow: '1' }}>
+                                <Card>
+                                    <CardContent>
+                                        <Typography variant="h6" gutterBottom>
+                                            Your Features, Your Vibes
                                         </Typography>
-                                    </Fab>
-                                </Typography> */}
-                            </CardContent>
-                        </Card>
+                                        <div style={{ height: 400, width: '100%' }}>
+                                            <DataGrid
+                                                rows={rows}
+                                                columns={columns}
+                                                // pageSize={5}
+                                                checkboxSelection
+                                            />
+                                        </div>
+                                    </CardContent>
+                                </Card>
+                            </Typography>
+                        </Item>
                     </Grid>
+
+
+
                     <Grid item xs={12} className='second empty box'>
                         <Card sx={{
                             display: 'flex',
@@ -171,6 +167,7 @@ const Features = () => {
 
                         </Card>
                     </Grid>
+
                     <Grid item xs={12} className='third empty box'>
                         <Card sx={{
                             display: 'flex',
@@ -186,6 +183,7 @@ const Features = () => {
                             </CardContent>
                         </Card>
                     </Grid>
+
                     <Grid item xs={12} className='fourth empty box'>
                         <Card sx={{
                             display: 'flex',
@@ -204,6 +202,7 @@ const Features = () => {
 
                         </Card>
                     </Grid>
+
                     <Grid item xs={12} className='pointless button'>
                         <Item><Typography variant="h1" style={{ flexGrow: '6' }}>nothing to see here</Typography>
 
