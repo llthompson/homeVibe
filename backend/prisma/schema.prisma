@@ -16,19 +16,19 @@ model User {
   lastName             String?          @map("last_name")
   email                String
   auth0ID              String           @map("auth0_id")
-  // userFeatures         HomeFeature[]
+  userFeatures         HomeFeature[]
   savedFeatures        SavedFeature[]
   initiatedConnections UserConnection[] @relation("initatingUser")
   acceptedConnections  UserConnection[] @relation("acceptingUser")
 }
 
 model HomeFeature {
-  id      Int         @id @default(autoincrement())
-  feature String
-  type    FeatureType @default(STANDARD)
-  // userId         Int?
-  // user           User?           @relation(fields: [userId], references: [id])
-  // featureRatings FeatureRating[]
+  id             Int            @id @default(autoincrement())
+  feature        String
+  type           FeatureType    @default(STANDARD)
+  userId         Int?
+  user           User?          @relation(fields: [userId], references: [id])
+  featureRatings SavedFeature[]
 
   @@map("home_features")
 }
@@ -39,7 +39,7 @@ model SavedFeature {
   user      User        @relation(fields: [userId], references: [id])
   featureId Int
   rating    Rating?
-  // feature   HomeFeature @relation(fields: [featureId], references: [id])
+  feature   HomeFeature @relation(fields: [featureId], references: [id])
 
   @@map("saved_features")
 }

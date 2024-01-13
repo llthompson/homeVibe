@@ -6,10 +6,16 @@ import { AppBar, Toolbar, IconButton, Typography, List, ListItem, Link as Router
 import MenuIcon from "@mui/icons-material/Menu";
 import { Link } from 'react-router-dom';
 import { useTheme } from '@mui/system';
-import LoginButton from './login-button';
+import LoginButton from './LoginButton';
+import { useAuth0 } from '@auth0/auth0-react';
+import LogoutButton from './LogoutButton';
 
 const Navigation = () => {
     const theme = useTheme();
+    const {
+        isAuthenticated,
+        loginWithRedirect,
+    } = useAuth0();
 
     return (
         <AppBar sx={{ bgcolor: theme.palette.primary.main }} position="relative">
@@ -63,7 +69,9 @@ const Navigation = () => {
                     </ListItem>
 
                     <ListItem className='login'>
-                        <LoginButton></LoginButton>
+                        {!isAuthenticated ? <LoginButton></LoginButton> : <LogoutButton></LogoutButton>}
+
+
                     </ListItem>
                 </List>
 

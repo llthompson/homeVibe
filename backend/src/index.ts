@@ -20,11 +20,11 @@ app.use(bodyParser.json())
 app.use('/api/auth', authRouter)
 app.use('/api/feature', featureRouter)
 
-app.get("/", async (req: Request, res: Response) => {
-  console.log('getting something')
-  const blah = await db.homeFeature.findMany()
-  res.json(blah);
-});
+// app.get("/", async (req: Request, res: Response) => {
+//   console.log('getting something')
+//   const blah = await db.homeFeature.findMany()
+//   res.json(blah);
+// });
 
 app.listen(port, () => {
   console.log(`[server]: We're chillin' at port http://localhost:8000`);

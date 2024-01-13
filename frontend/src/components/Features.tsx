@@ -13,7 +13,8 @@ import { Link } from 'react-router-dom';
 import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
 import { PageLayout } from './Page-Layout';
 import CreateFeatureDialog from './CreateFeature';
-
+import * as apiService from '../services/Api'
+import { useAuth0 } from "@auth0/auth0-react";
 
 
 
@@ -29,16 +30,20 @@ const Item = styled(Paper)(({ theme }) => ({
 const Features = () => {
     const theme = useTheme();
     const [features, setFeatures] = useState([])
+    const { getAccessTokenSilently } = useAuth0();
 
     useEffect(() => {
         async function getCenter() {
             try {
-                let response = await fetch(`http://localhost:8000`);
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-                const responseJson = await response.json();
-                setFeatures(responseJson);
+                // let response = await fetch(`http://localhost:8000`);
+                // if (!response.ok) {
+                //     throw new Error(`HTTP error! Status: ${response.status}`);
+                // }
+                // const responseJson = await response.json();
+                const accessToken = await getAccessTokenSilently();
+
+                let features: any = await apiService.getUserFeatures(accessToken)
+                setFeatures(features);
             } catch (error) {
                 console.error("Error fetching data:", error);
             }
@@ -49,6 +54,7 @@ const Features = () => {
     const columns: GridColDef[] = [
         { field: 'id', headerName: 'ID', width: 70, align: 'left', sortable: false },
         { field: 'feature', headerName: 'Feature', width: 130, sortable: false },
+        { field: 'type', headerName: 'Type', width: 130, sortable: false },
         { field: '__check__', headerName: 'Box', align: 'center', headerClassName: 'custom-header', sortable: false },
     ];
 
