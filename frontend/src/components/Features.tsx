@@ -1,7 +1,7 @@
 // frontend/src/components/Features.tsx
 
 import { useEffect, useState } from 'react';
-import { Card, Typography, CardContent } from '@mui/material';
+import { Card, CardMedia, Typography, CardContent, Button } from '@mui/material';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import { styled } from '@mui/material/styles';
@@ -10,11 +10,13 @@ import Paper from '@mui/material/Paper';
 // import Fab from '@mui/material/Fab';
 // import NavigationIcon from '@mui/icons-material/Navigation';
 import { Link } from 'react-router-dom';
-import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
+import { DataGrid, GridApi, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
 import { PageLayout } from './Page-Layout';
 import CreateFeatureDialog from './CreateFeature';
 import * as apiService from '../services/Api'
 import { useAuth0 } from "@auth0/auth0-react";
+import HeartBrokenOutlinedIcon from '@mui/icons-material/HeartBrokenOutlined';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 
 
@@ -55,7 +57,28 @@ const Features = () => {
         { field: 'id', headerName: 'ID', width: 70, align: 'left', sortable: false },
         { field: 'feature', headerName: 'Feature', width: 130, sortable: false },
         { field: 'type', headerName: 'Type', width: 130, sortable: false },
-        { field: '__check__', headerName: 'Box', align: 'center', headerClassName: 'custom-header', sortable: false },
+        {
+            field: 'SAVE', headerName: 'Save', align: 'center', sortable: false,
+            renderCell: (params) => {
+                const onClick = (e: any) => {
+                    e.stopPropagation(); // don't select this row after clicking
+                    console.log('paramsss', params.row)
+                    // const api: GridApi = params.api;
+                    // const thisRow: Record<string, GridCellValue> = {};
+
+                    // api
+                    //     .getAllColumns()
+                    //     .filter((c) => c.field !== "__check__" && !!c)
+                    //     .forEach(
+                    //         (c) => (thisRow[c.field] = params.getValue(params.id, c.field))
+                    //     );
+
+                    // return alert(JSON.stringify(thisRow, null, 4));
+                };
+
+                return <Button onClick={onClick}><HeartBrokenOutlinedIcon color="info"></HeartBrokenOutlinedIcon></Button>;
+            }
+        },
     ];
 
     const rows = features.map((item: any) => ({ id: item.id, feature: item.feature, __check__: false, type: item.type }));
@@ -68,10 +91,14 @@ const Features = () => {
                 <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
 
                     <Grid item xs={12} className='page-header'>
-                        <Card>
-                            <Typography variant="h1" style={{ flexGrow: '1', fontFamily: 'Galada, cursive', textAlign: 'center', paddingTop: '43px', color: theme.palette.primary.main }}>
-                                Features
-                            </Typography>
+                        <Card sx={{ maxHeight: 160, boxShadow: ["none"] }}>
+                            <CardMedia
+                                component="img"
+                                style={{ transform: 'scale(0.49)' }}
+                                // image="../../homeVibelogo2.png"
+                                image="../../features-logo.png"
+                                alt="page-header-features"
+                            />
                         </Card>
                     </Grid>
 
@@ -104,7 +131,12 @@ const Features = () => {
                                                 rows={rows.filter(r => r.type === 'STANDARD')}
                                                 columns={columns}
                                                 // pageSize={5}
-                                                checkboxSelection
+                                                checkboxSelection={false}
+                                            // onRowSelectionModelChange={(ids: any) => {
+                                            //     console.log('row id', ids)
+                                            //     const selectedRowsData = ids.map((id: any) => rows.find((row) => row.id === id));
+                                            //     console.log(selectedRowsData);
+                                            // }}
                                             />
                                         </div>
                                     </CardContent>
@@ -125,8 +157,6 @@ const Features = () => {
                                             <DataGrid
                                                 rows={rows.filter(r => r.type === 'ADVANCED')}
                                                 columns={columns}
-                                                // pageSize={5}
-                                                checkboxSelection
                                             />
                                         </div>
                                     </CardContent>
@@ -147,8 +177,7 @@ const Features = () => {
                                             <DataGrid
                                                 rows={rows}
                                                 columns={columns}
-                                                // pageSize={5}
-                                                checkboxSelection
+
                                             />
                                         </div>
                                     </CardContent>

@@ -35,6 +35,9 @@
   margin-right: 10px;
 }
 
+.MuiDataGrid-root .MuiDataGrid-columnHeaderCheckbox .MuiDataGrid-columnHeaderTitleContainer {
+  display: none;
+}
 
 @keyframes App-logo-spin {
   from {

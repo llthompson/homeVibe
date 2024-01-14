@@ -1,6 +1,6 @@
 // frontend/src/components/Dashboard.tsx
 
-import { Card, CardMedia, Typography, CardContent } from '@mui/material';
+import { Card, CardMedia, Typography, CardContent, Button } from '@mui/material';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import { styled } from '@mui/material/styles';
