@@ -93,6 +93,7 @@ export default function HorizontalLinearStepper() {
         getCenter();
     }, []);
 
+    // Feature List/Grid
     const columns: GridColDef[] = [
         { field: 'id', headerName: 'ID', width: 70, align: 'left', sortable: false },
         { field: 'feature', headerName: 'Feature', width: 200, sortable: false },
@@ -109,26 +110,19 @@ export default function HorizontalLinearStepper() {
             }
         },
     ];
-
     const rows = features.map((item: any) => ({ id: item.id, feature: item.feature, __check__: false, type: item.type }));
 
 
     return (
         <Box sx={{ width: '100%' }}>
+            {/* Stepper Logic */}
             <Stepper nonLinear activeStep={activeStep} alternativeLabel>
                 {steps.map((label, index) => {
                     const stepProps: { completed?: boolean } = {};
                     const labelProps: {
                         optional?: React.ReactNode;
                     } = {};
-                    // if (isStepOptional(index)) {
-                    //     labelProps.optional = (
-                    //         <Typography variant="caption">Optional</Typography>
-                    //     );
-                    // }
-                    // if (isStepSkipped(index)) {
-                    //     stepProps.completed = false;
-                    // }
+
                     return (
                         <Step key={label} completed={completed[index]}>
                             <StepButton color="inherit" onClick={handleStep(index)}>
@@ -139,6 +133,7 @@ export default function HorizontalLinearStepper() {
                 })}
             </Stepper>
 
+            {/* Step 1 Standard Features */}
             {activeStep === 0 && (
                 <Card className='step1-standard' >
                     <CardContent>
@@ -156,6 +151,7 @@ export default function HorizontalLinearStepper() {
                 </Card>
             )}
 
+            {/* Step 2 Advanced Features */}
             {activeStep === 1 && (
                 <Card className='step2-advanced' >
                     <CardContent>
@@ -173,14 +169,16 @@ export default function HorizontalLinearStepper() {
                 </Card>
             )}
 
+            {/* Step 3 Custom Features */}
             {activeStep === 2 && (
-
                 <Card className='step3-custom' >
 
+                    {/* Custom Feature Button */}
                     <CardContent className='add-custom-feature' sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
                         {/* <CreateFeatureDialog></CreateFeatureDialog> */}
                     </CardContent>
 
+                    {/* Custom Feature Form */}
                     <Box
                         component="form"
                         sx={{
@@ -196,13 +194,12 @@ export default function HorizontalLinearStepper() {
                                         defaultValue="Default Value"
                                         helperText="Some important text"
                                     />
-
                                 </Typography>
-
                             </CardContent>
                         </Card>
                     </Box>
 
+                    {/* Created Custom Features List/Grid */}
                     <CardContent>
                         <Typography variant="h6" gutterBottom>
                             Your Custom Features    <Typography variant="caption" gutterBottom>
@@ -222,6 +219,7 @@ export default function HorizontalLinearStepper() {
                 </Card>
             )}
 
+            {/* PUT LOGIC IN FOR RETURN PAGE AND NOT RESET */}
             {activeStep === steps.length ? (
                 <React.Fragment>
                     <Typography sx={{ mt: 2, mb: 1 }}>
@@ -234,9 +232,9 @@ export default function HorizontalLinearStepper() {
                 </React.Fragment>
             ) : (
 
-                // Back and skip buttons
+                // Back and Next buttons
                 <React.Fragment>
-                    {/* <Typography sx={{ mt: 2, mb: 1 }}>Step {activeStep + 1}</Typography> */}
+                    <Typography sx={{ mt: 2, mb: 1 }}>Step {activeStep + 1}</Typography>
                     <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
                         <Button
                             color="inherit"
@@ -246,12 +244,9 @@ export default function HorizontalLinearStepper() {
                         >
                             Back
                         </Button>
+
                         <Box sx={{ flex: '1 1 auto' }} />
-                        {/* {isStepOptional(activeStep) && (
-                            <Button color="inherit" onClick={handleSkip} sx={{ mr: 1 }}>
-                                Skip
-                            </Button>
-                        )} */}
+
                         <Button onClick={handleNext}>
                             {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
                         </Button>
