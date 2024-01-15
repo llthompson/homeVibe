@@ -13,6 +13,8 @@ import Grid from '@mui/material/Grid';
 import { DataGrid, GridApi, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
 import HeartBrokenOutlinedIcon from '@mui/icons-material/HeartBrokenOutlined';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import Rating from '@mui/material/Rating';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { styled } from '@mui/material/styles';
 import { useTheme } from '@mui/system';
 import Paper from '@mui/material/Paper';
@@ -79,8 +81,31 @@ export default function HorizontalLinearStepper() {
         setCompleted({});
     };
 
+    const StyledRating = styled(Rating)({
+        '& .MuiRating-iconFilled': {
+            color: '#ff6d75',
+        },
+        '& .MuiRating-iconHover': {
+            color: '#ff3d47',
+        },
+    });
+
+    const labels: { [index: string]: string } = {
+        0: '',
+        1: 'Not Essential',
+        2: 'Nice Bonus',
+        3: 'Fairly Important',
+        4: 'Very Desirable',
+        5: 'Non-Negotiable'
+    }
+
+    const [value, setValue] = React.useState<number | null>(2);
+    const [hover, setHover] = React.useState(-1);
+    const [ratings, setRatings] = React.useState<{ [id: number]: number | null }>({});
+
+    // Get features for user
     useEffect(() => {
-        async function getCenter() {
+        async function getFeatures() {
             try {
                 const accessToken = await getAccessTokenSilently();
 
@@ -90,7 +115,7 @@ export default function HorizontalLinearStepper() {
                 console.error("Error fetching data:", error);
             }
         }
-        getCenter();
+        getFeatures();
     }, []);
 
     // Feature List/Grid
@@ -98,15 +123,80 @@ export default function HorizontalLinearStepper() {
         { field: 'id', headerName: 'ID', width: 70, align: 'left', sortable: false },
         { field: 'feature', headerName: 'Feature', width: 200, sortable: false },
         { field: 'type', headerName: 'Type', width: 130, sortable: false },
-        {
-            field: 'SAVE', headerName: 'Save', align: 'center', sortable: false,
-            renderCell: (params) => {
-                const onClick = (e: any) => {
-                    e.stopPropagation();
-                    // console.log('paramsss', params.row)
-                };
+        // {
+        //     field: 'SAVE', headerName: 'Save', align: 'center', sortable: false,
+        //     renderCell: (params) => {
+        //         const onClick = (e: any) => {
+        //             e.stopPropagation();
+        //             // console.log('paramsss', params.row)
+        //         };
 
-                return <Button onClick={onClick}><HeartBrokenOutlinedIcon color="info"></HeartBrokenOutlinedIcon></Button>;
+        //         return <Button onClick={onClick}><HeartBrokenOutlinedIcon color="secondary"></HeartBrokenOutlinedIcon></Button>;
+        //     }
+        // },
+        {
+            field: 'featureRatings', headerName: 'Rating', width: 430, sortable: false,
+            renderCell: (params) => {
+                const id = params.row.id;
+                const rating = ratings[id] || 0;
+                return (
+                    <Box
+                        sx={{
+                            width: 200,
+                            display: 'flex',
+                            alignItems: 'center',
+                        }}
+                        onMouseEnter={() => {
+                            // console.log('Mouse entered row:', id);
+                            setHover(id);
+                        }}
+                        onMouseLeave={() => {
+                            // console.log('Mouse left row:', id);
+                            setHover(-1);
+                        }}
+                    >
+                        <StyledRating
+                            name={`rating-${id}`}
+                            color="secondary"
+                            value={ratings[id]}
+                            defaultValue={0}
+                            getLabelText={(value: number) => {
+                                console.log('getLabelText value ', value)
+                                if (hover !== -1) {
+                                    console.log('set label hover', hover)
+
+                                    return (
+                                        `${hover} Heart${hover !== 1 ? "s" : ""}, ${labels[id]} `
+
+                                    );
+                                }
+                                // if (rating !== 0) {
+                                //     return `${value} Heart${value !== 1 ? "s" : ""}, ${labels[rating]} `;
+                                // }
+                                return '';
+                            }}
+
+                            onChange={(event, newValue) => {
+                                setRatings((prevRatings) => ({
+                                    ...prevRatings,
+                                    [id]: newValue,
+                                }));
+                            }}
+                            onChangeActive={(event, newHover) => {
+                                setHover(newHover);
+                            }}
+                            precision={1}
+                            icon={<FavoriteIcon fontSize="inherit" color='secondary' />}
+                            emptyIcon={<FavoriteBorderIcon fontSize="inherit" />}
+
+                        />
+                        {hover && (
+                            <Box sx={{ ml: 2 }}>
+                                {labels[hover]}
+                            </Box>
+                        )}
+                    </Box>
+                )
             }
         },
     ];

@@ -109,7 +109,7 @@ const Navigation = () => {
                     </ListItem>
 
                     <ListItem className='login'>
-                        {isAuthenticated ? <LoginButton></LoginButton> : <LogoutButton></LogoutButton>}
+                        {!isAuthenticated ? <LoginButton></LoginButton> : <LogoutButton></LogoutButton>}
 
 
                     </ListItem>

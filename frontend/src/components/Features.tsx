@@ -101,7 +101,7 @@ const Features = () => {
                         </Card>
                     </Grid>
 
-                    <Grid item xs={12} className='add-custom'>
+                    {/* <Grid item xs={12} className='add-custom'>
                         <Card sx={{
                             display: 'flex',
                             margin: "0 auto",
@@ -115,9 +115,9 @@ const Features = () => {
 
                             </CardContent>
                         </Card>
-                    </Grid>
+                    </Grid> */}
 
-                    <Grid item xs={6} className='stan-feature'>
+                    {/* <Grid item xs={6} className='stan-feature'>
                         <Item>
                             <Typography variant="h6" style={{ flexGrow: '1' }}>
                                 <Card>
@@ -142,9 +142,9 @@ const Features = () => {
                                 </Card>
                             </Typography>
                         </Item>
-                    </Grid>
+                    </Grid> */}
 
-                    <Grid item xs={6} className='adv-feature'>
+                    {/* <Grid item xs={6} className='adv-feature'>
                         <Item>
                             <Typography variant="h6" style={{ flexGrow: '1' }}>
                                 <Card>
@@ -162,7 +162,7 @@ const Features = () => {
                                 </Card>
                             </Typography>
                         </Item>
-                    </Grid>
+                    </Grid> */}
 
                     <Grid item xs={12} className='user-features-table'>
                         <Item>
