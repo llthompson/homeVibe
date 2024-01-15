@@ -6,15 +6,10 @@ import Grid from '@mui/material/Grid';
 import { styled } from '@mui/material/styles';
 import { useTheme } from '@mui/system';
 import Paper from '@mui/material/Paper';
-// import Fab from '@mui/material/Fab';
-// import NavigationIcon from '@mui/icons-material/Navigation';
-// import { Link } from 'react-router-dom';
 import { useAuth0 } from "@auth0/auth0-react";
 import React, { useEffect, useState } from "react";
 import { PageLayout } from './Page-Layout';
-import Stepper from '@mui/material/Stepper';
-import Step from '@mui/material/Step';
-import StepLabel from '@mui/material/StepLabel';
+import HorizontalLinearStepper from './Stepper';
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -26,8 +21,6 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 const Dashboard = () => {
-
-    console.log('hmm work peze')
     const theme = useTheme();
     const { getAccessTokenSilently } = useAuth0();
 
@@ -75,9 +68,9 @@ const Dashboard = () => {
                         </Card>
                     </Grid>
 
-                    <Grid item xs={12}>
+                    <Grid item xs={12} className='step-feature'>
 
-
+                    <HorizontalLinearStepper></HorizontalLinearStepper>
 
 
 

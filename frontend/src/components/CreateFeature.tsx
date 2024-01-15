@@ -31,8 +31,8 @@ export default function CreateFeatureDialog() {
 
     return (
         <React.Fragment>
-            <Fab variant="extended" color="info" onClick={handleClickOpen}>
-                <Typography variant="h4" style={{ flexGrow: '6' }}>
+            <Fab variant="extended" size='small' color="info" onClick={handleClickOpen}>
+                <Typography variant="h5" style={{ flexGrow: '6' }}>
                     Create Custom Feature
                 </Typography>
             </Fab>
