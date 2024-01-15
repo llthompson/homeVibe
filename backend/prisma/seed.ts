@@ -19,6 +19,7 @@ async function main() {
 
   const numBed = await prisma.homeFeature.create({
     data: {
+      // numberOf: '',
       feature: '# of Bedrooms',
     }
   })

@@ -66,8 +66,8 @@ const Navigation = () => {
                             Learn More
                         </Typography>
                     </Link></MenuItem>
-                    <MenuItem onClick={handleClose}>Logout</MenuItem>
-                    <MenuItem onClick={handleClose}>Logout</MenuItem>
+                    {/* <MenuItem onClick={handleClose}>Logout</MenuItem> */}
+                    {/* <MenuItem onClick={handleClose}>Logout</MenuItem> */}
                 </Menu>
 
 

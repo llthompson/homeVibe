@@ -6,6 +6,7 @@ import Box from '@mui/material/Box';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
+import StepButton from '@mui/material/StepButton';
 import { Card, CardMedia, Typography, CardContent, Button } from '@mui/material';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
@@ -18,6 +19,7 @@ import Paper from '@mui/material/Paper';
 import { useAuth0 } from "@auth0/auth0-react";
 import * as apiService from '../services/Api'
 import CreateFeatureDialog from './CreateFeature';
+import TextField from '@mui/material/TextField';
 
 
 const steps = ['Select standard home features', 'Select advanced home features', 'Create your own custom features'];
@@ -27,48 +29,54 @@ export default function HorizontalLinearStepper() {
     const [features, setFeatures] = useState([])
     const { getAccessTokenSilently } = useAuth0();
     const [activeStep, setActiveStep] = React.useState(0);
-    const [skipped, setSkipped] = React.useState(new Set<number>());
+    const [completed, setCompleted] = React.useState<{
+        [k: number]: boolean;
+    }>({});
 
-    const isStepOptional = (step: number) => {
-        return step === 1;
+    const totalSteps = () => {
+        return steps.length;
     };
 
-    const isStepSkipped = (step: number) => {
-        return skipped.has(step);
+    const completedSteps = () => {
+        return Object.keys(completed).length;
+    };
+
+    const isLastStep = () => {
+        return activeStep === totalSteps() - 1;
+    };
+
+    const allStepsCompleted = () => {
+        return completedSteps() === totalSteps();
     };
 
     const handleNext = () => {
-        let newSkipped = skipped;
-        if (isStepSkipped(activeStep)) {
-            newSkipped = new Set(newSkipped.values());
-            newSkipped.delete(activeStep);
-        }
-
-        setActiveStep((prevActiveStep) => prevActiveStep + 1);
-        setSkipped(newSkipped);
+        const newActiveStep =
+            isLastStep() && !allStepsCompleted()
+                ? // It's the last step, but not all steps have been completed,
+                // find the first step that has been completed
+                steps.findIndex((step, i) => !(i in completed))
+                : activeStep + 1;
+        setActiveStep(newActiveStep);
     };
 
     const handleBack = () => {
         setActiveStep((prevActiveStep) => prevActiveStep - 1);
     };
 
-    const handleSkip = () => {
-        if (!isStepOptional(activeStep)) {
-            // You probably want to guard against something like this,
-            // it should never occur unless someone's actively trying to break something.
-            throw new Error("You can't skip a step that isn't optional.");
-        }
+    const handleStep = (step: number) => () => {
+        setActiveStep(step);
+    };
 
-        setActiveStep((prevActiveStep) => prevActiveStep + 1);
-        setSkipped((prevSkipped) => {
-            const newSkipped = new Set(prevSkipped.values());
-            newSkipped.add(activeStep);
-            return newSkipped;
-        });
+    const handleComplete = () => {
+        const newCompleted = completed;
+        newCompleted[activeStep] = true;
+        setCompleted(newCompleted);
+        handleNext();
     };
 
     const handleReset = () => {
         setActiveStep(0);
+        setCompleted({});
     };
 
     useEffect(() => {
@@ -107,23 +115,25 @@ export default function HorizontalLinearStepper() {
 
     return (
         <Box sx={{ width: '100%' }}>
-            <Stepper activeStep={activeStep}>
+            <Stepper nonLinear activeStep={activeStep} alternativeLabel>
                 {steps.map((label, index) => {
                     const stepProps: { completed?: boolean } = {};
                     const labelProps: {
                         optional?: React.ReactNode;
                     } = {};
-                    if (isStepOptional(index)) {
-                        labelProps.optional = (
-                            <Typography variant="caption">Optional</Typography>
-                        );
-                    }
-                    if (isStepSkipped(index)) {
-                        stepProps.completed = false;
-                    }
+                    // if (isStepOptional(index)) {
+                    //     labelProps.optional = (
+                    //         <Typography variant="caption">Optional</Typography>
+                    //     );
+                    // }
+                    // if (isStepSkipped(index)) {
+                    //     stepProps.completed = false;
+                    // }
                     return (
-                        <Step key={label} {...stepProps}>
-                            <StepLabel {...labelProps}>{label}</StepLabel>
+                        <Step key={label} completed={completed[index]}>
+                            <StepButton color="inherit" onClick={handleStep(index)}>
+                                {label}
+                            </StepButton>
                         </Step>
                     );
                 })}
@@ -168,8 +178,30 @@ export default function HorizontalLinearStepper() {
                 <Card className='step3-custom' >
 
                     <CardContent className='add-custom-feature' sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                        <CreateFeatureDialog></CreateFeatureDialog>
+                        {/* <CreateFeatureDialog></CreateFeatureDialog> */}
                     </CardContent>
+
+                    <Box
+                        component="form"
+                        sx={{
+                            '& .MuiTextField-root': { m: 1, width: '50%', display: 'flex', },
+                        }}
+                        noValidate>
+                        <Card>
+                            <CardContent>
+                                <Typography variant="h6" gutterBottom>
+                                    <TextField
+                                        id="outlined-helperText"
+                                        label="Helper text"
+                                        defaultValue="Default Value"
+                                        helperText="Some important text"
+                                    />
+
+                                </Typography>
+
+                            </CardContent>
+                        </Card>
+                    </Box>
 
                     <CardContent>
                         <Typography variant="h6" gutterBottom>
@@ -215,11 +247,11 @@ export default function HorizontalLinearStepper() {
                             Back
                         </Button>
                         <Box sx={{ flex: '1 1 auto' }} />
-                        {isStepOptional(activeStep) && (
+                        {/* {isStepOptional(activeStep) && (
                             <Button color="inherit" onClick={handleSkip} sx={{ mr: 1 }}>
                                 Skip
                             </Button>
-                        )}
+                        )} */}
                         <Button onClick={handleNext}>
                             {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
                         </Button>
