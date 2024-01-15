@@ -57,8 +57,8 @@ function Home() {
                         <Card sx={{ maxHeight: 150, boxShadow: ["none"] }}>
                             <CardMedia
                                 component="img"
-                                style={{ transform: 'scale(0.49)' }}
-                                image="../../homeVibelogo2.png"
+                                style={{ transform: 'scale(0.75)' }}
+                                image="../../homeVibelogo3.png"
                                 alt="homeVibe logo"
                             />
                         </Card>

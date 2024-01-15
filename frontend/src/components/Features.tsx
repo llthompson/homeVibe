@@ -91,12 +91,11 @@ const Features = () => {
                 <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
 
                     <Grid item xs={12} className='page-header'>
-                        <Card sx={{ maxHeight: 160, boxShadow: ["none"] }}>
+                        <Card sx={{ maxHeight: 150, boxShadow: ["none"] }}>
                             <CardMedia
                                 component="img"
-                                style={{ transform: 'scale(0.49)' }}
-                                // image="../../homeVibelogo2.png"
-                                image="../../features-logo.png"
+                                style={{ transform: 'scale(0.75)' }}
+                                image="../../features-logo2.png"
                                 alt="page-header-features"
                             />
                         </Card>

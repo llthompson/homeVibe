@@ -56,16 +56,17 @@ const Dashboard = () => {
     }, [getAccessTokenSilently]);
 
     return (
-
         <PageLayout>
             <Container>
                 <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-
-                    <Grid item xs={12} className='empty card'>
-                        <Card>
-                            <Typography variant="h1" style={{ flexGrow: '1', fontFamily: 'Galada, cursive', textAlign: 'center', paddingTop: '30px', color: theme.palette.primary.main }}>
-                                Dashboard
-                            </Typography>
+                    <Grid item xs={12} className='page-header'>
+                        <Card sx={{ maxHeight: 150, boxShadow: ["none"] }}>
+                            <CardMedia
+                                component="img"
+                                style={{ transform: 'scale(0.75)' }}
+                                image="../../dashboard-logo2.png"
+                                alt="page-header-dashboard"
+                            />
                         </Card>
                     </Grid>
                     <Grid item xs={4} className='empty 1'>
