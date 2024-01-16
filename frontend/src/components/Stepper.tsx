@@ -30,6 +30,9 @@ export default function HorizontalLinearStepper() {
     const theme = useTheme();
     const [features, setFeatures] = useState([])
     const { getAccessTokenSilently } = useAuth0();
+    const [hover, setHover] = React.useState<{ [id: number]: number | null }>({});
+    const [ratings, setRatings] = React.useState<{ [id: number]: number | null }>({});
+    
     const [activeStep, setActiveStep] = React.useState(0);
     const [completed, setCompleted] = React.useState<{
         [k: number]: boolean;
@@ -52,13 +55,22 @@ export default function HorizontalLinearStepper() {
     };
 
     const handleNext = () => {
-        const newActiveStep =
-            isLastStep() && !allStepsCompleted()
-                ? // It's the last step, but not all steps have been completed,
-                // find the first step that has been completed
-                steps.findIndex((step, i) => !(i in completed))
-                : activeStep + 1;
-        setActiveStep(newActiveStep);
+        console.log('last step ', isLastStep())
+
+        if (isLastStep()) {
+            console.log('finish')
+            handleComplete()
+        } else {
+            console.log('next')
+            // const newActiveStep =
+            //     isLastStep() && !allStepsCompleted()
+            //         ? // It's the last step, but not all steps have been completed,
+            //         // find the first step that has been completed
+            //         steps.findIndex((step, i) => !(i in completed))
+            //         : activeStep + 1;
+            setActiveStep(activeStep + 1);
+        }
+
     };
 
     const handleBack = () => {
@@ -70,10 +82,13 @@ export default function HorizontalLinearStepper() {
     };
 
     const handleComplete = () => {
-        const newCompleted = completed;
-        newCompleted[activeStep] = true;
-        setCompleted(newCompleted);
-        handleNext();
+        console.log('finishhh', ratings)
+
+        // const newCompleted = completed;
+        // newCompleted[activeStep] = true;
+        // setCompleted(newCompleted);
+
+        // handleNext();
     };
 
     const handleReset = () => {
@@ -99,8 +114,7 @@ export default function HorizontalLinearStepper() {
         5: 'Non-Negotiable'
     }
 
-    const [hover, setHover] = React.useState<{ [id: number]: number | null }>({});
-    const [ratings, setRatings] = React.useState<{ [id: number]: number | null }>({});
+  
 
     // Get features for user
     useEffect(() => {
@@ -201,7 +215,7 @@ export default function HorizontalLinearStepper() {
     return (
         <Box sx={{ width: '100%' }}>
             {/* Stepper Logic */}
-            <Stepper nonLinear activeStep={activeStep} alternativeLabel>
+            <Stepper nonLinear={true} activeStep={activeStep} alternativeLabel>
                 {steps.map((label, index) => {
                     const stepProps: { completed?: boolean } = {};
                     const labelProps: {

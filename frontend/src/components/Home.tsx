@@ -43,22 +43,22 @@ function Home() {
     const theme = useTheme();
     const [features, setFeatures] = useState([])
 
-    useEffect(() => {
-        async function getCenter() {
-            try {
-                let response = await fetch(`http://localhost:8000`);
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-                const responseJson = await response.json();
-                setFeatures(responseJson);
-            } catch (error) {
-                console.error("Error fetching data:", error);
-            }
-        }
+    // useEffect(() => {
+    //     async function getCenter() {
+    //         try {
+    //             let response = await fetch(`http://localhost:8000`);
+    //             if (!response.ok) {
+    //                 throw new Error(`HTTP error! Status: ${response.status}`);
+    //             }
+    //             const responseJson = await response.json();
+    //             setFeatures(responseJson);
+    //         } catch (error) {
+    //             console.error("Error fetching data:", error);
+    //         }
+    //     }
 
-        getCenter();
-    }, []);
+    //     getCenter();
+    // }, []);
 
     return (
 
