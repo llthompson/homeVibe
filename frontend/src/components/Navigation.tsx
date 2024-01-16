@@ -52,6 +52,11 @@ const Navigation = () => {
                         'aria-labelledby': 'basic-button'
                     }}
                 >
+                    <MenuItem onClick={handleClose}><Link to="/" style={{ textDecoration: 'none', textDecorationThickness: '2px', textUnderlineOffset: '4px', textDecorationColor: '#8d008d' }}>
+                        <Typography style={{ fontSize: '18px', marginBottom: 0, color: theme.palette.info.dark }}>
+                            Home
+                        </Typography>
+                    </Link></MenuItem>
                     <MenuItem onClick={handleClose}><Link to="/Dashboard" style={{ textDecoration: 'none', textDecorationThickness: '2px', textUnderlineOffset: '4px', textDecorationColor: '#8d008d' }}>
                         <Typography style={{ fontSize: '18px', marginBottom: 0, color: theme.palette.info.dark }}>
                             Dashboard

@@ -32,7 +32,7 @@ export default function HorizontalLinearStepper() {
     const { getAccessTokenSilently } = useAuth0();
     const [hover, setHover] = React.useState<{ [id: number]: number | null }>({});
     const [ratings, setRatings] = React.useState<{ [id: number]: number | null }>({});
-    
+
     const [activeStep, setActiveStep] = React.useState(0);
     const [completed, setCompleted] = React.useState<{
         [k: number]: boolean;
@@ -114,7 +114,7 @@ export default function HorizontalLinearStepper() {
         5: 'Non-Negotiable'
     }
 
-  
+
 
     // Get features for user
     useEffect(() => {
@@ -274,11 +274,11 @@ export default function HorizontalLinearStepper() {
 
                     {/* Custom Feature Button */}
                     <CardContent className='add-custom-feature' sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                        {/* <CreateFeatureDialog></CreateFeatureDialog> */}
+                        <CreateFeatureDialog></CreateFeatureDialog>
                     </CardContent>
 
                     {/* Custom Feature Form */}
-                    <Box
+                    {/* <Box
                         component="form"
                         sx={{
                             '& .MuiTextField-root': { m: 1, width: '50%', display: 'flex', },
@@ -289,14 +289,20 @@ export default function HorizontalLinearStepper() {
                                 <Typography variant="h6" gutterBottom>
                                     <TextField
                                         id="outlined-helperText"
-                                        label="Helper text"
-                                        defaultValue="Default Value"
-                                        helperText="Some important text"
+                                        label="Your Custom Feature"
+                                        defaultValue=""
+                                        helperText="Feature Name"
                                     />
                                 </Typography>
+                                <Button sx={{ display: 'flex' }} variant="contained" color="secondary" >
+
+                                    <Typography style={{ fontSize: '18px', marginBottom: 0, whiteSpace: 'nowrap' }}>
+                                        Submit
+                                    </Typography>
+                                </Button>
                             </CardContent>
                         </Card>
-                    </Box>
+                    </Box> */}
 
                     {/* Created Custom Features List/Grid */}
                     <CardContent>
