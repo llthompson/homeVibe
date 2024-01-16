@@ -14,6 +14,7 @@ import Fab from '@mui/material/Fab';
 import NavigationIcon from '@mui/icons-material/Navigation';
 import { Link } from 'react-router-dom';
 import { PageLayout } from './Page-Layout';
+import { blue, green, red } from '@mui/material/colors';
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -22,6 +23,19 @@ const Item = styled(Paper)(({ theme }) => ({
     padding: theme.spacing(1),
     textAlign: 'center',
     color: theme.palette.text.secondary,
+    // [theme.breakpoints.down('md')]: {
+    //     // backgroundColor: red[500],
+    //     fontSize: 20
+
+    // },
+    // [theme.breakpoints.up('md')]: {
+    //     // backgroundColor: blue[500],
+    //     fontSize: 5
+    // },
+    // [theme.breakpoints.up('lg')]: {
+    //     // backgroundColor: green[500],
+    //     fontSize: 50
+    // },
 }));
 
 
@@ -54,10 +68,10 @@ function Home() {
                 <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
 
                     <Grid item xs={12} className='card for logo'>
-                        <Card sx={{ maxHeight: 150, boxShadow: ["none"] }}>
+                        <Card sx={{ maxHeight: 150, boxShadow: ["none"], flexGrow: 2 }}>
                             <CardMedia
                                 component="img"
-                                style={{ transform: 'scale(0.75)' }}
+                                style={{ transform: 'scale(.75)' }}
                                 image="../../homeVibelogo3.png"
                                 alt="homeVibe logo"
                             />
@@ -67,11 +81,23 @@ function Home() {
                         <Item sx={{ boxShadow: ["none"] }}>
                             <Typography
                                 variant="h2"
-                                style={{
+                                sx={{
                                     flexGrow: '10',
-                                    letterSpacing: 30,
+                                    letterSpacing: {
+                                        xs: 1,
+                                        sm: 5,
+                                        md: 15,
+                                        lg: 30
+                                    },
+                                    fontSize: {
+                                        xs: 24,
+                                        sm: 36,
+                                        md: 60,
+                                        lg: 60
+                                    },
                                     color: theme.palette.secondary.main
-                                }}>
+                                }}
+                            >
                                 what's your vibe
                             </Typography>
                         </Item>

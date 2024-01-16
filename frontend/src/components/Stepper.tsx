@@ -149,7 +149,7 @@ export default function HorizontalLinearStepper() {
                         onMouseLeave={() => {
                             setHover((prevHover) => ({
                                 ...prevHover,
-                                [id]: -1,
+                                [id]: null,
                             }));
                         }}
                     >

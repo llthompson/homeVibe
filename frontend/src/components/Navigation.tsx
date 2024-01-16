@@ -2,9 +2,9 @@
 
 import React from 'react';
 import { AppBar, Toolbar, IconButton, Typography, List, ListItem, Link as RouterLink } from '@mui/material';
-import MenuIcon from "@mui/icons-material/Menu";
+import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import { Link } from 'react-router-dom';
-import { useTheme } from '@mui/system';
+import { useTheme, shadows } from '@mui/system';
 import LoginButton from './LoginButton';
 import { useAuth0 } from '@auth0/auth0-react';
 import LogoutButton from './LogoutButton';
@@ -27,19 +27,20 @@ const Navigation = () => {
     };
 
     return (
-        <AppBar sx={{ bgcolor: theme.palette.primary.main }} position="relative">
-            <Toolbar>
+        <AppBar sx={{ bgcolor: theme.palette.primary.main, maxWidth: '1080' }} position="sticky">
+            <Toolbar sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
 
 
                 <IconButton
-                    size="large"
+                    // size="large"
+                    // fontSize="36"
                     edge="start"
                     color="inherit"
                     aria-label="menu"
                     onClick={handleClick}
-                    sx={{ mr: 2, color: theme.palette.info.dark }}
+                    sx={{ mr: 2, color: theme.palette.secondary.contrastText, fontWeight: 'thin' }}
                 >
-                    <MenuIcon />
+                    <MenuRoundedIcon sx={{ fontSize: 24, backgroundColor: theme.palette.secondary.main, boxShadow: 3, borderRadius: 2, fontWeight: 'thin', p: 1 }} />
                 </IconButton>
 
                 <Menu
@@ -48,7 +49,7 @@ const Navigation = () => {
                     open={open}
                     onClose={handleClose}
                     MenuListProps={{
-                        'aria-labelledby': 'basic-button',
+                        'aria-labelledby': 'basic-button'
                     }}
                 >
                     <MenuItem onClick={handleClose}><Link to="/Dashboard" style={{ textDecoration: 'none', textDecorationThickness: '2px', textUnderlineOffset: '4px', textDecorationColor: '#8d008d' }}>
@@ -75,38 +76,38 @@ const Navigation = () => {
                     homeVibe
                 </Typography> */}
 
-                <List className="nav-list" sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-                    <ListItem>
+                <List className="nav-list" sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', maxWidth: '1080' }}>
+                    {/* <ListItem>
                         <Link to="/Dashboard" style={{ textDecoration: 'underline', textDecorationThickness: '2px', textUnderlineOffset: '4px', textDecorationColor: '#8d008d' }}>
                             <Typography style={{ fontSize: '18px', marginBottom: 0, color: theme.palette.info.dark }}>
                                 Dashboard
                             </Typography>
                         </Link>
-                    </ListItem>
+                    </ListItem> */}
 
-                    <ListItem>
+                    {/* <ListItem>
                         <Link to="/Features" style={{ textDecoration: 'underline', textDecorationThickness: '2px', textUnderlineOffset: '4px', textDecorationColor: '#8d008d' }}>
                             <Typography style={{ fontSize: '18px', marginBottom: 0, color: theme.palette.info.dark }}>
                                 Features
                             </Typography>
                         </Link>
-                    </ListItem>
+                    </ListItem> */}
 
-                    <ListItem>
+                    {/* <ListItem>
                         <Link to="/" style={{ textDecoration: 'underline', textDecorationThickness: '2px', textUnderlineOffset: '4px', textDecorationColor: '#8d008d' }}>
                             <Typography style={{ fontSize: '18px', marginBottom: 0, color: theme.palette.info.dark }}>
                                 Home
                             </Typography>
                         </Link>
-                    </ListItem>
+                    </ListItem> */}
 
-                    <ListItem>
+                    {/* <ListItem>
                         <Link to="/LearnMore" style={{ textDecoration: 'underline', textDecorationThickness: '2px', textUnderlineOffset: '4px', textDecorationColor: '#8d008d' }}>
                             <Typography style={{ fontSize: '18px', marginBottom: 0, whiteSpace: 'nowrap', color: theme.palette.info.dark }}>
                                 Learn More
                             </Typography>
                         </Link>
-                    </ListItem>
+                    </ListItem> */}
 
                     <ListItem className='login'>
                         {!isAuthenticated ? <LoginButton></LoginButton> : <LogoutButton></LogoutButton>}

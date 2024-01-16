@@ -18,7 +18,6 @@ export const getUserFeatures = async (accessToken: string) => {
             Authorization: `Bearer ${accessToken}`,
         },
     })
-    console.log('whatt response', response)
     const features = await response.json()
     return features
 }
