@@ -99,8 +99,7 @@ export default function HorizontalLinearStepper() {
         5: 'Non-Negotiable'
     }
 
-    const [value, setValue] = React.useState<number | null>(2);
-    const [hover, setHover] = React.useState(-1);
+    const [hover, setHover] = React.useState<{ [id: number]: number | null }>({});
     const [ratings, setRatings] = React.useState<{ [id: number]: number | null }>({});
 
     // Get features for user
@@ -128,7 +127,6 @@ export default function HorizontalLinearStepper() {
         //     renderCell: (params) => {
         //         const onClick = (e: any) => {
         //             e.stopPropagation();
-        //             // console.log('paramsss', params.row)
         //         };
 
         //         return <Button onClick={onClick}><HeartBrokenOutlinedIcon color="secondary"></HeartBrokenOutlinedIcon></Button>;
@@ -147,32 +145,25 @@ export default function HorizontalLinearStepper() {
                             alignItems: 'center',
                         }}
                         onMouseEnter={() => {
-                            // console.log('Mouse entered row:', id);
-                            setHover(id);
                         }}
                         onMouseLeave={() => {
-                            // console.log('Mouse left row:', id);
-                            setHover(-1);
+                            setHover((prevHover) => ({
+                                ...prevHover,
+                                [id]: -1,
+                            }));
                         }}
                     >
                         <StyledRating
                             name={`rating-${id}`}
                             color="secondary"
                             value={ratings[id]}
-                            defaultValue={0}
+                            // defaultValue={0}
                             getLabelText={(value: number) => {
-                                console.log('getLabelText value ', value)
-                                if (hover !== -1) {
-                                    console.log('set label hover', hover)
-
+                                if (hover[id] !== -1) {
                                     return (
-                                        `${hover} Heart${hover !== 1 ? "s" : ""}, ${labels[id]} `
-
+                                        `${hover} Heart${hover[id] !== 1 ? "s" : ""}, ${labels[id]} `
                                     );
                                 }
-                                // if (rating !== 0) {
-                                //     return `${value} Heart${value !== 1 ? "s" : ""}, ${labels[rating]} `;
-                                // }
                                 return '';
                             }}
 
@@ -183,16 +174,20 @@ export default function HorizontalLinearStepper() {
                                 }));
                             }}
                             onChangeActive={(event, newHover) => {
-                                setHover(newHover);
+                                if (newHover !== hover[id]) {
+                                    setHover((prevHover) => ({
+                                        ...prevHover,
+                                        [id]: newHover.valueOf(),
+                                    }));
+                                }
                             }}
                             precision={1}
                             icon={<FavoriteIcon fontSize="inherit" color='secondary' />}
                             emptyIcon={<FavoriteBorderIcon fontSize="inherit" />}
-
                         />
                         {hover && (
                             <Box sx={{ ml: 2 }}>
-                                {labels[hover]}
+                                {labels[hover[id] || 0]}
                             </Box>
                         )}
                     </Box>
