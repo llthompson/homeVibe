@@ -54,31 +54,32 @@ const Features = () => {
     }, []);
 
     const columns: GridColDef[] = [
-        { field: 'id', headerName: 'ID', width: 70, align: 'left', sortable: false },
-        { field: 'feature', headerName: 'Feature', width: 130, sortable: false },
-        { field: 'type', headerName: 'Type', width: 130, sortable: false },
-        {
-            field: 'SAVE', headerName: 'Save', align: 'center', sortable: false,
-            renderCell: (params) => {
-                const onClick = (e: any) => {
-                    e.stopPropagation(); // don't select this row after clicking
-                    console.log('paramsss', params.row)
-                    // const api: GridApi = params.api;
-                    // const thisRow: Record<string, GridCellValue> = {};
+        { field: 'id', headerName: 'ID', width: 70, align: 'left', sortable: true },
+        { field: 'feature', headerName: 'Feature', width: 230, sortable: true },
+        { field: 'type', headerName: 'Type', width: 130, sortable: true },
+        { field: 'rating', headerName: 'Ratings', width: 130, sortable: true },
+        // {
+        //     field: 'SAVE', headerName: 'Save', align: 'center', sortable: true,
+        //     renderCell: (params) => {
+        //         const onClick = (e: any) => {
+        //             e.stopPropagation(); // don't select this row after clicking
+        //             console.log('paramsss', params.row)
+        //             // const api: GridApi = params.api;
+        //             // const thisRow: Record<string, GridCellValue> = {};
 
-                    // api
-                    //     .getAllColumns()
-                    //     .filter((c) => c.field !== "__check__" && !!c)
-                    //     .forEach(
-                    //         (c) => (thisRow[c.field] = params.getValue(params.id, c.field))
-                    //     );
+        //             // api
+        //             //     .getAllColumns()
+        //             //     .filter((c) => c.field !== "__check__" && !!c)
+        //             //     .forEach(
+        //             //         (c) => (thisRow[c.field] = params.getValue(params.id, c.field))
+        //             //     );
 
-                    // return alert(JSON.stringify(thisRow, null, 4));
-                };
+        //             // return alert(JSON.stringify(thisRow, null, 4));
+        //         };
 
-                return <Button onClick={onClick}><HeartBrokenOutlinedIcon color="info"></HeartBrokenOutlinedIcon></Button>;
-            }
-        },
+        //         return <Button onClick={onClick}><HeartBrokenOutlinedIcon color="info"></HeartBrokenOutlinedIcon></Button>;
+        //     }
+        // },
     ];
 
     const rows = features.map((item: any) => ({ id: item.id, feature: item.feature, __check__: false, type: item.type }));

@@ -45,21 +45,23 @@ const LearnMore = () => {
                     <Grid item xs={4} className='empty 3'>
                         <Item><Typography variant="h2" style={{ flexGrow: '1' }}>empty</Typography></Item>
                     </Grid>
-                    <Grid item xs={12} className='first empty box'>
+                    <Grid item xs={6} className='first empty box'>
                         <Card sx={{
                             display: 'flex',
                             margin: "0 auto",
                             padding: "0.1em",
                         }}>
-                            empty card
                             <CardContent className='empty box 1 content' sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                                <Typography component="div" variant="h5">
-                                    blank content #1
-                                </Typography>
+                                <CardMedia
+                                    component="img"
+                                    style={{ transform: 'scale(0.75)' }}
+                                    image="../../homeVibelogo2transparenticon.png"
+                                    alt="page-header-learn-more"
+                                />
                             </CardContent>
                         </Card>
                     </Grid>
-                    <Grid item xs={12} className='second empty box'>
+                    <Grid item xs={6} className='second empty box'>
                         <Card sx={{
                             display: 'flex',
                             margin: "0 auto",
