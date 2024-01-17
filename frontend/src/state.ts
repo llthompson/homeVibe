@@ -1,17 +1,27 @@
+// frontend/src/state.ts
+
 import { create } from "zustand";
 
-interface Feature {
+export interface Feature {
     id: number
     feature: string
-    rating: string
+    rating: number
     type: string
 }
 
-interface Features {
+// interface Features {
+//     features: Feature[]
+// }
+
+type featuresState = {
     features: Feature[]
+    addFeature: (feature: Feature) => void
+    setFeatures: (features: Feature[]) => void
+    deleteFeature: (id: number) => void
+    rateFeature: (id: number, rating: number) => void
 }
 
-const useStore = create<Features>()((set) => ({
+const useStore = create<featuresState>()((set) => ({
     features: [],
     addFeature: (feature: Feature) =>
         set((state) => ({
@@ -22,17 +32,20 @@ const useStore = create<Features>()((set) => ({
                 },
             ],
         })),
-    // toggleTodo: (id) =>
-    //     set((state) => ({
-    //         todos: state.todos.map((todo) =>
-    //             todo.id === id ? { ...todo, completed: !todo.completed } : todo
-    //         ),
-    //     })),
+
+    setFeatures: (features: Feature[]) =>
+        set((state) => ({
+            // features: [
+            //     ...features
+            // ],
+            ...state, features
+        })),
+
     deleteFeature: (id: number) =>
         set((state) => ({
             features: state.features.filter((feature) => feature.id !== id),
         })),
-    rateFeature: (id: number, rating: string) => {
+    rateFeature: (id: number, rating: number) => {
         set((state) => ({
             features: state.features.map((feature) =>
                 feature.id === id ? { ...feature, rating } : feature

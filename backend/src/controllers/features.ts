@@ -45,14 +45,14 @@ export const saveFeaturesByUser = async (req: any, res: Response) => {
 
 // change to get global features?
 export const getUserFeatures = async (req: any, res: Response) => {
-    console.log('req auth', req.auth)
+    // console.log('req auth', req.auth)
     const user = await db.user.findFirst({
         where: {
             auth0ID: req.auth.payload.sub
         }
     })
 
-    console.log('thisuser', user)
+    // console.log('thisuser', user)
 
     const feature = await db.homeFeature.findMany({
         where: {
@@ -66,5 +66,10 @@ export const getUserFeatures = async (req: any, res: Response) => {
             ]
         }
     })
-    res.json(feature)
+    console.log(feature)
+    res.json(feature.map(f => {
+        return {
+            ...f, rating: 0
+        }
+    }))
 }

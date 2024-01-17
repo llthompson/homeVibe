@@ -22,16 +22,17 @@ import { useAuth0 } from "@auth0/auth0-react";
 import * as apiService from '../services/Api'
 import CreateFeatureDialog from './CreateFeature';
 import TextField from '@mui/material/TextField';
-
+import useStore, { Feature } from '../state';
+import { useShallow } from 'zustand/react/shallow'
 
 const steps = ['Select standard home features', 'Select advanced home features', 'Create your own custom features'];
 
 export default function HorizontalLinearStepper() {
     const theme = useTheme();
-    const [features, setFeatures] = useState([])
+    // const [features, setFeatures] = useState([])
     const { getAccessTokenSilently } = useAuth0();
     const [hover, setHover] = React.useState<{ [id: number]: number | null }>({});
-    const [ratings, setRatings] = React.useState<{ [id: number]: number | null }>({});
+    // const [ratings, setRatings] = React.useState<{ [id: number]: number | null }>({});
 
     const [activeStep, setActiveStep] = React.useState(0);
     const [completed, setCompleted] = React.useState<{
@@ -82,7 +83,7 @@ export default function HorizontalLinearStepper() {
     };
 
     const handleComplete = () => {
-        console.log('finishhh', ratings)
+        // console.log('finishhh', ratings)
 
         // const newCompleted = completed;
         // newCompleted[activeStep] = true;
@@ -123,13 +124,18 @@ export default function HorizontalLinearStepper() {
                 const accessToken = await getAccessTokenSilently();
 
                 let features: any = await apiService.getUserFeatures(accessToken)
-                setFeatures(features);
+                // setFeatures(features);
+                //    const setFeatures = useStore.
+                useStore.getState().setFeatures(features)
             } catch (error) {
                 console.error("Error fetching data:", error);
             }
         }
         getFeatures();
     }, []);
+    const features = useStore(useShallow(state => state.features))
+
+    const rows = features.map((item: Feature) => ({ id: item.id, feature: item.feature, __check__: false, type: item.type, rating: item.rating }));
 
     // Feature List/Grid
     const columns: GridColDef[] = [
@@ -147,10 +153,20 @@ export default function HorizontalLinearStepper() {
         //     }
         // },
         {
-            field: 'featureRatings', headerName: 'Rating', width: 430, sortable: false,
+            field: 'rating', headerName: 'Rating', width: 430, sortable: false,
             renderCell: (params) => {
-                const id = params.row.id;
-                const rating = ratings[id] || 0;
+                const id: number = Number(params.id);
+                // console.log('i dont nkw', params.value)
+                // const feature = useStore.getState().features.find(f => f.id === id)
+                // const id: number = feature ? feature.id : 0
+                const feat = features.find(f => f.id === id)
+                let rating;
+                if (feat) {
+                    rating = feat.rating
+                }
+                else {
+                    rating = 0
+                }
                 return (
                     <Box
                         sx={{
@@ -170,7 +186,9 @@ export default function HorizontalLinearStepper() {
                         <StyledRating
                             name={`rating-${id}`}
                             color="secondary"
-                            value={ratings[id]}
+                            value={rating}
+                            // value={0}
+
                             // defaultValue={0}
                             getLabelText={(value: number) => {
                                 if (hover[id] !== -1) {
@@ -182,10 +200,18 @@ export default function HorizontalLinearStepper() {
                             }}
 
                             onChange={(event, newValue) => {
-                                setRatings((prevRatings) => ({
-                                    ...prevRatings,
-                                    [id]: newValue,
-                                }));
+                                // setRatings((prevRatings) => ({
+                                //     ...prevRatings,
+                                //     [id]: newValue,
+                                // }));
+                                // console.log('event and new val', event)
+                                console.log('val', newValue)
+                                console.log('whats the big IDea', id)
+                                if (newValue) {
+                                    useStore.getState().rateFeature(id, newValue)
+                                    const feature = useStore.getState().features.find(f => f.id === id)
+                                }
+
                             }}
                             onChangeActive={(event, newHover) => {
                                 if (newHover !== hover[id]) {
@@ -209,7 +235,7 @@ export default function HorizontalLinearStepper() {
             }
         },
     ];
-    const rows = features.map((item: any) => ({ id: item.id, feature: item.feature, __check__: false, type: item.type }));
+    // const rows = useStore.getState().features.map((item: any) => ({ id: item.id, feature: item.feature, __check__: false, type: item.type }));
 
 
     return (
@@ -242,6 +268,7 @@ export default function HorizontalLinearStepper() {
                         <div style={{ height: 400, width: '100%' }}>
                             <DataGrid
                                 rows={rows.filter(r => r.type === 'STANDARD')}
+                                // rows={rows}
                                 columns={columns}
                                 checkboxSelection={false}
                             />
