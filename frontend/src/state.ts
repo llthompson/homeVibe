@@ -1,6 +1,8 @@
 // frontend/src/state.ts
 
 import { create } from "zustand";
+import * as api from './services/Api';
+import { useAuth0 } from "@auth0/auth0-react";
 
 
 export interface Feature {
@@ -15,7 +17,7 @@ type featuresState = {
     addFeature: (feature: Feature) => void
     setFeatures: (features: Feature[]) => void
     deleteFeature: (id: number) => void
-    rateFeature: (id: number, rating: number) => void
+    rateFeature: (id: number, rating: number, accessToken: string) => void
 }
 
 const useStore = create<featuresState>()((set) => ({
@@ -41,7 +43,11 @@ const useStore = create<featuresState>()((set) => ({
             features: state.features.filter((feature) => feature.id !== id),
         })),
 
-    rateFeature: (id: number, rating: number) => {
+    rateFeature: async (id: number, rating: number, accessToken: string) => {
+
+        const ratedFeature = await api.rateFeatureByUser(accessToken, {
+            id, rating
+        });
         set((state) => ({
             features: state.features.map((feature) =>
                 feature.id === id ? { ...feature, rating } : feature

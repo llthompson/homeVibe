@@ -15,7 +15,7 @@ model User {
   firstName            String?          @map("first_name")
   lastName             String?          @map("last_name")
   email                String
-  auth0ID              String           @map("auth0_id")
+  auth0ID              String           @unique() @map("auth0_id")
   userFeatures         HomeFeature[]
   savedFeatures        SavedFeature[]
   initiatedConnections UserConnection[] @relation("initatingUser")
@@ -24,7 +24,7 @@ model User {
 
 model HomeFeature {
   id             Int            @id @default(autoincrement())
-  feature        String
+  feature        String         @unique()
   // numberOf       Int?           @map("number_of")
   type           FeatureType    @default(STANDARD)
   userId         Int?
@@ -42,6 +42,7 @@ model SavedFeature {
   rating    Rating?
   feature   HomeFeature @relation(fields: [featureId], references: [id])
 
+  @@unique([featureId, userId])
   @@map("saved_features")
 }
 

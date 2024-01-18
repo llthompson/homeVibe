@@ -11,6 +11,17 @@ export const createUserFeature = async (accessToken: string, body: any) => {
     return feature
 }
 
+export const rateFeatureByUser = async (accessToken: string, body: any) => {
+    const feature = await fetch(`${apiUrl}/api/feature`, {
+        method: 'PUT', headers: {
+            "content-type": "application/json",
+            Authorization: `Bearer ${accessToken}`,
+        },
+        body: JSON.stringify(body)
+    })
+    return feature
+}
+
 export const getUserFeatures = async (accessToken: string) => {
     const response = await fetch(`${apiUrl}/api/feature`, {
         method: 'GET', headers: {

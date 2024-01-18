@@ -155,9 +155,10 @@ export default function HorizontalLinearStepper() {
                                 return '';
                             }}
 
-                            onChange={(event, newValue) => {
+                            onChange={async (event, newValue) => {
                                 if (newValue) {
-                                    useStore.getState().rateFeature(id, newValue)
+                                    const accessToken = await getAccessTokenSilently();
+                                    useStore.getState().rateFeature(id, newValue, accessToken)
                                     const feature = useStore.getState().features.find(f => f.id === id)
                                 }
 

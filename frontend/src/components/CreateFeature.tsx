@@ -11,6 +11,8 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import * as api from '../services/Api'
 import { useAuth0 } from "@auth0/auth0-react";
+import useStore, { Feature } from '../state';
+
 
 
 export default function CreateFeatureDialog() {
@@ -58,24 +60,6 @@ export default function CreateFeatureDialog() {
                                     width: '700px'
                                 }}
                             />
-                            <TextField
-                                id="outlined-helperText"
-                                label="Your Custom Feature"
-                                defaultValue=""
-                                helperText=""
-                                sx={{
-                                    width: '700px'
-                                }}
-                            />
-                            <TextField
-                                id="outlined-helperText"
-                                label="Your Custom Feature"
-                                defaultValue=""
-                                helperText=""
-                                sx={{
-                                    width: '700px'
-                                }}
-                            />
                         </Typography>
                         <Button
                             className='custom-feature-submit-button'
@@ -86,7 +70,14 @@ export default function CreateFeatureDialog() {
                                 display: 'flex'
                             }}
                             type="submit"
-                        // onClick={ }
+                            // onClick={
+                            //     async () => {
+                            //         const accessToken = await getAccessTokenSilently();
+                            //         useStore.getState().addFeature(id, newValue, accessToken)
+                            //         const feature = useStore.getState().features.find(f => f.id === id)
+
+                            //     }
+                            // }
                         >
 
                             <Typography
