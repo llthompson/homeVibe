@@ -14,7 +14,7 @@ export interface Feature {
 
 type featuresState = {
     features: Feature[]
-    addFeature: (feature: Feature) => void
+    addFeature: (feature: string, accessToken: string) => void
     setFeatures: (features: Feature[]) => void
     deleteFeature: (id: number) => void
     rateFeature: (id: number, rating: number, accessToken: string) => void
@@ -23,15 +23,19 @@ type featuresState = {
 const useStore = create<featuresState>()((set) => ({
     features: [],
 
-    addFeature: (feature: Feature) =>
+    addFeature: async (feature: string, accessToken: string) => {
+        const savedFeature: Feature = await api.createUserFeature(accessToken, {
+            feature
+        });
         set((state) => ({
             features: [
                 ...state.features,
                 {
-                    ...feature
+                    ...savedFeature
                 },
             ],
-        })),
+        }))
+    },
 
     setFeatures: (features: Feature[]) =>
         set((state) => ({

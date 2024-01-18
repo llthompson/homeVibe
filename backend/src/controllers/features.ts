@@ -7,7 +7,7 @@ import { error } from "console"
 
 
 export const createUserFeature = async (req: any, res: Response) => {
-
+    // console.log('where is my body', req.body)
     const user = await db.user.findFirst({
         where: {
             auth0ID: req.auth.payload.sub
@@ -23,16 +23,16 @@ export const createUserFeature = async (req: any, res: Response) => {
     })
     res.json(feature)
 }
-function mapRatingToNumber (rating: Rating | null): number {
+function mapRatingToNumber(rating: Rating | null): number {
     const mapping: Record<Rating, number> = {
         "NOT_ESSENTIAL": 1,
         "NICE_BONUS": 2,
         "FAIRLY_IMPORTANT": 3,
         "VERY_DESIRABLE": 4,
         "NON_NEGOTIABLE": 5,
-      };
-     
-      return rating ? mapping[rating] : 0;
+    };
+
+    return rating ? mapping[rating] : 0;
 }
 function mapToRating(numberValue: number): Rating | null {
     const reverseMapping: Record<number, Rating> = {

@@ -27,6 +27,7 @@ export default function CreateFeatureDialog() {
     };
 
     const { getAccessTokenSilently } = useAuth0();
+    const [userFeature, setUserFeature] = useState('')
 
     return (
         <React.Fragment>
@@ -56,6 +57,12 @@ export default function CreateFeatureDialog() {
                                 label="Your Custom Feature"
                                 defaultValue=""
                                 helperText=""
+                                value={userFeature}
+
+                                onChange={(event) => {
+                                    setUserFeature(event.target.value)
+                                }
+                                }
                                 sx={{
                                     width: '700px'
                                 }}
@@ -70,14 +77,14 @@ export default function CreateFeatureDialog() {
                                 display: 'flex'
                             }}
                             type="submit"
-                            // onClick={
-                            //     async () => {
-                            //         const accessToken = await getAccessTokenSilently();
-                            //         useStore.getState().addFeature(id, newValue, accessToken)
-                            //         const feature = useStore.getState().features.find(f => f.id === id)
-
-                            //     }
-                            // }
+                            onClick={
+                                async (e) => {
+                                    e.preventDefault()
+                                    const accessToken = await getAccessTokenSilently();
+                                    useStore.getState().addFeature(userFeature, accessToken)
+                                    setUserFeature('')
+                                }
+                            }
                         >
 
                             <Typography
