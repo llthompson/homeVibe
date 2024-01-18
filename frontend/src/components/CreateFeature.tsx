@@ -2,15 +2,13 @@
 
 import React, { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
-import { Card, CardMedia, Typography, CardContent, Button } from '@mui/material';
+import { Card, Typography, CardContent, Button } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-// import { styled } from '@mui/material/styles';
-// import { useTheme } from '@mui/system';
 import * as api from '../services/Api'
 import { useAuth0 } from "@auth0/auth0-react";
 
@@ -30,12 +28,10 @@ export default function CreateFeatureDialog() {
 
     return (
         <React.Fragment>
-            {/* <Fab variant="extended" size='small' color="info" onClick={handleClickOpen}>
-                <Typography variant="h5" style={{ flexGrow: '6' }}>
-                    Create Custom Feature
-                </Typography>
-            </Fab> */}
-            <Card sx={{ minWidth: '100%' }}>
+            <Card
+                sx={{
+                    minWidth: '100%'
+                }}>
 
                 <Box
                     component="form"
@@ -43,19 +39,21 @@ export default function CreateFeatureDialog() {
                         '& .MuiTextField-root': { m: 1, display: 'flex', },
                     }}
                     noValidate>
-                    <CardContent sx={{
-                        display: 'flex',
-                        flexDirection: 'row',
-                        justifyContent: 'flex-start',
-                        alignItems: 'center'
-                    }}>
-                        <Typography variant="h6" gutterBottom>
+                    <CardContent
+                        sx={{
+                            display: 'flex',
+                            flexDirection: 'row',
+                            justifyContent: 'flex-start',
+                            alignItems: 'center'
+                        }}>
+                        <Typography
+                            variant="h6"
+                            gutterBottom>
                             <TextField
                                 id="outlined-helperText"
                                 label="Your Custom Feature"
                                 defaultValue=""
                                 helperText=""
-                                // fullWidth
                                 sx={{
                                     width: '700px'
                                 }}
@@ -65,7 +63,6 @@ export default function CreateFeatureDialog() {
                                 label="Your Custom Feature"
                                 defaultValue=""
                                 helperText=""
-                                // fullWidth
                                 sx={{
                                     width: '700px'
                                 }}
@@ -75,7 +72,6 @@ export default function CreateFeatureDialog() {
                                 label="Your Custom Feature"
                                 defaultValue=""
                                 helperText=""
-                                // fullWidth
                                 sx={{
                                     width: '700px'
                                 }}
@@ -86,12 +82,19 @@ export default function CreateFeatureDialog() {
                             size="medium"
                             variant="contained"
                             color="secondary"
-                            sx={{ display: 'flex' }}
+                            sx={{
+                                display: 'flex'
+                            }}
                             type="submit"
-                            // onClick={ }
+                        // onClick={ }
                         >
 
-                            <Typography style={{ fontSize: '18px', marginBottom: 0, whiteSpace: 'nowrap' }}>
+                            <Typography
+                                style={{
+                                    fontSize: '18px',
+                                    marginBottom: 0,
+                                    whiteSpace: 'nowrap'
+                                }}>
                                 Submit
                             </Typography>
                         </Button>
@@ -109,11 +112,8 @@ export default function CreateFeatureDialog() {
                         event.preventDefault();
                         const formData = new FormData(event.currentTarget);
                         const formJson = Object.fromEntries((formData as any).entries());
-                        console.log('jas', formJson)
-                        // const email = formJson.email;
                         const accessToken = await getAccessTokenSilently();
                         const feature = await api.createUserFeature(accessToken, formJson)
-                        console.log(feature);
                         handleClose();
                     },
                 }}
@@ -134,21 +134,16 @@ export default function CreateFeatureDialog() {
                         fullWidth
                         variant="standard"
                     />
-                    {/* <TextField
-                        autoFocus
-                        required
-                        margin="dense"
-                        id="name"
-                        name="email"
-                        label="Feature notes"
-                        type="email"
-                        fullWidth
-                        variant="standard"
-                    /> */}
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={handleClose}>Cancel</Button>
-                    <Button type="submit">Add Custom Feature</Button>
+                    <Button
+                        onClick={handleClose}>
+                        Cancel
+                    </Button>
+                    <Button
+                        type="submit">
+                        Add Custom Feature
+                    </Button>
                 </DialogActions>
             </Dialog>
         </React.Fragment>

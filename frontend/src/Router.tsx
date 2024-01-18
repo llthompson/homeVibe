@@ -13,7 +13,6 @@ import { Auth0ProviderWithNavigate } from './Auth0NavProvider';
 const Router = () => {
 
     return (
-
         <Auth0ProviderWithNavigate>
 
             <Routes>
@@ -24,7 +23,6 @@ const Router = () => {
             </Routes>
 
         </Auth0ProviderWithNavigate>
-
     );
 };
 

@@ -6,15 +6,14 @@ import { Card, CardMedia, Typography, CardContent } from '@mui/material';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import { styled } from '@mui/material/styles';
-// import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
-// import { Image } from '@mui/icons-material';
-// import Button from '@mui/material/Button';
 import Fab from '@mui/material/Fab';
 import NavigationIcon from '@mui/icons-material/Navigation';
 import { Link } from 'react-router-dom';
 import { PageLayout } from './Page-Layout';
-import { blue, green, red } from '@mui/material/colors';
+// import Box from '@mui/material/Box';
+// import { Image } from '@mui/icons-material';
+// import Button from '@mui/material/Button';
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -23,19 +22,6 @@ const Item = styled(Paper)(({ theme }) => ({
     padding: theme.spacing(1),
     textAlign: 'center',
     color: theme.palette.text.secondary,
-    // [theme.breakpoints.down('md')]: {
-    //     // backgroundColor: red[500],
-    //     fontSize: 20
-
-    // },
-    // [theme.breakpoints.up('md')]: {
-    //     // backgroundColor: blue[500],
-    //     fontSize: 5
-    // },
-    // [theme.breakpoints.up('lg')]: {
-    //     // backgroundColor: green[500],
-    //     fontSize: 50
-    // },
 }));
 
 
@@ -43,30 +29,11 @@ function Home() {
     const theme = useTheme();
     const [features, setFeatures] = useState([])
 
-    // useEffect(() => {
-    //     async function getCenter() {
-    //         try {
-    //             let response = await fetch(`http://localhost:8000`);
-    //             if (!response.ok) {
-    //                 throw new Error(`HTTP error! Status: ${response.status}`);
-    //             }
-    //             const responseJson = await response.json();
-    //             setFeatures(responseJson);
-    //         } catch (error) {
-    //             console.error("Error fetching data:", error);
-    //         }
-    //     }
-
-    //     getCenter();
-    // }, []);
-
     return (
 
         <PageLayout>
             <Container sx={{ justifyContent: 'space-between' }} >
-
                 <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-
                     <Grid item xs={12} className='card for logo'>
                         <Card sx={{ maxHeight: 150, boxShadow: ["none"], flexGrow: 2 }}>
                             <CardMedia
@@ -77,6 +44,7 @@ function Home() {
                             />
                         </Card>
                     </Grid>
+
                     <Grid item xs={12} className='slogan 1'>
                         <Item sx={{ boxShadow: ["none"] }}>
                             <Typography
@@ -124,6 +92,7 @@ function Home() {
                             </CardContent>
                         </Card>
                     </Grid>
+
                     <Grid item xs={12} className='second box'>
                         <Card sx={{
                             display: 'flex',
@@ -139,15 +108,13 @@ function Home() {
                             <CardMedia
                                 component="img"
                                 sx={{ width: 200, height: 150, padding: "1em 1em 0 1em", objectFit: "contain" }}
-                                // height={maxHeight: 20px}
                                 height="10%"
-                                // width="20"
                                 image="../../house-icon.png"
                                 alt="homeVibe logo"
                             />
-
                         </Card>
                     </Grid>
+
                     <Grid item xs={12} className='third box'>
                         <Card sx={{
                             display: 'flex',
@@ -171,6 +138,7 @@ function Home() {
                             </CardContent>
                         </Card>
                     </Grid>
+
                     <Grid item xs={12} className='fourth box'>
                         <Card sx={{
                             display: 'flex',
@@ -179,26 +147,22 @@ function Home() {
                             justifyContent: 'space-between'
                         }}>
                             <CardContent className='box 4 content' sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-
                                 <Link to="./LearnMore">
                                     <Typography component="div" variant="h5">
                                         Learn More
                                     </Typography>
                                 </Link>
-
                             </CardContent>
                             <CardMedia
                                 component="img"
                                 sx={{ width: 200, height: 150, padding: "1em 1em 0 1em", objectFit: "contain" }}
-                                // height={maxHeight: 20px}
                                 height="10%"
-                                // width="20"
                                 image="../../house-icon.png"
                                 alt="homeVibe logo"
                             />
-
                         </Card>
                     </Grid>
+
                     <Grid item xs={12} className='sign up button'>
                         <Item><Typography variant="h1" style={{ flexGrow: '6' }}>sign up to start vibin'</Typography>
                             <Fab variant="extended" color="info">
@@ -209,9 +173,8 @@ function Home() {
                             </Fab>
                         </Item>
                     </Grid>
-
+                    
                 </Grid>
-
             </Container>
         </PageLayout>
     );

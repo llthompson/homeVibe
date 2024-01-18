@@ -1,9 +1,10 @@
+// frontend/src/components/Page-Loader.tsx
+
 import React from "react";
 
-export const PageLoader: React.FC = () => {
-  // const loadingImg = "../../homeVibelogo2transparenticon.png";
-  const loadingImg = "https://cdn.auth0.com/blog/hello-auth0/loader.svg";
 
+export const PageLoader: React.FC = () => {
+  const loadingImg = "https://cdn.auth0.com/blog/hello-auth0/loader.svg";
 
   return (
     <div className="loader">

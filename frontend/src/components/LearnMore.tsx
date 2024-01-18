@@ -1,3 +1,5 @@
+// frontend/src/components/LearnMore.tsx
+
 import { Card, CardMedia, Typography, CardContent, Button } from '@mui/material';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
@@ -36,15 +38,19 @@ const LearnMore = () => {
                             />
                         </Card>
                     </Grid>
+
                     <Grid item xs={4} className='empty 1'>
                         <Item><Typography variant="h2" style={{ flexGrow: '1' }}>empty</Typography></Item>
                     </Grid>
+
                     <Grid item xs={4} className='empty 2'>
                         <Item><Typography variant="h2" style={{ flexGrow: '1' }}>empty</Typography></Item>
                     </Grid>
+
                     <Grid item xs={4} className='empty 3'>
                         <Item><Typography variant="h2" style={{ flexGrow: '1' }}>empty</Typography></Item>
                     </Grid>
+
                     <Grid item xs={6} className='first empty box'>
                         <Card sx={{
                             display: 'flex',
@@ -61,6 +67,7 @@ const LearnMore = () => {
                             </CardContent>
                         </Card>
                     </Grid>
+
                     <Grid item xs={6} className='second empty box'>
                         <Card sx={{
                             display: 'flex',
@@ -74,16 +81,15 @@ const LearnMore = () => {
                                     content #2
                                 </Typography>
                             </CardContent>
-
                         </Card>
                     </Grid>
+
                     <Grid item xs={6} className='third empty box'>
                         <Card sx={{
                             display: 'flex',
                             margin: "0 auto",
                             padding: "0.1em",
                         }}>
-
                             <CardContent className='empty box 3 content'
                                 sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', whiteSpace: "pre-wrap" }}>
                                 <Typography component="div" variant="body1" sx={{ alignItems: 'center', wordBreak: "break-word", textAlign: 'center' }}>
@@ -111,12 +117,11 @@ const LearnMore = () => {
                                     <br />
                                     <br />
                                     #adultingmadeeasy
-
-
                                 </Typography>
                             </CardContent>
                         </Card>
                     </Grid>
+
                     <Grid item xs={6} className='fourth empty box'>
                         <Card sx={{
                             display: 'flex',
@@ -124,17 +129,15 @@ const LearnMore = () => {
                             padding: "0.1em",
                         }}>
                             <CardContent className='empty box 4 content' sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-
                                 <Link to="/">
                                     <Typography component="div" variant="h5">
                                         link to nowhere
                                     </Typography>
                                 </Link>
-
                             </CardContent>
-
                         </Card>
                     </Grid>
+
                     <Grid item xs={12} className='pointless button'>
                         <Item><Typography variant="h1" style={{ flexGrow: '6' }}>nothing to see here</Typography>
                             <Fab variant="extended" color="info">
@@ -147,7 +150,6 @@ const LearnMore = () => {
                     </Grid>
 
                 </Grid>
-
             </Container>
         </PageLayout>
     );

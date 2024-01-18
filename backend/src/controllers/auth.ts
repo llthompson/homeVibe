@@ -3,8 +3,6 @@ import db from "../db"
 
 
 export const createUser = async (req: Request, res: Response) => {
-    console.log('myreq', req.body)
-
     const user = await db.user.create({
         data: {
             email: req.body.email,

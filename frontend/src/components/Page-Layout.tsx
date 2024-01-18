@@ -1,8 +1,8 @@
+// frontend/src/components/Page-Layout.tsx
+
 import React from "react";
 import Navigation from "./Navigation";
-// import { NavBar } from "./navigation/desktop/nav-bar";
-// import { MobileNavBar } from "./navigation/mobile/mobile-nav-bar";
-// import { PageFooter } from "./page-footer";
+
 
 interface Props {
   children: JSX.Element;

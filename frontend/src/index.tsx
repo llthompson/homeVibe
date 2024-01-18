@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 // import { Auth0Provider } from '@auth0/auth0-react';
-import { Auth0ProviderWithNavigate } from "./Auth0NavProvider";
+// import { Auth0ProviderWithNavigate } from "./Auth0NavProvider";
 
 
 const root = ReactDOM.createRoot(

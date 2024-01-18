@@ -1,39 +1,31 @@
 // frontend/src/components/Stepper.tsx
 
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
-import StepLabel from '@mui/material/StepLabel';
 import StepButton from '@mui/material/StepButton';
-import { Card, CardMedia, Typography, CardContent, Button } from '@mui/material';
-import Container from '@mui/material/Container';
-import Grid from '@mui/material/Grid';
-import { DataGrid, GridApi, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
-import HeartBrokenOutlinedIcon from '@mui/icons-material/HeartBrokenOutlined';
+import { Card, Typography, CardContent, Button } from '@mui/material';
+import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import Rating from '@mui/material/Rating';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { styled } from '@mui/material/styles';
 import { useTheme } from '@mui/system';
-import Paper from '@mui/material/Paper';
 import { useAuth0 } from "@auth0/auth0-react";
 import * as apiService from '../services/Api'
 import CreateFeatureDialog from './CreateFeature';
-import TextField from '@mui/material/TextField';
 import useStore, { Feature } from '../state';
 import { useShallow } from 'zustand/react/shallow'
+
 
 const steps = ['Select standard home features', 'Select advanced home features', 'Create your own custom features'];
 
 export default function HorizontalLinearStepper() {
     const theme = useTheme();
-    // const [features, setFeatures] = useState([])
     const { getAccessTokenSilently } = useAuth0();
     const [hover, setHover] = React.useState<{ [id: number]: number | null }>({});
-    // const [ratings, setRatings] = React.useState<{ [id: number]: number | null }>({});
-
     const [activeStep, setActiveStep] = React.useState(0);
     const [completed, setCompleted] = React.useState<{
         [k: number]: boolean;
@@ -51,27 +43,16 @@ export default function HorizontalLinearStepper() {
         return activeStep === totalSteps() - 1;
     };
 
-    const allStepsCompleted = () => {
-        return completedSteps() === totalSteps();
-    };
+    // const allStepsCompleted = () => {
+    //     return completedSteps() === totalSteps();
+    // };
 
     const handleNext = () => {
-        console.log('last step ', isLastStep())
-
         if (isLastStep()) {
-            console.log('finish')
             handleComplete()
         } else {
-            console.log('next')
-            // const newActiveStep =
-            //     isLastStep() && !allStepsCompleted()
-            //         ? // It's the last step, but not all steps have been completed,
-            //         // find the first step that has been completed
-            //         steps.findIndex((step, i) => !(i in completed))
-            //         : activeStep + 1;
             setActiveStep(activeStep + 1);
         }
-
     };
 
     const handleBack = () => {
@@ -83,13 +64,6 @@ export default function HorizontalLinearStepper() {
     };
 
     const handleComplete = () => {
-        // console.log('finishhh', ratings)
-
-        // const newCompleted = completed;
-        // newCompleted[activeStep] = true;
-        // setCompleted(newCompleted);
-
-        // handleNext();
     };
 
     const handleReset = () => {
@@ -116,25 +90,23 @@ export default function HorizontalLinearStepper() {
     }
 
 
-
     // Get features for user
     useEffect(() => {
         async function getFeatures() {
             try {
                 const accessToken = await getAccessTokenSilently();
-
                 let features: any = await apiService.getUserFeatures(accessToken)
-                // setFeatures(features);
-                //    const setFeatures = useStore.
                 useStore.getState().setFeatures(features)
+
             } catch (error) {
                 console.error("Error fetching data:", error);
             }
         }
         getFeatures();
     }, []);
-    const features = useStore(useShallow(state => state.features))
 
+    // Grid data
+    const features = useStore(useShallow(state => state.features))
     const rows = features.map((item: Feature) => ({ id: item.id, feature: item.feature, __check__: false, type: item.type, rating: item.rating }));
 
     // Feature List/Grid
@@ -142,23 +114,10 @@ export default function HorizontalLinearStepper() {
         { field: 'id', headerName: 'ID', width: 70, align: 'left', sortable: false },
         { field: 'feature', headerName: 'Feature', width: 200, sortable: false },
         { field: 'type', headerName: 'Type', width: 130, sortable: false },
-        // {
-        //     field: 'SAVE', headerName: 'Save', align: 'center', sortable: false,
-        //     renderCell: (params) => {
-        //         const onClick = (e: any) => {
-        //             e.stopPropagation();
-        //         };
-
-        //         return <Button onClick={onClick}><HeartBrokenOutlinedIcon color="secondary"></HeartBrokenOutlinedIcon></Button>;
-        //     }
-        // },
         {
             field: 'rating', headerName: 'Rating', width: 430, sortable: false,
             renderCell: (params) => {
                 const id: number = Number(params.id);
-                // console.log('i dont nkw', params.value)
-                // const feature = useStore.getState().features.find(f => f.id === id)
-                // const id: number = feature ? feature.id : 0
                 const feat = features.find(f => f.id === id)
                 let rating;
                 if (feat) {
@@ -187,9 +146,6 @@ export default function HorizontalLinearStepper() {
                             name={`rating-${id}`}
                             color="secondary"
                             value={rating}
-                            // value={0}
-
-                            // defaultValue={0}
                             getLabelText={(value: number) => {
                                 if (hover[id] !== -1) {
                                     return (
@@ -200,13 +156,6 @@ export default function HorizontalLinearStepper() {
                             }}
 
                             onChange={(event, newValue) => {
-                                // setRatings((prevRatings) => ({
-                                //     ...prevRatings,
-                                //     [id]: newValue,
-                                // }));
-                                // console.log('event and new val', event)
-                                console.log('val', newValue)
-                                console.log('whats the big IDea', id)
                                 if (newValue) {
                                     useStore.getState().rateFeature(id, newValue)
                                     const feature = useStore.getState().features.find(f => f.id === id)
@@ -235,11 +184,10 @@ export default function HorizontalLinearStepper() {
             }
         },
     ];
-    // const rows = useStore.getState().features.map((item: any) => ({ id: item.id, feature: item.feature, __check__: false, type: item.type }));
-
 
     return (
         <Box sx={{ width: '100%' }}>
+
             {/* Stepper Logic */}
             <Stepper nonLinear={true} activeStep={activeStep} alternativeLabel>
                 {steps.map((label, index) => {
@@ -268,7 +216,6 @@ export default function HorizontalLinearStepper() {
                         <div style={{ height: 400, width: '100%' }}>
                             <DataGrid
                                 rows={rows.filter(r => r.type === 'STANDARD')}
-                                // rows={rows}
                                 columns={columns}
                                 checkboxSelection={false}
                             />
@@ -299,42 +246,16 @@ export default function HorizontalLinearStepper() {
             {activeStep === 2 && (
                 <Card className='step3-custom' >
 
-                    {/* Custom Feature Button */}
+                    {/* Form to create Custom Features will come from CreateFeatureDialog */}
                     <CardContent className='add-custom-feature' sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
                         <CreateFeatureDialog></CreateFeatureDialog>
                     </CardContent>
 
-                    {/* Custom Feature Form */}
-                    {/* <Box
-                        component="form"
-                        sx={{
-                            '& .MuiTextField-root': { m: 1, width: '50%', display: 'flex', },
-                        }}
-                        noValidate>
-                        <Card>
-                            <CardContent>
-                                <Typography variant="h6" gutterBottom>
-                                    <TextField
-                                        id="outlined-helperText"
-                                        label="Your Custom Feature"
-                                        defaultValue=""
-                                        helperText="Feature Name"
-                                    />
-                                </Typography>
-                                <Button sx={{ display: 'flex' }} variant="contained" color="secondary" >
-
-                                    <Typography style={{ fontSize: '18px', marginBottom: 0, whiteSpace: 'nowrap' }}>
-                                        Submit
-                                    </Typography>
-                                </Button>
-                            </CardContent>
-                        </Card>
-                    </Box> */}
-
                     {/* Created Custom Features List/Grid */}
                     <CardContent>
                         <Typography variant="h6" gutterBottom>
-                            Your Custom Features    <Typography variant="caption" gutterBottom>
+                            Your Custom Features
+                            <Typography variant="caption" gutterBottom>
                                 Click the button above to make your first custom feature!
                             </Typography>
                         </Typography>
@@ -347,7 +268,6 @@ export default function HorizontalLinearStepper() {
                             />
                         </div>
                     </CardContent>
-
                 </Card>
             )}
 
@@ -355,7 +275,7 @@ export default function HorizontalLinearStepper() {
             {activeStep === steps.length ? (
                 <React.Fragment>
                     <Typography sx={{ mt: 2, mb: 1 }}>
-                        All steps completed - you&apos;re finished
+                        All steps completed - you are finished
                     </Typography>
                     <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
                         <Box sx={{ flex: '1 1 auto' }} />
@@ -364,9 +284,12 @@ export default function HorizontalLinearStepper() {
                 </React.Fragment>
             ) : (
 
-                // Back and Next buttons
+                // Step #, Back and Next buttons
                 <React.Fragment>
-                    <Typography sx={{ mt: 2, mb: 1 }}>Step {activeStep + 1}</Typography>
+                    <Typography sx={{ mt: 2, mb: 1 }}>
+                        Step {activeStep + 1}
+                    </Typography>
+
                     <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
                         <Button
                             color="inherit"
@@ -378,11 +301,11 @@ export default function HorizontalLinearStepper() {
                         </Button>
 
                         <Box sx={{ flex: '1 1 auto' }} />
-
                         <Button onClick={handleNext}>
                             {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
                         </Button>
                     </Box>
+
                 </React.Fragment>
             )}
         </Box>

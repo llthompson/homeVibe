@@ -2,16 +2,13 @@
 
 import { create } from "zustand";
 
+
 export interface Feature {
     id: number
     feature: string
     rating: number
     type: string
 }
-
-// interface Features {
-//     features: Feature[]
-// }
 
 type featuresState = {
     features: Feature[]
@@ -23,6 +20,7 @@ type featuresState = {
 
 const useStore = create<featuresState>()((set) => ({
     features: [],
+
     addFeature: (feature: Feature) =>
         set((state) => ({
             features: [
@@ -35,9 +33,6 @@ const useStore = create<featuresState>()((set) => ({
 
     setFeatures: (features: Feature[]) =>
         set((state) => ({
-            // features: [
-            //     ...features
-            // ],
             ...state, features
         })),
 
@@ -45,15 +40,15 @@ const useStore = create<featuresState>()((set) => ({
         set((state) => ({
             features: state.features.filter((feature) => feature.id !== id),
         })),
+
     rateFeature: (id: number, rating: number) => {
         set((state) => ({
             features: state.features.map((feature) =>
                 feature.id === id ? { ...feature, rating } : feature
             )
-
         }))
-    }
 
+    }
 }));
 
 export default useStore;
