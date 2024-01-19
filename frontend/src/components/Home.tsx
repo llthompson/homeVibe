@@ -34,6 +34,7 @@ function Home() {
         <PageLayout>
             <Container sx={{ justifyContent: 'space-between' }} >
                 <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+
                     <Grid item xs={12} className='card for logo'>
                         <Card sx={{ maxHeight: 150, boxShadow: ["none"], flexGrow: 2 }}>
                             <CardMedia
@@ -71,7 +72,7 @@ function Home() {
                         </Item>
                     </Grid>
 
-                    <Grid item xs={12} className='first box'>
+                    <Grid item xs={8} className='first box'>
                         <Card sx={{
                             display: 'flex',
                             margin: "0 auto",
@@ -87,13 +88,13 @@ function Home() {
                             />
                             <CardContent className='box 1 content' sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
                                 <Typography component="div" variant="h5">
-                                    cool content
+                                    an innovative house-hunting tool for the next generation of homebuyers
                                 </Typography>
                             </CardContent>
                         </Card>
                     </Grid>
 
-                    <Grid item xs={12} className='second box'>
+                    <Grid item xs={8} className='second box'>
                         <Card sx={{
                             display: 'flex',
                             margin: "0 auto",
@@ -102,7 +103,7 @@ function Home() {
                         }}>
                             <CardContent className='box 2 content' sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
                                 <Typography component="div" variant="h5">
-                                    cool content
+                                    effortlessly mix and match your dream home features into a convenient wishlist
                                 </Typography>
                             </CardContent>
                             <CardMedia
@@ -133,13 +134,35 @@ function Home() {
                             <CardContent className='box 3 content'
                                 sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
                                 <Typography component="div" variant="h5" sx={{ alignItems: 'center' }}>
-                                    cool content #3
+                                    three easy steps
                                 </Typography>
                             </CardContent>
                         </Card>
                     </Grid>
 
                     <Grid item xs={12} className='fourth box'>
+                        <Card sx={{
+                            display: 'flex',
+                            margin: "0 auto",
+                            padding: "0.1em",
+                            justifyContent: 'space-between'
+                        }}>
+                            <CardContent className='box 4 content' sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                                <Typography component="div" variant="h5">
+                                    now you’re ready to unleash the beast and commence the house hunt!
+                                </Typography>
+                            </CardContent>
+                            <CardMedia
+                                component="img"
+                                sx={{ width: 200, height: 150, padding: "1em 1em 0 1em", objectFit: "contain" }}
+                                height="10%"
+                                image="../../house-icon.png"
+                                alt="homeVibe logo"
+                            />
+                        </Card>
+                    </Grid>
+
+                    {/* <Grid item xs={12} className='fifth box'>
                         <Card sx={{
                             display: 'flex',
                             margin: "0 auto",
@@ -161,7 +184,7 @@ function Home() {
                                 alt="homeVibe logo"
                             />
                         </Card>
-                    </Grid>
+                    </Grid> */}
 
                     <Grid item xs={12} className='sign up button'>
                         <Item><Typography variant="h1" style={{ flexGrow: '6' }}>sign up to start vibin'</Typography>
@@ -173,7 +196,7 @@ function Home() {
                             </Fab>
                         </Item>
                     </Grid>
-                    
+
                 </Grid>
             </Container>
         </PageLayout>

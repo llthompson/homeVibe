@@ -4,14 +4,15 @@ import { useEffect, useState } from 'react';
 import { Card, CardMedia, Typography, CardContent } from '@mui/material';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
+import { DataGrid, GridColDef, GridToolbar } from '@mui/x-data-grid';
 import { styled } from '@mui/material/styles';
 import { useTheme } from '@mui/system';
 import Paper from '@mui/material/Paper';
 import { Link } from 'react-router-dom';
-import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import { PageLayout } from './Page-Layout';
 import * as apiService from '../services/Api'
 import { useAuth0 } from "@auth0/auth0-react";
+import { GridApi } from '@mui/x-data-grid';
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -77,7 +78,7 @@ const Features = () => {
                                             <DataGrid
                                                 rows={rows}
                                                 columns={columns}
-
+                                                slots={{ toolbar: GridToolbar }}
                                             />
                                         </div>
                                     </CardContent>
