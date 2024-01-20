@@ -13,10 +13,7 @@ function LogoutButton() {
   } = useAuth0();
 
   return (
-    <Button
-      sx={{
-        display: 'flex'
-      }}
+    <Button className='nav-bar-buttons'
       variant="contained"
       color="secondary"
       onClick={() => {
@@ -26,11 +23,9 @@ function LogoutButton() {
           }
         });
       }}>
-      <Typography
+      <Typography className='nav-bar-buttons-text'
         style={{
           fontSize: '18px',
-          marginBottom: 0,
-          whiteSpace: 'nowrap'
         }}>
         Sign Out
       </Typography>

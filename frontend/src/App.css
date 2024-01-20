@@ -44,6 +44,28 @@
   margin: 5px;
 }
 
+.nav-bar-buttons {
+  /* height: 100px; */
+  display: flex;
+  /* text-transform: capitalize; */
+  /* font-weight: 700; */
+  /* width: 150px; */
+  /* padding: 0 100px; */
+  /* margin-left: 500px; */
+  /* margin-right: 500px; */
+  /* font-size: 60px; */
+}
+
+.nav-bar-buttons-text {
+  padding-left: 10px;
+  padding-right: 10px;
+  /* font-weight: 700; */
+  /* text-transform: capitalize; */
+  /* font-size: 18px; */
+  /* margin-bottom: 30px; */
+  white-space: nowrap;
+}
+
 .home-image-cards {
   display: flex;
   margin: 0 auto;

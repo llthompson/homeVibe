@@ -5,7 +5,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { useTheme } from '@mui/system';
 import { Typography, Button } from "@mui/material";
 
-const LoginButton = () => {
+const SignUpButton = () => {
     const { loginWithRedirect } = useAuth0();
 
     return (
@@ -13,15 +13,18 @@ const LoginButton = () => {
             variant="contained"
             color="secondary"
             onClick={() => loginWithRedirect({
+                authorizationParams: {
+                    screen_hint: "signup"
+                }
             })}>
             <Typography className='nav-bar-buttons-text'
                 style={{
                     fontSize: '18px',
                 }}>
-                Sign In
+                Sign Up
             </Typography>
         </Button>
     )
 };
 
-export default LoginButton;
+export default SignUpButton;

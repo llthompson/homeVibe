@@ -67,7 +67,6 @@ export default function HorizontalLinearStepper() {
     const handleComplete = () => {
 
 
-        // TODO 
     };
 
     const handleReset = () => {
@@ -344,18 +343,13 @@ export default function HorizontalLinearStepper() {
                         {activeStep === steps.length - 1 ? (
 
                             <Button
-                                sx={{
-                                    display: 'flex'
-                                }}
+                                sx={{ display: 'flex' }}
                                 variant="contained"
                                 color="secondary"
                             >
-
                                 <Link
                                     to="/Features"
-                                    style={{
-                                        textDecoration: 'none',
-                                    }}
+                                    style={{ textDecoration: 'none' }}
                                 >
                                     <Typography
                                         style={{
