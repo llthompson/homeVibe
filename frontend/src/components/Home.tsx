@@ -73,187 +73,142 @@ function Home() {
                     </Grid>
                 </Grid>
 
-                {/* MAIN CONTAINER FOR CONTENT */}
+                {/* MAIN CONTAINER FOR CONTENT COLUMNS */}
                 <Grid container>
+                    <Grid item direction={'column'} xs={6}  >
+                        {/* FIRST COLUMN */}
 
-                    {/* FIRST COLUMN */}
-                    <Grid container xs={6}>
-                        <Grid item direction={'column'} xs={6}  >
-                            {/* FIRST column start */}
-
-                            <Grid item xs={6} >
-                                Top LEFT
-                            </Grid>
-                            <Grid item xs={6} >
-                                Bottom LEFT
-                            </Grid>
-                            <Grid item xs={6} >
-                                Bottom LEFT
-                            </Grid>
-                            <Grid item xs={6} >
-                                Bottom LEFT
-                            </Grid>
-
-
-                            {/* FIRST column end */}
+                        <Grid item xs={12} className='first section image'>
+                            <Card sx={{
+                                display: 'flex',
+                                margin: '0 auto',
+                                padding: '0.1em',
+                                justifyContent: 'space-between',
+                            }}>
+                                <CardMedia
+                                    component="img"
+                                    sx={{ height: 284, padding: '1em 1em 0 1em', objectFit: 'contain', justifyContent: 'right' }}
+                                    height="10%"
+                                    image="../../house-icon.png"
+                                    alt="homeVibe logo"
+                                />
+                            </Card>
                         </Grid>
-                    </Grid>
+                        <Grid item xs={12} className='second section content'>
+                            <Card sx={{
+                                display: 'flex',
+                                margin: '0 auto',
+                                padding: '0.1em',
+                                justifyContent: 'space-between',
+                            }}>
+                                <CardContent className='box 2 content' sx={{ height: 76, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                                    <Typography component="div" variant="h5">
+                                        effortlessly mix and match your dream home features into a convenient wishlist
+                                    </Typography>
+                                </CardContent>
+                            </Card>
+                        </Grid>
+                        <Grid item xs={12} className='third section image'>
+                            <Card sx={{
+                                display: 'flex',
+                                margin: '0 auto',
+                                padding: '0.1em',
+                                justifyContent: 'space-between',
+                            }}>
+                                <CardMedia
+                                    className='box 3 pic'
+                                    component="img"
+                                    sx={{ height: 284, padding: '1em 1em 0 1em', objectFit: 'contain' }}
+                                    height="10%"
+                                    image="../../house-icon.png"
+                                    alt="random pic"
+                                />
+                            </Card>
+                        </Grid>
+                        <Grid item xs={12} className='fourth section content'>
+                            <Card sx={{
+                                display: 'flex',
+                                margin: '0 auto',
+                                padding: '0.1em',
+                                justifyContent: 'space-between',
+                            }}>
+                                <CardContent className='box 4 content' sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                                    <Typography component="div" variant="h5">
+                                        now you’re ready to unleash the beast and commence the house hunt!
+                                    </Typography>
+                                </CardContent>
+                            </Card>
+                        </Grid>
 
+                    </Grid>
                     {/* SECOND COLUMN */}
-                    <Grid container xs={6}>
-                        <Grid container direction={'column'} xs={6}>
-                            {/* SECOND column start */}
+                    <Grid item direction={'column'} xs={6}  >
 
-                            <Grid item xs={6} >
-                                Top right
-                            </Grid>
-                            <Grid item xs={6} >
-                                Bottom Right
-                            </Grid>
-
-
-
-
-
-                            {/* SECOND column end */}
+                        <Grid item xs={12} className='first section content'>
+                            <Card sx={{
+                                display: 'flex',
+                                margin: '0 auto',
+                                padding: '0.1em',
+                                justifyContent: 'space-between',
+                            }}>
+                                <CardContent className='box 1 content' sx={{ height: 76, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                                    <Typography component="div" variant="h5">
+                                        an innovative house-hunting tool for the next generation of homebuyers
+                                    </Typography>
+                                </CardContent>
+                            </Card>
                         </Grid>
+                        <Grid item xs={12} className='second section image'>
+                            <Card sx={{
+                                display: 'flex',
+                                margin: '0 auto',
+                                padding: '0.1em',
+                                justifyContent: 'space-between',
+                            }}>
+                                <CardMedia
+                                    component="img"
+                                    sx={{ height: 284, padding: '1em 1em 0 1em', objectFit: 'contain' }}
+                                    height="10%"
+                                    image="../../house-icon.png"
+                                    alt="homeVibe logo"
+                                />
+                            </Card>
+                        </Grid>
+                        <Grid item xs={12} className='third section content'>
+                            <Card sx={{
+                                display: 'flex',
+                                margin: '0 auto',
+                                padding: '0.1em',
+                                justifyContent: 'space-between',
+                            }}>
+                                <CardContent className='box 3 content' sx={{ height: 76, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                                    <Typography component="div" variant="h5" sx={{ alignItems: 'center' }}>
+                                        three easy steps
+                                    </Typography>
+                                </CardContent>
+                            </Card>
+                        </Grid>
+                        <Grid item xs={12} className='fourth section image'>
+                            <Card sx={{
+                                display: 'flex',
+                                margin: '0 auto',
+                                padding: '0.1em',
+                                justifyContent: 'space-between',
+                            }}>
+                                <CardMedia
+                                    component="img"
+                                    sx={{ height: 284, padding: '1em 1em 0 1em', objectFit: 'contain' }}
+                                    height="10%"
+                                    image="../../house-icon.png"
+                                    alt="homeVibe logo"
+                                />
+                            </Card>
+                        </Grid>
+
                     </Grid>
                 </Grid>
-
                 <Grid>
-                    <Grid item xs={6} className='first section image'>
-                        <Card sx={{
-                            display: 'flex',
-                            margin: '0 auto',
-                            padding: '0.1em',
-                            justifyContent: 'space-between',
-                        }}>
-                            <CardMedia
-                                component="img"
-                                sx={{ width: 200, height: 284, padding: '1em 1em 0 1em', objectFit: 'contain', justifyContent: 'right' }}
-                                height="10%"
-                                image="../../house-icon.png"
-                                alt="homeVibe logo"
-                            />
-                        </Card>
-                    </Grid>
-
-                    <Grid item xs={6} className='first section content'>
-                        <Card sx={{
-                            display: 'flex',
-                            margin: '0 auto',
-                            padding: '0.1em',
-                            justifyContent: 'space-between',
-                        }}>
-                            <CardContent className='box 1 content' sx={{ height: 76, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                                <Typography component="div" variant="h5">
-                                    an innovative house-hunting tool for the next generation of homebuyers
-                                </Typography>
-                            </CardContent>
-                        </Card>
-                    </Grid>
-
-                    <Grid item xs={6} className='second section content'>
-                        <Card sx={{
-                            display: 'flex',
-                            margin: '0 auto',
-                            padding: '0.1em',
-                            justifyContent: 'space-between',
-                        }}>
-                            <CardContent className='box 2 content' sx={{ height: 76, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                                <Typography component="div" variant="h5">
-                                    effortlessly mix and match your dream home features into a convenient wishlist
-                                </Typography>
-                            </CardContent>
-                        </Card>
-                    </Grid>
-
-                    <Grid item xs={6} className='second section image'>
-                        <Card sx={{
-                            display: 'flex',
-                            margin: '0 auto',
-                            padding: '0.1em',
-                            justifyContent: 'space-between',
-                        }}>
-                            <CardMedia
-                                component="img"
-                                sx={{ width: 200, height: 284, padding: '1em 1em 0 1em', objectFit: 'contain' }}
-                                height="10%"
-                                image="../../house-icon.png"
-                                alt="homeVibe logo"
-                            />
-                        </Card>
-                    </Grid>
-
-                    <Grid item xs={6} className='third section image'>
-                        <Card sx={{
-                            display: 'flex',
-                            margin: '0 auto',
-                            padding: '0.1em',
-                            justifyContent: 'space-between',
-                        }}>
-                            <CardMedia
-                                className='box 3 pic'
-                                component="img"
-                                sx={{ width: 200, height: 284, padding: '1em 1em 0 1em', objectFit: 'contain' }}
-                                height="10%"
-                                image="../../house-icon.png"
-                                alt="random pic"
-                            />
-                        </Card>
-                    </Grid>
-
-                    <Grid item xs={6} className='third section content'>
-                        <Card sx={{
-                            display: 'flex',
-                            margin: '0 auto',
-                            padding: '0.1em',
-                            justifyContent: 'space-between',
-                        }}>
-                            <CardContent className='box 3 content' sx={{ height: 76, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                                <Typography component="div" variant="h5" sx={{ alignItems: 'center' }}>
-                                    three easy steps
-                                </Typography>
-                            </CardContent>
-                        </Card>
-                    </Grid>
-
-                    <Grid item xs={6} className='fourth section content'>
-                        <Card sx={{
-                            display: 'flex',
-                            margin: '0 auto',
-                            padding: '0.1em',
-                            justifyContent: 'space-between',
-                        }}>
-                            <CardContent className='box 4 content' sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                                <Typography component="div" variant="h5">
-                                    now you’re ready to unleash the beast and commence the house hunt!
-                                </Typography>
-                            </CardContent>
-                        </Card>
-                    </Grid>
-
-                    <Grid item xs={6} className='fourth section image'>
-                        <Card sx={{
-                            display: 'flex',
-                            margin: '0 auto',
-                            padding: '0.1em',
-                            justifyContent: 'space-between',
-                        }}>
-                            <CardMedia
-                                component="img"
-                                sx={{ width: 200, height: 150, padding: '1em 1em 0 1em', objectFit: 'contain' }}
-                                height="10%"
-                                image="../../house-icon.png"
-                                alt="homeVibe logo"
-                            />
-                        </Card>
-                    </Grid>
-
-                </Grid>
-
-                <Grid>
-
+                    the end of all the columns and the content and the page really and im going to keep typing forever just so that nothing can ever live here and it will be all alone
                     <Grid item xs={12} className='sign up button'>
                         <Item><Typography variant="h1" style={{ flexGrow: '6' }}>sign up to start vibin'</Typography>
                             <Fab variant="extended" color="info">
@@ -264,7 +219,6 @@ function Home() {
                             </Fab>
                         </Item>
                     </Grid>
-
                 </Grid>
             </Container>
         </PageLayout >
