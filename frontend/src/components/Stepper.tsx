@@ -18,6 +18,7 @@ import * as apiService from '../services/Api'
 import CreateFeatureDialog from './CreateFeature';
 import useStore, { Feature } from '../state';
 import { useShallow } from 'zustand/react/shallow'
+import { Link } from 'react-router-dom';
 
 
 const steps = ['Select standard home features', 'Select advanced home features', 'Create your own custom features'];
@@ -64,6 +65,9 @@ export default function HorizontalLinearStepper() {
     };
 
     const handleComplete = () => {
+
+
+        // TODO 
     };
 
     const handleReset = () => {
@@ -211,9 +215,17 @@ export default function HorizontalLinearStepper() {
             {activeStep === 0 && (
                 <Card className='step1-standard' >
                     <CardContent>
-                        <Typography variant="h6" gutterBottom>
-                            Choose Standard Features
+
+                        <Typography variant="h6" gutterBottom style={{
+                            fontSize: '24px',
+                            marginBottom: 0,
+                            paddingTop: 0,
+                            color: theme.palette.info.dark,
+                            fontWeight: 500,
+                        }}>
+                            Step {activeStep + 1}: Select Standard Features
                         </Typography>
+
                         <div style={{ height: 400, width: '100%' }}>
                             <DataGrid
                                 rows={rows.filter(r => r.type === 'STANDARD')}
@@ -229,8 +241,14 @@ export default function HorizontalLinearStepper() {
             {activeStep === 1 && (
                 <Card className='step2-advanced' >
                     <CardContent>
-                        <Typography variant="h6" gutterBottom>
-                            Choose Advanced Features
+                        <Typography variant="h6" gutterBottom style={{
+                            fontSize: '24px',
+                            marginBottom: 0,
+                            paddingTop: 0,
+                            color: theme.palette.info.dark,
+                            fontWeight: 500,
+                        }}>
+                            Step {activeStep + 1}: Select Advanced Features
                         </Typography>
                         <div style={{ height: 800, width: '100%' }}>
                             <DataGrid
@@ -246,19 +264,34 @@ export default function HorizontalLinearStepper() {
             {/* Step 3 Custom Features */}
             {activeStep === 2 && (
                 <Card className='step3-custom' >
-
-                    {/* Form to create Custom Features will come from CreateFeatureDialog */}
-                    <CardContent className='add-custom-feature' sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                        <CreateFeatureDialog></CreateFeatureDialog>
-                    </CardContent>
-
-                    {/* Created Custom Features List/Grid */}
                     <CardContent>
-                        <Typography variant="h6" gutterBottom>
-                            Your Custom Features
-                            <Typography variant="caption" gutterBottom>
-                                Click the button above to make your first custom feature!
-                            </Typography>
+                        <Typography variant="h6" gutterBottom style={{
+                            fontSize: '24px',
+                            marginBottom: 0,
+                            paddingTop: 0,
+                            color: theme.palette.info.dark,
+                            fontWeight: 500,
+                        }}>
+                            Step {activeStep + 1}: Create Custom Features
+                        </Typography>
+
+                        {/* Form to create Custom Features will come from CreateFeatureDialog */}
+                        <CardContent className='add-custom-feature' sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                            <CreateFeatureDialog></CreateFeatureDialog>
+                        </CardContent>
+
+                        {/* Created Custom Features List/Grid */}
+                        <Typography variant="h6" gutterBottom style={{
+                            fontSize: '18px',
+                            marginBottom: 0,
+                            paddingTop: 0,
+                            color: theme.palette.info.dark,
+                            fontWeight: 500,
+                        }}>
+                            Custom Features
+                            {/* <Typography variant="caption" gutterBottom>
+                                Clic   k the button above to make your first custom feature!
+                            </Typography> */}
                         </Typography>
 
                         <div style={{ height: 400, width: '100%' }}>
@@ -287,9 +320,6 @@ export default function HorizontalLinearStepper() {
 
                 // Step #, Back and Next buttons
                 <React.Fragment>
-                    <Typography sx={{ mt: 2, mb: 1 }}>
-                        Step {activeStep + 1}
-                    </Typography>
 
                     <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
                         <Button
@@ -298,13 +328,65 @@ export default function HorizontalLinearStepper() {
                             onClick={handleBack}
                             sx={{ mr: 1 }}
                         >
-                            Back
+                            <Typography
+                                style={{
+                                    fontSize: '18px',
+                                    marginBottom: 0,
+                                    paddingTop: 0,
+                                    color: theme.palette.info.dark,
+                                    fontWeight: 700,
+                                }}>
+                                Back
+                            </Typography>
                         </Button>
 
                         <Box sx={{ flex: '1 1 auto' }} />
-                        <Button onClick={handleNext}>
-                            {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
-                        </Button>
+                        {activeStep === steps.length - 1 ? (
+
+                            <Button
+                                sx={{
+                                    display: 'flex'
+                                }}
+                                variant="contained"
+                                color="secondary"
+                            >
+
+                                <Link
+                                    to="/Features"
+                                    style={{
+                                        textDecoration: 'none',
+                                    }}
+                                >
+                                    <Typography
+                                        style={{
+                                            fontSize: '18px',
+                                            marginBottom: 0,
+                                            whiteSpace: 'nowrap',
+                                            color: '#ffffff'
+                                        }}>
+                                        Finish
+
+                                    </Typography>
+
+                                </Link>
+                            </Button>
+
+                        ) : (
+                            <Button onClick={handleNext}>
+                                <Typography
+                                    style={{
+                                        fontSize: '18px',
+                                        marginBottom: 0,
+                                        paddingTop: 0,
+                                        color: theme.palette.info.dark,
+                                        fontWeight: 700,
+                                    }}>
+                                    Next
+                                </Typography>
+                            </Button>
+                        )}
+
+
                     </Box>
 
                 </React.Fragment>

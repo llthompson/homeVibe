@@ -39,6 +39,11 @@
   display: none;
 }
 
+.MuiBox-root.css-2royc9 {
+  padding: 0px;
+  margin: 5px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

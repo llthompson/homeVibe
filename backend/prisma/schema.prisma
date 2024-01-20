@@ -24,7 +24,7 @@ model User {
 
 model HomeFeature {
   id             Int            @id @default(autoincrement())
-  feature        String         @unique()
+  feature        String
   // numberOf       Int?           @map("number_of")
   type           FeatureType    @default(STANDARD)
   userId         Int?
