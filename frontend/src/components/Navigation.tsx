@@ -1,25 +1,22 @@
 // frontend/src/components/Navigation.js
 
 import React from 'react';
-import { AppBar, Toolbar, IconButton, Typography, Box, Button, List, ListItem, Link as RouterLink } from '@mui/material';
-import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
+import { AppBar, Toolbar, Typography, List, ListItem, Link as RouterLink } from '@mui/material';
 import { Link } from 'react-router-dom';
-import { useTheme, shadows } from '@mui/system';
+import { useTheme, shadows, Container } from '@mui/system';
 import LoginButton from './LoginButton';
 import { useAuth0 } from '@auth0/auth0-react';
 import LogoutButton from './LogoutButton';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
 import SignUpButton from './SignUpButton';
-import UserFeaturesButton from './UserFeaturesButton';
 import MiniLogo from '../assets/homeVibelogo2transparenticon.png'
+import { Image } from '@mui/icons-material';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 
 const Navigation = () => {
     const theme = useTheme();
     const {
-        isAuthenticated,
-        loginWithRedirect,
+        isAuthenticated
     } = useAuth0();
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
@@ -31,158 +28,49 @@ const Navigation = () => {
     };
 
     return (
-        <AppBar
-            sx={{
-                bgcolor: theme.palette.primary.main,
-                maxWidth: '1080',
-                display: 'flex',
-                flexDirection: 'column'
-            }}
-            position="sticky">
-            <Toolbar
-                sx={{
-                    display: 'flex',
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    justifyContent: 'flex-end'
-                }}
-
-            >
-                {/* <IconButton
-                    edge="start"
-                    color="inherit"
-                    aria-label="menu"
-                    onClick={handleClick}
+        <AppBar position="sticky">
+            <Container>
+                <Toolbar
                     sx={{
-                        mr: 2,
-                        color: theme.palette.secondary.contrastText,
-                        fontWeight: 'thin'
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'space-between',
+                        '@media (min-width: 848px)': {
+                            flexDirection: 'row'
+                        }
                     }}
                 >
-                    <MenuRoundedIcon
+
+                    <Link to="/">
+                        <img src={MiniLogo} style={{ height: '42px', width: 'auto', justifyContent: 'center' }} ></img>
+                    </Link>
+
+
+
+                    <List
                         sx={{
-                            fontSize: 24,
-                            backgroundColor: theme.palette.secondary.main,
-                            boxShadow: 3,
-                            borderRadius: 2,
-                            fontWeight: 'thin',
-                            p: 1
-                        }} />
-                </IconButton>
+                            display: 'flex',
+                            padding: '0 0 0 0',
+                            alignContent: 'center',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            flexDirection: 'column',
+                            '@media (min-width: 848px)': {
+                                flexDirection: 'row '
+                            }
+                        }}
+                    >
 
-                <Menu
-                    id="basic-menu"
-                    anchorEl={anchorEl}
-                    open={open}
-                    onClose={handleClose}
-                    MenuListProps={{
-                        'aria-labelledby': 'basic-button'
-                    }}
-                >
-                    <MenuItem onClick={handleClose}>
-                        <Link to="/"
-                            style={{
-                                textDecoration: 'none',
-                                textDecorationThickness: '2px',
-                                textUnderlineOffset: '4px',
-                                textDecorationColor: '#8d008d'
-                            }}>
-                            <Typography
-                                style={{
-                                    fontSize: '18px',
-                                    marginBottom: 0,
-                                    color: theme.palette.info.dark
-                                }}>
-                                Home
-                            </Typography>
-                        </Link>
-                    </MenuItem>
-
-                    <MenuItem
-                        onClick={handleClose}>
-                        <Link
-                            to="/Dashboard"
-                            style={{
-                                textDecoration: 'none',
-                                textDecorationThickness: '2px',
-                                textUnderlineOffset: '4px',
-                                textDecorationColor: '#8d008d'
-                            }}>
-                            <Typography
-                                style={{
-                                    fontSize: '18px',
-                                    marginBottom: 0,
-                                    color: theme.palette.info.dark
-                                }}>
-                                Dashboard
-                            </Typography>
-                        </Link>
-                    </MenuItem>
-
-                    <MenuItem
-                        onClick={handleClose}>
-                        <Link
-                            to="/Features"
-                            style={{
-                                textDecoration: 'none',
-                                textDecorationThickness: '2px',
-                                textUnderlineOffset: '4px',
-                                textDecorationColor: '#8d008d'
-                            }}>
-                            <Typography
-                                style={{
-                                    fontSize: '18px',
-                                    marginBottom: 0, color: theme.palette.info.dark
-                                }}>
-                                Features
-                            </Typography>
-                        </Link>
-                    </MenuItem>
-
-                    <MenuItem
-                        onClick={handleClose}>
-                        <Link
-                            to="/LearnMore"
-                            style={{
-                                textDecoration: 'none',
-                                textDecorationThickness: '2px',
-                                textUnderlineOffset: '4px',
-                                textDecorationColor: '#8d008d'
-                            }}>
-                            <Typography
-                                style={{
-                                    fontSize: '18px',
-                                    marginBottom: 0,
-                                    whiteSpace: 'nowrap',
-                                    color: theme.palette.info.dark
-                                }}>
-                                Learn More
-                            </Typography>
-                        </Link>
-                    </MenuItem>
-
-                </Menu> */}
-
-                <List className="nav-list" sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', maxWidth: '1080' }}>
-
-                    <Box>
-                        <ListItem style={{ padding: '0' }} >
-                            <Link to="/">
-                                <img src={MiniLogo} style={{ height: '42px', width: 'auto' }} ></img>
-                            </Link>
-                        </ListItem>
-                    </Box>
-
-                    <Box sx={{ display: 'flex' }} >
-                        <ListItem>
-                            <Link to="/" style={{ textDecoration: 'underline', textDecorationThickness: '1px', textUnderlineOffset: '4px', textDecorationColor: '#333333' }}>
+                        <ListItem sx={{ justifyContent: 'center ' }}>
+                            <Link to="/LearnMore" style={{ textDecoration: 'underline', textDecorationThickness: '1px', textUnderlineOffset: '4px', textDecorationColor: '#333333' }}>
                                 <Typography style={{ whiteSpace: 'nowrap', fontSize: '18px', marginBottom: 0, color: '#333333', fontWeight: '500' }}>
-                                    Home
+                                    Learn More
                                 </Typography>
                             </Link>
                         </ListItem>
 
-                        <ListItem>
+
+                        <ListItem sx={{ justifyContent: 'center ' }}>
                             <Link to="/Dashboard" style={{ textDecoration: 'underline', textDecorationThickness: '1px', textUnderlineOffset: '4px', textDecorationColor: '#333333' }}>
                                 <Typography style={{ whiteSpace: 'nowrap', fontSize: '18px', marginBottom: 0, color: '#333333', fontWeight: '500' }}>
                                     Rate Features
@@ -190,7 +78,8 @@ const Navigation = () => {
                             </Link>
                         </ListItem>
 
-                        <ListItem >
+
+                        <ListItem sx={{ justifyContent: 'center ' }}>
                             <Link to="/Features" style={{ textDecoration: 'underline', textDecorationThickness: '1px', textUnderlineOffset: '4px', textDecorationColor: '#333333' }}>
                                 <Typography style={{ whiteSpace: 'nowrap', fontSize: '18px', marginBottom: 0, color: '#333333', fontWeight: '500' }}>
                                     Saved Features
@@ -198,34 +87,96 @@ const Navigation = () => {
                             </Link>
                         </ListItem>
 
-                        <ListItem>
-                            <Link to="/LearnMore" style={{ textDecoration: 'underline', textDecorationThickness: '1px', textUnderlineOffset: '4px', textDecorationColor: '#333333' }}>
-                                <Typography style={{ whiteSpace: 'nowrap', fontSize: '18px', marginBottom: 0, color: '#333333', fontWeight: '500' }}>
-                                    Learn More
-                                </Typography>
-                            </Link>
-                        </ListItem>
-                    </Box>
 
-                    <Box>
                         <ListItem
-                            className='signup'>
+                            className='signup'
+                            sx={{ justifyContent: 'center ' }}>
                             {isAuthenticated ? null : <SignUpButton></SignUpButton>}
                         </ListItem>
 
                         <ListItem
-                            className='login'>
+                            className='login'
+                            sx={{ justifyContent: 'center ' }}>
                             {!isAuthenticated ?
                                 <LoginButton></LoginButton> : <LogoutButton></LogoutButton>}
                         </ListItem>
 
-                    </Box>
+                    </List>
 
-
-
-                </List>
-            </Toolbar>
+                </Toolbar>
+            </Container>
         </AppBar>
+
+
+
+
+        // <AppBar
+        //     sx={{
+        //         bgcolor: theme.palette.primary.main,
+        //         maxWidth: '100%',
+        //         // display: 'flex',
+        //         // flexDirection: 'column'
+        //     }}
+        //     position="sticky">
+        //     <Toolbar
+        //         sx={{
+        //             display: 'flex',
+        //             flexDirection: 'column',
+        //             // alignItems: 'right',
+        //             justifyContent: 'left',
+        //             '@media (min-width: 848px)': {
+        //                 flexDirection: 'row', // Change back to row on larger screens
+        //             },
+        //         }}
+
+        //     >
+
+        //         <List className="nav-list"
+        //             sx={{
+        //                 display: 'flex',
+        //                 flexDirection: 'column',
+        //                 alignItems: 'left',
+        //                 justifyContent: 'left',
+        //                 alignContent: 'left',
+        //                 textAlign: 'center',
+        //                 maxWidth: '1080',
+        //                 '@media (min-width: 848px)': {
+        //                     flexDirection: 'row', // Change back to row on larger screens
+        //                 },
+        //             }}>
+
+        //             <ListItem style={{ padding: '0' }} >
+        //                 <Link to="/">
+        //                     <img src={MiniLogo} style={{ height: '42px', width: 'auto' }} ></img>
+        //                 </Link>
+        //             </ListItem>
+
+        //             <ListItem>
+        //                 <Link to="/" style={{ textDecoration: 'underline', textDecorationThickness: '1px', textUnderlineOffset: '4px', textDecorationColor: '#333333' }}>
+        //                     <Typography style={{ whiteSpace: 'nowrap', fontSize: '18px', marginBottom: 0, color: '#333333', fontWeight: '500' }}>
+        //                         Home
+        //                     </Typography>
+        //                 </Link>
+        //             </ListItem>
+
+        // <ListItem>
+        //     <Link to="/Dashboard" style={{ textDecoration: 'underline', textDecorationThickness: '1px', textUnderlineOffset: '4px', textDecorationColor: '#333333' }}>
+        //         <Typography style={{ whiteSpace: 'nowrap', fontSize: '18px', marginBottom: 0, color: '#333333', fontWeight: '500' }}>
+        //             Rate Features
+        //         </Typography>
+        //     </Link>
+        // </ListItem>
+
+
+
+
+
+
+
+        //         </List>
+        //     </Toolbar>
+        // </AppBar>
+
     );
 };
 
