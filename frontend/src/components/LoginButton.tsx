@@ -15,7 +15,11 @@ const LoginButton = () => {
             }}
             variant="contained"
             color="secondary"
-            onClick={() => loginWithRedirect()}>
+            onClick={() => loginWithRedirect({
+                authorizationParams: {
+                    screen_hint: "signup"
+                }
+            })}>
             <Typography
                 style={{
                     fontSize: '18px',
