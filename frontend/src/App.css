@@ -44,6 +44,46 @@
   margin: 5px;
 }
 
+.home-image-cards {
+  display: flex;
+  margin: 0 auto;
+  padding: 0.1em;
+  flex-direction: column;
+  align-items: center;
+}
+
+.home-wordy-cards-style {
+  display: flex;
+  margin: 0 auto;
+  padding: 0.1em;
+  justify-content: space-between;
+}
+
+.home-image-style {
+  height: 200px;
+  padding: 0;
+  object-fit: contain;
+  justify-content: flex-end;
+  /* background-color: lime; */
+
+}
+
+.home-card-content-style {
+  display: flex;
+  margin-left: 50px;
+  margin-right: 50px;
+  justify-content: center;
+  height: 200px;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* .css-46bh2p-MuiCardContent-root {
+  padding: 1000px;
+  background-color: crimson;
+
+} */
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

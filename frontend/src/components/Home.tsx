@@ -84,61 +84,44 @@ function Home() {
                         {/* FIRST COLUMN */}
 
                         <Grid item xs={12} className='first section image'>
-                            <Card sx={{
-                                display: 'flex',
-                                margin: '0 auto',
-                                padding: '0.1em',
-                                justifyContent: 'space-between',
-                            }}>
-                                <CardMedia
+                            <Card className='home-image-cards'>
+                                <CardMedia className='home-image-style'
                                     component="img"
-                                    sx={{ height: 284, padding: '1em 1em 0 1em', objectFit: 'contain', justifyContent: 'right' }}
-                                    height="10%"
+                                    sx={{ objectFit: 'contain' }}
                                     image={CoolnessPic}
-                                    alt="homeVibe logo"
+                                    alt="vector image of a cool girl"
                                 />
+                                <Typography variant="caption">
+                                    Image by <a href="https://www.freepik.com/free-vector/coolness-concept-illustration_11435031.htm#&position=3&from_view=user&uuid=6dee6b5e-5aba-4fe8-bf61-8a14468ddbff" target="_blank" rel="noopener noreferrer">storyset</a> on Freepik
+                                </Typography>
                             </Card>
                         </Grid>
                         <Grid item xs={12} className='second section content'>
-                            <Card sx={{
-                                display: 'flex',
-                                margin: '0 auto',
-                                padding: '0.1em',
-                                justifyContent: 'space-between',
-                            }}>
-                                <CardContent className='box 2 content' sx={{ height: 284, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                                    <Typography component="div" variant="h5">
+                            <Card className='home-wordy-cards-style' >
+                                <CardContent className='home-card-content-style' >
+                                    <Typography variant="h5">
                                         effortlessly mix and match your dream home features into a convenient wishlist
                                     </Typography>
                                 </CardContent>
                             </Card>
                         </Grid>
                         <Grid item xs={12} className='third section image'>
-                            <Card sx={{
-                                display: 'flex',
-                                margin: '0 auto',
-                                padding: '0.1em',
-                                justifyContent: 'space-between',
-                            }}>
-                                <CardMedia
-                                    className='box 3 pic'
+                            <Card className='home-image-cards'>
+                                <CardMedia className='home-image-style'
                                     component="img"
-                                    sx={{ height: 284, padding: '1em 1em 0 1em', objectFit: 'contain' }}
-                                    height="10%"
+                                    sx={{ objectFit: 'contain' }}
                                     image={LaptopPic}
                                     alt="random pic"
                                 />
+                                <Typography variant="caption">
+                                    Image by <a href="https://www.freepik.com/free-vector/laptop-concept-illustration_82455062.htm" target="_blank" rel="noopener noreferrer">storyset</a> on Freepik
+                                </Typography>
                             </Card>
                         </Grid>
                         <Grid item xs={12} className='fourth section content'>
-                            <Card sx={{
-                                display: 'flex',
-                                margin: '0 auto',
-                                padding: '0.1em',
-                                justifyContent: 'space-between',
-                            }}>
-                                <CardContent className='box 4 content' sx={{ height: 284, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                                    <Typography component="div" variant="h5">
+                            <Card className='home-wordy-cards-style'>
+                                <CardContent className='home-card-content-style' >
+                                    <Typography variant="h5">
                                         now you’re ready to unleash the beast and commence the house hunt!
                                     </Typography>
                                 </CardContent>
@@ -150,44 +133,31 @@ function Home() {
                     <Grid item direction={'column'} xs={6}  >
 
                         <Grid item xs={12} className='first section content'>
-                            <Card sx={{
-                                display: 'flex',
-                                margin: '0 auto',
-                                padding: '0.1em',
-                                justifyContent: 'space-between',
-                            }}>
-                                <CardContent className='box 1 content' sx={{ height: 284, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                                    <Typography component="div" variant="h5">
+                            <Card className='home-wordy-cards-style'>
+                                <CardContent className='home-card-content-style' >
+                                    <Typography variant="h5">
                                         an innovative house-hunting tool for the next generation of homebuyers
                                     </Typography>
                                 </CardContent>
                             </Card>
                         </Grid>
                         <Grid item xs={12} className='second section image'>
-                            <Card sx={{
-                                display: 'flex',
-                                margin: '0 auto',
-                                padding: '0.1em',
-                                justifyContent: 'space-between',
-                            }}>
-                                <CardMedia
+                            <Card className='home-image-cards'>
+                                <CardMedia className='home-image-style'
                                     component="img"
-                                    sx={{ height: 284, padding: '1em 1em 0 1em', objectFit: 'contain' }}
-                                    height="10%"
+                                    sx={{ objectFit: 'contain' }}
                                     image={CinemaPic}
                                     alt="homeVibe logo"
                                 />
+                                <Typography variant="caption">
+                                    Image by <a href="https://www.freepik.com/free-vector/home-cinema-concept-illustration_12325307.htm" target="_blank" rel="noopener noreferrer">storyset</a> on Freepik
+                                </Typography>
                             </Card>
                         </Grid>
                         <Grid item xs={12} className='third section content'>
-                            <Card sx={{
-                                display: 'flex',
-                                margin: '0 auto',
-                                padding: '0.1em',
-                                justifyContent: 'space-between',
-                            }}>
-                                <CardContent className='box 3 content' sx={{ height: 284, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                                    <Typography component="div" variant="h5" sx={{ alignItems: 'center' }}>
+                            <Card className='home-wordy-cards-style'>
+                                <CardContent className='home-card-content-style' >
+                                    <Typography variant="h5">
                                         three easy steps
                                         <br></br>
                                         one two three
@@ -196,19 +166,16 @@ function Home() {
                             </Card>
                         </Grid>
                         <Grid item xs={12} className='fourth section image'>
-                            <Card sx={{
-                                display: 'flex',
-                                margin: '0 auto',
-                                padding: '0.1em',
-                                justifyContent: 'space-between',
-                            }}>
-                                <CardMedia
+                            <Card className='home-image-cards'>
+                                <CardMedia className='home-image-style'
                                     component="img"
-                                    sx={{ height: 284, padding: '1em 1em 0 1em', objectFit: 'contain' }}
-                                    height="10%"
+                                    sx={{ objectFit: 'contain' }}
                                     image={SearchingPic}
                                     alt="homeVibe logo"
                                 />
+                                <Typography variant="caption">
+                                    Image by <a href="https://www.freepik.com/free-vector/searching-opportunities-concept-illustration_106347373.htm" target="_blank" rel="noopener noreferrer">storyset</a> on Freepik
+                                </Typography>
                             </Card>
                         </Grid>
 

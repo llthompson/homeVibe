@@ -68,6 +68,20 @@ const theme = createTheme({
                     subtitle2: 'sub2',
                     body1: 'span1',
                     body2: 'span2',
+                    caption: 'caption',
+                },
+            },
+            styleOverrides: {
+                caption: {
+                    fontSize: '8px'
+                    // display: 'flex',
+                    // color: 'textSecondary',
+                    // textAlign: 'center',
+                    // alignItems: 'center',
+                    // flexDirection: 'column',
+                    // flexWrap: 'wrap',
+                    // backgroundColor: 'lime',
+
                 },
             },
         },
