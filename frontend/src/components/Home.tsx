@@ -11,6 +11,11 @@ import Fab from '@mui/material/Fab';
 import NavigationIcon from '@mui/icons-material/Navigation';
 import { Link } from 'react-router-dom';
 import { PageLayout } from './Page-Layout';
+import SearchingPic from '../assets/searching.jpg';
+import CinemaPic from '../assets/cinema.jpg';
+import LaptopPic from '../assets/laptop.jpg';
+import CoolnessPic from '../assets/coolness.jpg'
+
 // import Box from '@mui/material/Box';
 // import { Image } from '@mui/icons-material';
 // import Button from '@mui/material/Button';
@@ -89,7 +94,7 @@ function Home() {
                                     component="img"
                                     sx={{ height: 284, padding: '1em 1em 0 1em', objectFit: 'contain', justifyContent: 'right' }}
                                     height="10%"
-                                    image="../../house-icon.png"
+                                    image={CoolnessPic}
                                     alt="homeVibe logo"
                                 />
                             </Card>
@@ -101,7 +106,7 @@ function Home() {
                                 padding: '0.1em',
                                 justifyContent: 'space-between',
                             }}>
-                                <CardContent className='box 2 content' sx={{ height: 76, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                                <CardContent className='box 2 content' sx={{ height: 284, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
                                     <Typography component="div" variant="h5">
                                         effortlessly mix and match your dream home features into a convenient wishlist
                                     </Typography>
@@ -120,7 +125,7 @@ function Home() {
                                     component="img"
                                     sx={{ height: 284, padding: '1em 1em 0 1em', objectFit: 'contain' }}
                                     height="10%"
-                                    image="../../house-icon.png"
+                                    image={LaptopPic}
                                     alt="random pic"
                                 />
                             </Card>
@@ -132,7 +137,7 @@ function Home() {
                                 padding: '0.1em',
                                 justifyContent: 'space-between',
                             }}>
-                                <CardContent className='box 4 content' sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                                <CardContent className='box 4 content' sx={{ height: 284, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
                                     <Typography component="div" variant="h5">
                                         now you’re ready to unleash the beast and commence the house hunt!
                                     </Typography>
@@ -151,7 +156,7 @@ function Home() {
                                 padding: '0.1em',
                                 justifyContent: 'space-between',
                             }}>
-                                <CardContent className='box 1 content' sx={{ height: 76, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                                <CardContent className='box 1 content' sx={{ height: 284, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
                                     <Typography component="div" variant="h5">
                                         an innovative house-hunting tool for the next generation of homebuyers
                                     </Typography>
@@ -169,7 +174,7 @@ function Home() {
                                     component="img"
                                     sx={{ height: 284, padding: '1em 1em 0 1em', objectFit: 'contain' }}
                                     height="10%"
-                                    image="../../house-icon.png"
+                                    image={CinemaPic}
                                     alt="homeVibe logo"
                                 />
                             </Card>
@@ -181,9 +186,11 @@ function Home() {
                                 padding: '0.1em',
                                 justifyContent: 'space-between',
                             }}>
-                                <CardContent className='box 3 content' sx={{ height: 76, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                                <CardContent className='box 3 content' sx={{ height: 284, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
                                     <Typography component="div" variant="h5" sx={{ alignItems: 'center' }}>
                                         three easy steps
+                                        <br></br>
+                                        one two three
                                     </Typography>
                                 </CardContent>
                             </Card>
@@ -199,7 +206,7 @@ function Home() {
                                     component="img"
                                     sx={{ height: 284, padding: '1em 1em 0 1em', objectFit: 'contain' }}
                                     height="10%"
-                                    image="../../house-icon.png"
+                                    image={SearchingPic}
                                     alt="homeVibe logo"
                                 />
                             </Card>
@@ -208,7 +215,6 @@ function Home() {
                     </Grid>
                 </Grid>
                 <Grid>
-                    the end of all the columns and the content and the page really and im going to keep typing forever just so that nothing can ever live here and it will be all alone
                     <Grid item xs={12} className='sign up button'>
                         <Item><Typography variant="h1" style={{ flexGrow: '6' }}>sign up to start vibin'</Typography>
                             <Fab variant="extended" color="info">

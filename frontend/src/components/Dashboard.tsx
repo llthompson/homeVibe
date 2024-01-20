@@ -10,6 +10,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import React, { useEffect, useState } from "react";
 import { PageLayout } from './Page-Layout';
 import HorizontalLinearStepper from './Stepper';
+import PageLogo from '../assets/dashboard-logo2.png'
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -52,7 +53,7 @@ const Dashboard = () => {
                             <CardMedia
                                 component="img"
                                 style={{ transform: 'scale(0.75)' }}
-                                image="../../dashboard-logo2.png"
+                                image={PageLogo}
                                 alt="page-header-dashboard"
                             />
                         </Card>
