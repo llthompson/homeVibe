@@ -1,6 +1,7 @@
 //frontend/src/components/Home.tsx
 
 import React, { useEffect, useState } from 'react';
+import { useAuth0 } from "@auth0/auth0-react";
 import { useTheme } from '@mui/system';
 import { Card, CardMedia, Typography, CardContent } from '@mui/material';
 import Container from '@mui/material/Container';
@@ -11,14 +12,11 @@ import Fab from '@mui/material/Fab';
 import NavigationIcon from '@mui/icons-material/Navigation';
 import { Link } from 'react-router-dom';
 import { PageLayout } from './Page-Layout';
+import SillyIcons from './SillyIcons'
 import SearchingPic from '../assets/searching.jpg';
 import CinemaPic from '../assets/cinema.jpg';
 import LaptopPic from '../assets/laptop.jpg';
 import CoolnessPic from '../assets/coolness.jpg'
-
-// import Box from '@mui/material/Box';
-// import { Image } from '@mui/icons-material';
-// import Button from '@mui/material/Button';
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -32,7 +30,8 @@ const Item = styled(Paper)(({ theme }) => ({
 
 function Home() {
     const theme = useTheme();
-    // const [features, setFeatures] = useState([])
+    const { loginWithRedirect } = useAuth0();
+
 
     return (
 
@@ -80,11 +79,12 @@ function Home() {
 
                 {/* MAIN CONTAINER FOR CONTENT COLUMNS */}
                 <Grid container>
-                    <Grid item direction={'column'} xs={6}  >
+                    <Grid item direction={'column'} xs={12} sm={6} md={6} lg={6}
+                    >
                         {/* FIRST COLUMN */}
 
                         <Grid item xs={12} className='first section image'>
-                            <Card className='home-image-cards'>
+                            <Card className='home-image-cards' sx={{ boxShadow: 'none' }}>
                                 <CardMedia className='home-image-style'
                                     component="img"
                                     sx={{ objectFit: 'contain' }}
@@ -97,7 +97,7 @@ function Home() {
                             </Card>
                         </Grid>
                         <Grid item xs={12} className='second section content'>
-                            <Card className='home-wordy-cards-style' >
+                            <Card className='home-wordy-cards-style' sx={{ boxShadow: 'none' }} >
                                 <CardContent className='home-card-content-style' >
                                     <Typography variant="h5">
                                         effortlessly mix and match your dream home features into a convenient wishlist
@@ -106,7 +106,7 @@ function Home() {
                             </Card>
                         </Grid>
                         <Grid item xs={12} className='third section image'>
-                            <Card className='home-image-cards'>
+                            <Card className='home-image-cards' sx={{ boxShadow: 'none' }}>
                                 <CardMedia className='home-image-style'
                                     component="img"
                                     sx={{ objectFit: 'contain' }}
@@ -119,7 +119,7 @@ function Home() {
                             </Card>
                         </Grid>
                         <Grid item xs={12} className='fourth section content'>
-                            <Card className='home-wordy-cards-style'>
+                            <Card className='home-wordy-cards-style' sx={{ boxShadow: 'none' }}>
                                 <CardContent className='home-card-content-style' >
                                     <Typography variant="h5">
                                         now you’re ready to unleash the beast and commence the house hunt!
@@ -130,10 +130,10 @@ function Home() {
 
                     </Grid>
                     {/* SECOND COLUMN */}
-                    <Grid item direction={'column'} xs={6}  >
+                    <Grid item direction={'column'} xs={12} sm={6} md={6} lg={6}  >
 
                         <Grid item xs={12} className='first section content'>
-                            <Card className='home-wordy-cards-style'>
+                            <Card className='home-wordy-cards-style' sx={{ boxShadow: 'none' }}>
                                 <CardContent className='home-card-content-style' >
                                     <Typography variant="h5">
                                         an innovative house-hunting tool for the next generation of homebuyers
@@ -142,7 +142,7 @@ function Home() {
                             </Card>
                         </Grid>
                         <Grid item xs={12} className='second section image'>
-                            <Card className='home-image-cards'>
+                            <Card className='home-image-cards' sx={{ boxShadow: 'none' }}>
                                 <CardMedia className='home-image-style'
                                     component="img"
                                     sx={{ objectFit: 'contain' }}
@@ -155,18 +155,17 @@ function Home() {
                             </Card>
                         </Grid>
                         <Grid item xs={12} className='third section content'>
-                            <Card className='home-wordy-cards-style'>
+                            <Card className='home-wordy-cards-style here-is-a-third-content-style' sx={{ boxShadow: 'none', marginLeft: '30' }}>
                                 <CardContent className='home-card-content-style' >
-                                    <Typography variant="h5">
-                                        three easy steps
-                                        <br></br>
-                                        one two three
+                                    <Typography variant="h5" >
+                                        three easy steps:
                                     </Typography>
+                                    <SillyIcons></SillyIcons>
                                 </CardContent>
                             </Card>
                         </Grid>
                         <Grid item xs={12} className='fourth section image'>
-                            <Card className='home-image-cards'>
+                            <Card className='home-image-cards' sx={{ boxShadow: 'none' }}>
                                 <CardMedia className='home-image-style'
                                     component="img"
                                     sx={{ objectFit: 'contain' }}
@@ -182,9 +181,13 @@ function Home() {
                     </Grid>
                 </Grid>
                 <Grid>
-                    <Grid item xs={12} className='sign up button'>
-                        <Item><Typography variant="h1" style={{ flexGrow: '6' }}>sign up to start vibin'</Typography>
-                            <Fab variant="extended" color="info">
+                    <Grid item xs={12} className='sign up button' sx={{ boxShadow: 'none' }}>
+                        <Item sx={{ boxShadow: 'none' }}><Typography variant="h3" style={{ flexGrow: '6' }}>sign up to start vibin'</Typography>
+                            <Fab variant="extended" color="secondary" onClick={() => loginWithRedirect({
+                                authorizationParams: {
+                                    screen_hint: "signup"
+                                }
+                            })}>
                                 <NavigationIcon sx={{ mr: 1 }} />
                                 <Typography variant="h4" style={{ flexGrow: '6' }}>
                                     SIGN UP

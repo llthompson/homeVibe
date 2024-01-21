@@ -39,46 +39,36 @@
   display: none;
 }
 
-.MuiBox-root.css-2royc9 {
-  padding: 0px;
-  margin: 5px;
-}
 
 .nav-bar-buttons {
-  /* height: 100px; */
   display: flex;
-  /* text-transform: capitalize; */
-  /* font-weight: 700; */
-  /* width: 150px; */
-  /* padding: 0 100px; */
-  /* margin-left: 500px; */
-  /* margin-right: 500px; */
-  /* font-size: 60px; */
 }
 
 .nav-bar-buttons-text {
   padding-left: 10px;
   padding-right: 10px;
-  /* font-weight: 700; */
-  /* text-transform: capitalize; */
-  /* font-size: 18px; */
-  /* margin-bottom: 30px; */
   white-space: nowrap;
 }
 
 .home-image-cards {
   display: flex;
-  margin: 0 auto;
+  margin: 3px;
   padding: 0.1em;
   flex-direction: column;
   align-items: center;
+  box-shadow: none;
+  /* border: 3px outset #ca05a9d8;
+  border-radius: 18px !important; */
 }
 
 .home-wordy-cards-style {
   display: flex;
-  margin: 0 auto;
+  margin: 3px;
   padding: 0.1em;
   justify-content: space-between;
+  box-shadow: none;
+  /* border: 3px outset #ca05a9;
+  border-radius: 18px !important; */
 }
 
 .home-image-style {
@@ -95,9 +85,18 @@
   margin-left: 50px;
   margin-right: 50px;
   justify-content: center;
-  height: 200px;
+  height: 174px;
   flex-direction: column;
   align-items: center;
+  box-shadow: none;
+  text-align: center;
+  color: #8d008d;
+}
+
+
+.here-is-a-third-content-style {
+  margin-left: 80px !important;
+  background-color: aqua;
 }
 
 /* .css-46bh2p-MuiCardContent-root {
