@@ -13,7 +13,7 @@ import { PageLayout } from './Page-Layout';
 import PageLogo from '../assets/learn-more-logo2.png'
 
 
-// TODO finish out page and delete the rest
+// TODO add more page content then delete the rest
 
 // mui setup
 const Item = styled(Paper)(({ theme }) => ({

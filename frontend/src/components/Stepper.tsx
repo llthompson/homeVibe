@@ -22,6 +22,7 @@ import { Link } from 'react-router-dom';
 
 
 // TODO delete unused code (there's a bunch)
+// TODO the feature list UI is ugly, need to fix
 
 const steps = ['Select standard home features', 'Select advanced home features', 'Create your own custom features'];
 

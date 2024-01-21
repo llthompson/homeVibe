@@ -23,6 +23,8 @@ import React from 'react';
 import PageLogo from '../assets/features-logo2.png'
 
 
+// TODO the feature list UI is ugly, need to fix
+
 // Mui setup
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
