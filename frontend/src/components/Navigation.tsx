@@ -13,6 +13,10 @@ import { Image } from '@mui/icons-material';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
 
+// TODO hide menu items from unauthenticated users
+// TODO switch menu navigation on small screens
+// TODO cleanup unused code, add comments
+
 const Navigation = () => {
     const theme = useTheme();
     const {

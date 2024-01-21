@@ -14,6 +14,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import useStore, { Feature } from '../state';
 
 
+// TODO cleanup unused code, write comments
 
 export default function CreateFeatureDialog() {
     const [open, setOpen] = React.useState(false);
@@ -31,7 +32,7 @@ export default function CreateFeatureDialog() {
 
     return (
         <React.Fragment>
-            <Card
+            <Card className='big-card'
                 sx={{
                     minWidth: '100%'
                 }}>
@@ -42,7 +43,7 @@ export default function CreateFeatureDialog() {
                         '& .MuiTextField-root': { m: 1, display: 'flex', },
                     }}
                     noValidate>
-                    <CardContent
+                    <CardContent className='card-to-create-custom-feature'
                         sx={{
                             display: 'flex',
                             flexDirection: 'row',
@@ -52,7 +53,7 @@ export default function CreateFeatureDialog() {
                         <Typography
                             variant="h6"
                             gutterBottom>
-                            <TextField
+                            <TextField className='custom-feature-text-field'
                                 id="outlined-helperText"
                                 label="Your Custom Feature"
                                 defaultValue=""
@@ -68,8 +69,7 @@ export default function CreateFeatureDialog() {
                                 }}
                             />
                         </Typography>
-                        <Button
-                            className='custom-feature-submit-button'
+                        <Button className='custom-feature-submit-button'
                             size="medium"
                             variant="contained"
                             color="secondary"
@@ -86,7 +86,6 @@ export default function CreateFeatureDialog() {
                                 }
                             }
                         >
-
                             <Typography
                                 style={{
                                     fontSize: '18px',

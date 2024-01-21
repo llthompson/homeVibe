@@ -5,6 +5,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { useTheme } from '@mui/system';
 import { Typography, Button } from "@mui/material";
 
+
 const LoginButton = () => {
     const { loginWithRedirect } = useAuth0();
 

@@ -19,7 +19,6 @@ export const Auth0ProviderWithNavigate = ({
     const audience = process.env.REACT_APP_AUTH0_AUDIENCE;
 
     const onRedirectCallback = (appState?: AppState) => {
-        console.log('redirecting to nowheerre', window.location.pathname)
         navigate(appState?.returnTo || window.location.pathname);
     };
 

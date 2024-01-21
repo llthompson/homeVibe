@@ -21,6 +21,8 @@ import { useShallow } from 'zustand/react/shallow'
 import { Link } from 'react-router-dom';
 
 
+// TODO delete unused code (there's a bunch)
+
 const steps = ['Select standard home features', 'Select advanced home features', 'Create your own custom features'];
 
 export default function HorizontalLinearStepper() {
@@ -66,7 +68,6 @@ export default function HorizontalLinearStepper() {
 
     const handleComplete = () => {
 
-
     };
 
     const handleReset = () => {
@@ -74,6 +75,7 @@ export default function HorizontalLinearStepper() {
         setCompleted({});
     };
 
+    // Rating icon color
     const StyledRating = styled(Rating)({
         '& .MuiRating-iconFilled': {
             color: '#ff6d75',
@@ -83,6 +85,7 @@ export default function HorizontalLinearStepper() {
         },
     });
 
+    // Rating labels
     const labels: { [index: string]: string } = {
         0: '',
         1: 'Not Essential',
@@ -91,7 +94,6 @@ export default function HorizontalLinearStepper() {
         4: 'Very Desirable',
         5: 'Non-Negotiable'
     }
-
 
     // Get features for user
     useEffect(() => {
@@ -108,11 +110,11 @@ export default function HorizontalLinearStepper() {
         getFeatures();
     }, []);
 
-    // Grid data
+    // Logic for pulling in features to rows
     const features = useStore(useShallow(state => state.features))
     const rows = features.map((item: Feature) => ({ id: item.id, feature: item.feature, __check__: false, type: item.type, rating: item.rating }));
 
-    // Feature List/Grid
+    // Table setup, rating logic
     const columns: GridColDef[] = [
         { field: 'id', headerName: 'ID', width: 70, align: 'left', sortable: false },
         { field: 'feature', headerName: 'Feature', width: 200, sortable: false },
@@ -305,6 +307,7 @@ export default function HorizontalLinearStepper() {
             )}
 
             {/* PUT LOGIC IN FOR RETURN PAGE AND NOT RESET */}
+            {/* ACTUALLY I THINK THIS WHOLE THING CAN BE DELETED */}
             {activeStep === steps.length ? (
                 <React.Fragment>
                     <Typography sx={{ mt: 2, mb: 1 }}>
@@ -317,11 +320,11 @@ export default function HorizontalLinearStepper() {
                 </React.Fragment>
             ) : (
 
-                // Step #, Back and Next buttons
+                // Back button, set Step #, Finish button, Next button
                 <React.Fragment>
 
                     <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
-                        <Button
+                        <Button className='back-button-logic'
                             color="inherit"
                             disabled={activeStep === 0}
                             onClick={handleBack}
@@ -339,10 +342,11 @@ export default function HorizontalLinearStepper() {
                             </Typography>
                         </Button>
 
+                        {/* Set Step # */}
                         <Box sx={{ flex: '1 1 auto' }} />
                         {activeStep === steps.length - 1 ? (
 
-                            <Button
+                            <Button className='finish-button-logic'
                                 sx={{ display: 'flex' }}
                                 variant="contained"
                                 color="secondary"
@@ -359,14 +363,13 @@ export default function HorizontalLinearStepper() {
                                             color: '#ffffff'
                                         }}>
                                         Finish
-
                                     </Typography>
-
                                 </Link>
                             </Button>
 
                         ) : (
-                            <Button onClick={handleNext}>
+                            <Button className='next-button-logic'
+                                onClick={handleNext}>
                                 <Typography
                                     style={{
                                         fontSize: '18px',
@@ -379,10 +382,7 @@ export default function HorizontalLinearStepper() {
                                 </Typography>
                             </Button>
                         )}
-
-
                     </Box>
-
                 </React.Fragment>
             )}
         </Box>

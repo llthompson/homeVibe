@@ -1,9 +1,15 @@
+// 
+
 import React, { useState } from 'react';
 import { useTheme } from '@mui/system';
 import IconButton from '@mui/material/IconButton';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
 import { LooksOneRounded, LooksTwoRounded, Looks3Rounded } from '@mui/icons-material';
+
+
+// TODO popup hover doesn't actually work lol
+// TODO cleanup unused code, add comments
 
 const IconRow = () => {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);

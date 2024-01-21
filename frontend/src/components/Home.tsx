@@ -12,13 +12,19 @@ import Fab from '@mui/material/Fab';
 import NavigationIcon from '@mui/icons-material/Navigation';
 import { Link } from 'react-router-dom';
 import { PageLayout } from './Page-Layout';
+import PageLogo from '../assets/homeVibelogo3.png'
 import SillyIcons from './SillyIcons'
 import SearchingPic from '../assets/searching.jpg';
 import CinemaPic from '../assets/cinema.jpg';
 import LaptopPic from '../assets/laptop.jpg';
 import CoolnessPic from '../assets/coolness.jpg'
+// import SearchingPic from '../assets/searchingCROP.jpg';
+// import CinemaPic from '../assets/cinemaCROP.jpg';
+// import LaptopPic from '../assets/laptopCROP.jpeg';
+// import CoolnessPic from '../assets/coolnessCROP.jpg'
 
 
+// mui setup
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
     ...theme.typography.body2,
@@ -27,11 +33,9 @@ const Item = styled(Paper)(({ theme }) => ({
     color: theme.palette.text.secondary,
 }));
 
-
 function Home() {
     const theme = useTheme();
     const { loginWithRedirect } = useAuth0();
-
 
     return (
 
@@ -43,15 +47,15 @@ function Home() {
                         <Card sx={{ maxHeight: 150, boxShadow: ["none"], flexGrow: 2 }}>
                             <CardMedia
                                 component="img"
-                                style={{ transform: 'scale(.75)' }}
-                                image="../../homeVibelogo3.png"
-                                alt="homeVibe logo"
+                                style={{ transform: 'scale(0.75)' }}
+                                image={PageLogo}
+                                alt="page-header-dashboard"
                             />
                         </Card>
                     </Grid>
 
-                    <Grid item xs={12} className='slogan 1'>
-                        <Item sx={{ boxShadow: ["none"] }}>
+                    <Grid item xs={12} className='slogan 1' sx={{ boxShadow: ["none"], paddingBottom: '20' }}>
+                        <Item sx={{ boxShadow: ["none"], paddingBottom: '20' }}>
                             <Typography
                                 variant="h2"
                                 sx={{
@@ -68,6 +72,7 @@ function Home() {
                                         md: 60,
                                         lg: 60
                                     },
+                                    paddingBottom: '20',
                                     color: theme.palette.secondary.main
                                 }}
                             >
@@ -156,7 +161,7 @@ function Home() {
                         </Grid>
                         <Grid item xs={12} className='third section content'>
                             <Card className='home-wordy-cards-style here-is-a-third-content-style' sx={{ boxShadow: 'none', marginLeft: '30' }}>
-                                <CardContent className='home-card-content-style' >
+                                <CardContent className='home-card-content-style here-is-a-third-content-style' >
                                     <Typography variant="h5" >
                                         three easy steps:
                                     </Typography>

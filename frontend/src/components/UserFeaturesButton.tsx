@@ -1,15 +1,14 @@
 //frontend/src/components/login-button.tsx
 
 import React from "react";
-// import { useAuth0 } from "@auth0/auth0-react";
 import { useTheme } from '@mui/system';
 import { Typography, Button } from "@mui/material";
 import { Link } from "react-router-dom";
 
 
+// TODO DELETE WHOLE FILE, tried something didn't work lol
 
 const UserFeaturesButton = () => {
-    // const { loginWithRedirect } = useAuth0();
 
     return (
         <Button className='nav-bar-buttons'

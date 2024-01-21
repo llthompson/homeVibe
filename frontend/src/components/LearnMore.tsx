@@ -10,8 +10,12 @@ import Fab from '@mui/material/Fab';
 import NavigationIcon from '@mui/icons-material/Navigation';
 import { Link } from 'react-router-dom';
 import { PageLayout } from './Page-Layout';
+import PageLogo from '../assets/learn-more-logo2.png'
 
 
+// TODO finish out page and delete the rest
+
+// mui setup
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
     ...theme.typography.body2,
@@ -33,8 +37,8 @@ const LearnMore = () => {
                             <CardMedia
                                 component="img"
                                 style={{ transform: 'scale(0.75)' }}
-                                image="../../learn-more-logo2.png"
-                                alt="page-header-learn-more"
+                                image={PageLogo}
+                                alt="page-header-dashboard"
                             />
                         </Card>
                     </Grid>
@@ -58,12 +62,7 @@ const LearnMore = () => {
                             padding: "0.1em",
                         }}>
                             <CardContent className='empty box 1 content' sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                                <CardMedia
-                                    component="img"
-                                    style={{ transform: 'scale(0.75)' }}
-                                    image="../../homeVibelogo2transparenticon.png"
-                                    alt="page-header-learn-more"
-                                />
+                                No content
                             </CardContent>
                         </Card>
                     </Grid>
@@ -84,7 +83,7 @@ const LearnMore = () => {
                         </Card>
                     </Grid>
 
-                    <Grid item xs={6} className='third empty box'>
+                    <Grid item xs={6} className='homeVibe funny text'>
                         <Card sx={{
                             display: 'flex',
                             margin: "0 auto",

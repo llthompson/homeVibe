@@ -20,8 +20,10 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { GridApi } from '@mui/x-data-grid';
 import { useShallow } from 'zustand/react/shallow';
 import React from 'react';
+import PageLogo from '../assets/features-logo2.png'
 
 
+// Mui setup
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
     ...theme.typography.body2,
@@ -30,6 +32,7 @@ const Item = styled(Paper)(({ theme }) => ({
     color: theme.palette.text.secondary,
 }));
 
+// Rating icon color
 const StyledRating = styled(Rating)({
     '& .MuiRating-iconFilled': {
         color: '#ff6d75',
@@ -41,10 +44,10 @@ const StyledRating = styled(Rating)({
 
 const Features = () => {
     const theme = useTheme();
-    // const [features, setFeatures] = useState([])
     const { getAccessTokenSilently } = useAuth0();
     const [hover, setHover] = React.useState<{ [id: number]: number | null }>({});
 
+    // Rating labels
     const labels: { [index: string]: string } = {
         0: '',
         1: 'Not Essential',
@@ -69,9 +72,11 @@ const Features = () => {
         getFeatures();
     }, []);
 
+    // Logic for pulling in features to rows
     const features = useStore(useShallow(state => state.features.filter(f => f.rating != 0 || f.type === 'CUSTOM')))
     const rows = features.map((item: Feature) => ({ id: item.id, feature: item.feature, __check__: false, type: item.type, rating: item.rating }));
 
+    // Table setup, rating logic
     const columns: GridColDef[] = [
         { field: 'id', headerName: 'ID', width: 70, align: 'left', sortable: true },
         { field: 'feature', headerName: 'Feature', width: 230, sortable: true },
@@ -148,20 +153,18 @@ const Features = () => {
         },
     ];
 
-
-
     return (
-
         <PageLayout>
             <Container >
                 <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+
                     <Grid item xs={12} className='page-header'>
                         <Card sx={{ maxHeight: 150, boxShadow: ["none"] }}>
                             <CardMedia
                                 component="img"
                                 style={{ transform: 'scale(0.75)' }}
-                                image="../../features-logo2.png"
-                                alt="page-header-features"
+                                image={PageLogo}
+                                alt="page-header-dashboard"
                             />
                         </Card>
                     </Grid>
@@ -187,10 +190,11 @@ const Features = () => {
                         </Item>
                     </Grid>
 
-                    <Grid item xs={12} className='pointless button'>
-                        <Item><Typography variant="h1" style={{ flexGrow: '6' }}>nothing to see here</Typography>
+                    <Grid item xs={12} className='just a section'>
+                        <Item><Typography variant="h1" style={{ flexGrow: '6' }}>now that's a vibe</Typography>
                         </Item>
                     </Grid>
+
                 </Grid>
             </Container >
         </PageLayout>
