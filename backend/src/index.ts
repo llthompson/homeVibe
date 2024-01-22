@@ -21,6 +21,12 @@ app.use(bodyParser.json())
 app.use('/api/auth', authRouter)
 app.use('/api/feature', featureRouter)
 
+app.get('/', (req, res) => {
+  res.json({
+    message: 'You up?'
+
+  })
+})
 app.listen(port, () => {
   console.log(`[server]: We're chillin' at port http://localhost:8000`);
 });
