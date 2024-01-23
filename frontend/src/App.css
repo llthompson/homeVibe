@@ -39,8 +39,9 @@
   display: none;
 }
 
-/* .MuiPaper-root>h2 {
+/* .MuiPaper-root  {
   background-color: chartreuse !important;
+  box-shadow: none !important;
   padding-bottom: 0;
 } */
 
