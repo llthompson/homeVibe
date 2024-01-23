@@ -15,7 +15,7 @@ const IconRow = () => {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const [selectedIcon, setSelectedIcon] = useState<string | null>(null);
 
-    const handleMouseEnter = (event: React.MouseEvent<HTMLElement>, icon: string) => {
+    const handleMouseEnter = (event: React.MouseEvent<HTMLElement>, icon: string | null) => {
         setAnchorEl(event.currentTarget);
         setSelectedIcon(icon);
     };
@@ -55,6 +55,8 @@ const IconRow = () => {
                 open={open}
                 anchorEl={anchorEl}
                 onClose={handleMouseLeave}
+                onMouseEnter={(e) => handleMouseEnter(e, selectedIcon)}
+                onMouseLeave={handleMouseLeave}
                 anchorOrigin={{
                     vertical: 'bottom',
                     horizontal: 'center',
@@ -65,11 +67,12 @@ const IconRow = () => {
                 }}
             >
                 <Typography>
-                    {selectedIcon === 'star' && 'rate standard home features'}
-                    {selectedIcon === 'thumbs-up' && 'rate advanced home features'}
-                    {selectedIcon === 'checkmark' && 'add and rate custom features'}
+                    {selectedIcon === 'star' && 'rate home features'}
+                    {selectedIcon === 'thumbs-up' && 'create custom home features'}
+                    {selectedIcon === 'checkmark' && 'get your personalized list!'}
                 </Typography>
             </Popover>
+
         </div>
     );
 };

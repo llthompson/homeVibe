@@ -14,16 +14,13 @@ dotenv.config();
 const app: Express = express();
 const port = process.env.PORT || 8000;
 
-app.use(cors({
-  origin: 'http://localhost:3000'
-}));
+app.use(cors());
 app.use(bodyParser.json())
 app.use('/api/auth', authRouter)
 app.use('/api/feature', featureRouter)
-
 app.get('/', (req, res) => {
   res.json({
-    message: 'You up?'
+    message: 'The server is up!'
 
   })
 })

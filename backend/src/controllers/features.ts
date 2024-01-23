@@ -48,15 +48,17 @@ function mapToRating(numberValue: number): Rating | null {
 
 
 export const saveFeaturesByUser = async (req: any, res: Response) => {
-
+    console.log('starting log to debug')
     const user = await db.user.findFirst({
         where: {
             auth0ID: req.auth.payload.sub
         }
     })
+    console.log('logging da user', user)
     const rating = mapToRating(req.body.rating)
-
+    console.log('logging da rating', rating)
     if (user) {
+        console.log('is it getting to this part')
         const savedFeatures = await db.savedFeature.upsert({
             where: {
                 featureId_userId: {

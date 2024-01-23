@@ -9,4 +9,4 @@ docker pull 654654435264.dkr.ecr.us-east-2.amazonaws.com/$DOCKER_IMAGE_NAME:late
 # Restart Docker container on EC2 instance
 echo "Restarting Docker container on EC2 instance..."
 docker stop $DOCKER_IMAGE_NAME && docker rm $DOCKER_IMAGE_NAME
-docker run -d --name $DOCKER_IMAGE_NAME -p 80:8000 654654435264.dkr.ecr.us-east-2.amazonaws.com/$DOCKER_IMAGE_NAME:latest
+docker run -d --restart always --name $DOCKER_IMAGE_NAME -p 80:8000 654654435264.dkr.ecr.us-east-2.amazonaws.com/$DOCKER_IMAGE_NAME:latest
