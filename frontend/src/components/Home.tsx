@@ -1,6 +1,5 @@
 //frontend/src/components/Home.tsx
 
-import React, { useEffect, useState } from 'react';
 import { useAuth0 } from "@auth0/auth0-react";
 import { useTheme } from '@mui/system';
 import { Card, CardMedia, Typography, CardContent } from '@mui/material';
@@ -10,10 +9,8 @@ import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import Fab from '@mui/material/Fab';
 import NavigationIcon from '@mui/icons-material/Navigation';
-import { Link } from 'react-router-dom';
 import { PageLayout } from './Page-Layout';
 import PageLogo from '../assets/homeVibelogo3.png'
-import SillyIcons from './SillyIcons'
 import SearchingPic from '../assets/searching.jpg';
 import CinemaPic from '../assets/cinema.jpg';
 import LaptopPic from '../assets/laptop.jpg';

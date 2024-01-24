@@ -1,8 +1,6 @@
 //frontend/src/components/login-button.tsx
 
-import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import { useTheme } from '@mui/system';
 import { Typography, Button } from "@mui/material";
 
 

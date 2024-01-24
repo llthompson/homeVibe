@@ -8,8 +8,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import useStore from '../state';
 
 
-export default function CreateFeatureDialog() {
-    const [open, setOpen] = React.useState(false);
+export default function CreateFeatureForm() {
     const { getAccessTokenSilently } = useAuth0();
     const [userFeature, setUserFeature] = useState('')
 

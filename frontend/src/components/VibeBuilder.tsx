@@ -7,7 +7,7 @@ import { styled } from '@mui/material/styles';
 import { useTheme } from '@mui/system';
 import Paper from '@mui/material/Paper';
 import { useAuth0 } from "@auth0/auth0-react";
-import React, { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { PageLayout } from './Page-Layout';
 import HorizontalLinearStepper from './Stepper';
 import PageLogo from '../assets/builderlogo.png'

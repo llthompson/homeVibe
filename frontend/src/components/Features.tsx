@@ -1,6 +1,6 @@
 // frontend/src/components/Features.tsx
 
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Card, CardMedia, Typography, CardContent } from '@mui/material';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
@@ -12,12 +12,10 @@ import Box from '@mui/material/Box';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import Rating from '@mui/material/Rating';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import { Link } from 'react-router-dom';
 import { PageLayout } from './Page-Layout';
 import * as apiService from '../services/Api'
 import useStore, { Feature } from '../state';
 import { useAuth0 } from "@auth0/auth0-react";
-import { GridApi } from '@mui/x-data-grid';
 import { useShallow } from 'zustand/react/shallow';
 import React from 'react';
 import PageLogo from '../assets/features-logo2.png'

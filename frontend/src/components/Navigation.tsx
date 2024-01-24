@@ -1,16 +1,14 @@
 // frontend/src/components/Navigation.js
 
 import React from 'react';
-import { AppBar, Toolbar, Typography, List, ListItem, Link as RouterLink } from '@mui/material';
+import { AppBar, Toolbar, Typography, List, ListItem } from '@mui/material';
 import { Link } from 'react-router-dom';
-import { useTheme, shadows, Container } from '@mui/system';
+import { useTheme, Container } from '@mui/system';
 import LoginButton from './LoginButton';
 import { useAuth0 } from '@auth0/auth0-react';
 import LogoutButton from './LogoutButton';
 import SignUpButton from './SignUpButton';
 import MiniLogo from '../assets/homeVibelogo2transparenticon.png'
-import { Image } from '@mui/icons-material';
-import useMediaQuery from '@mui/material/useMediaQuery';
 
 
 // FUTURE.ENHANCEMENTS on mobile, change smaller nav links to menu icon
@@ -20,14 +18,6 @@ const Navigation = () => {
     const {
         isAuthenticated
     } = useAuth0();
-    const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-    const open = Boolean(anchorEl);
-    const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-        setAnchorEl(event.currentTarget);
-    };
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
 
     return (
         <AppBar position="sticky">

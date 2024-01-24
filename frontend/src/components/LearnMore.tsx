@@ -1,10 +1,10 @@
 // frontend/src/components/LearnMore.tsx
 
-import { Card, CardMedia, Typography, CardContent, Button } from '@mui/material';
+import { Card, CardMedia, Typography, CardContent } from '@mui/material';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import { styled } from '@mui/material/styles';
-import { display, useTheme } from '@mui/system';
+import { useTheme } from '@mui/system';
 import Paper from '@mui/material/Paper';
 import Fab from '@mui/material/Fab';
 import NavigationIcon from '@mui/icons-material/Navigation';
