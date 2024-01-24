@@ -46,6 +46,7 @@ services:
       - "8000:8000"
     networks:
       - homevibe
+    restart: always
   app:
     build:
       context: ./frontend
@@ -54,3 +55,4 @@ services:
       - ./frontend:/app
     ports:
       - "3000:3000"
+    restart: always

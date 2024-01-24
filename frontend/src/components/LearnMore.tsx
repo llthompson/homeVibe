@@ -14,8 +14,6 @@ import PageLogo from '../assets/learn-more-logo2.png'
 import { useAuth0 } from "@auth0/auth0-react";
 
 
-// TODO code cleanup
-// FUTURE.ENHANCEMENTS make it DRY
 // FUTURE.ENHANCEMENTS conditionally render sign up button - change to "get started" and redirect to VibeBuilder when authenticated
 
 // mui setup
@@ -47,14 +45,12 @@ const LearnMore = () => {
                         </Card>
                     </Grid>
 
-
                     <Grid item xs={10} className='content tile' sx={{ boxShadow: ["none"], margin: '0', padding: '0' }}>
                         <Card className='learn-more-cards' sx={{ boxShadow: ["none"], margin: '0', padding: '0' }}>
                             <Item><Typography variant="h3" style={{ flexGrow: '1', margin: '0' }}>homeVibe:
                                 <br></br>
                                 the G.O.A.T. house hunting tool</Typography></Item>
                         </Card>
-
                     </Grid>
 
 
@@ -87,6 +83,7 @@ const LearnMore = () => {
                             </CardContent>
                         </Card>
                     </Grid>
+
                     <Grid item xs={12} className='sigup'>
                         <Item sx={{ boxShadow: 'none' }}><Typography variant="h3" style={{ flexGrow: '6' }}>sign up to start vibin'</Typography>
                             <Fab variant="extended" color="secondary" onClick={() => loginWithRedirect({
@@ -101,6 +98,7 @@ const LearnMore = () => {
                             </Fab>
                         </Item>
                     </Grid>
+
                     <Grid item xs={10} className='content tile' sx={{ boxShadow: ["none"], marginTop: 0, marginBottom: 0, padding: 0 }}>
                         <Card className='learn-more-cards' sx={{ boxShadow: ["none"] }}>
                             <Item><Typography variant="h4" style={{ flexGrow: '1', marginTop: '40px', marginBottom: 0, padding: 0 }}>
@@ -125,6 +123,7 @@ const LearnMore = () => {
                             </Typography>
                         </CardContent>
                     </Grid>
+
                 </Grid>
             </Container>
         </PageLayout>

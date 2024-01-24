@@ -23,7 +23,6 @@ import React from 'react';
 import PageLogo from '../assets/features-logo2.png'
 
 
-
 // Mui setup
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',

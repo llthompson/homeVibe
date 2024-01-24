@@ -22,9 +22,8 @@ import { Link } from 'react-router-dom';
 
 
 // TODO delete unused code (there's a bunch)
-// Reword the steps, it's confusing
 
-const steps = ['Select standard home features', 'Select advanced home features', 'Create your own custom features'];
+const steps = ['standard home features', 'advanced home features', 'custom home features'];
 
 export default function HorizontalLinearStepper() {
     const theme = useTheme();
@@ -46,10 +45,6 @@ export default function HorizontalLinearStepper() {
     const isLastStep = () => {
         return activeStep === totalSteps() - 1;
     };
-
-    // const allStepsCompleted = () => {
-    //     return completedSteps() === totalSteps();
-    // };
 
     const handleNext = () => {
         if (isLastStep()) {
@@ -114,10 +109,7 @@ export default function HorizontalLinearStepper() {
     // Logic for pulling in features to rows
     const features = useStore(useShallow(state => state.features))
     const rows = features.map((item: Feature) => ({ id: item.id, feature: item.feature, __check__: false, type: item.type, rating: item.rating }));
-
     const isSmallScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'));
-
-
     const [columnVisibilityModel, setColumnVisibilityModel] = React.useState({
         // Initially hide id and type on smaller screens
         id: isSmallScreen ? false : true,
@@ -129,7 +121,6 @@ export default function HorizontalLinearStepper() {
     const handleColumnVisibilityModelChange = (newModel: any) => {
         setColumnVisibilityModel(newModel);
     };
-
 
     // Table setup, rating logic
     const columns: GridColDef[] = [
@@ -240,7 +231,7 @@ export default function HorizontalLinearStepper() {
                             color: theme.palette.info.dark,
                             fontWeight: 500,
                         }}>
-                            Step {activeStep + 1}: Select Standard Features
+                            Step {activeStep + 1}: Rate Standard Features
                         </Typography>
 
                         <div style={{ height: '360px', width: '100%' }}>
@@ -269,7 +260,7 @@ export default function HorizontalLinearStepper() {
                             color: theme.palette.info.dark,
                             fontWeight: 500,
                         }}>
-                            Step {activeStep + 1}: Select Advanced Features
+                            Step {activeStep + 1}: Rate Advanced Features
                         </Typography>
                         <div style={{ height: '360px', width: '100%' }}>
                             <DataGrid
@@ -312,7 +303,7 @@ export default function HorizontalLinearStepper() {
                             color: theme.palette.info.dark,
                             fontWeight: 500,
                         }}>
-                            Custom Features
+                            Rate Your Custom Features
                         </Typography>
 
                         <div style={{ height: 260, width: '100%' }}>
@@ -338,7 +329,6 @@ export default function HorizontalLinearStepper() {
 
                 // Back button, set Step #, Finish button, Next button
                 <React.Fragment>
-
                     <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2, paddingTop: 0 }}>
                         <Button className='back-button-logic'
                             color="inherit"

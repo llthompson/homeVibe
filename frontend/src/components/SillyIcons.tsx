@@ -8,8 +8,7 @@ import Typography from '@mui/material/Typography';
 import { LooksOneRounded, LooksTwoRounded, Looks3Rounded } from '@mui/icons-material';
 
 
-// TODO popup hover doesn't actually work lol
-// TODO cleanup unused code, add comments
+// TODO DELETE WHOLE FILE, tried something didn't work lol
 
 const IconRow = () => {
 

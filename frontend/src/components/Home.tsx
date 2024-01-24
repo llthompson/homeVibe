@@ -21,7 +21,6 @@ import CoolnessPic from '../assets/coolness.jpg'
 import { LooksOneRounded, LooksTwoRounded, Looks3Rounded } from '@mui/icons-material';
 
 
-// TODO code cleanup
 // FUTURE.ENHANCEMENTS change order of grid items on mobile
 
 // mui setup
@@ -101,6 +100,7 @@ function Home() {
                                 </Typography>
                             </Card>
                         </Grid>
+
                         <Grid item xs={12} className='second section content'>
                             <Card className='home-wordy-cards-style' sx={{ boxShadow: 'none' }} >
                                 <CardContent className='home-card-content-style' >
@@ -110,6 +110,7 @@ function Home() {
                                 </CardContent>
                             </Card>
                         </Grid>
+
                         <Grid item xs={12} className='third section image'>
                             <Card className='home-image-cards' sx={{ boxShadow: 'none' }}>
                                 <CardMedia className='home-image-style'
@@ -123,6 +124,7 @@ function Home() {
                                 </Typography>
                             </Card>
                         </Grid>
+
                         <Grid item xs={12} className='fourth section content'>
                             <Card className='home-wordy-cards-style' sx={{ boxShadow: 'none' }}>
                                 <CardContent className='home-card-content-style' >
@@ -146,6 +148,7 @@ function Home() {
                                 </CardContent>
                             </Card>
                         </Grid>
+
                         <Grid item xs={12} className='second section image'>
                             <Card className='home-image-cards' sx={{ boxShadow: 'none' }}>
                                 <CardMedia className='home-image-style'
@@ -159,13 +162,13 @@ function Home() {
                                 </Typography>
                             </Card>
                         </Grid>
+
                         <Grid item xs={12} className='third section content'>
                             <Card className='home-wordy-cards-style here-is-a-third-content-style' sx={{ boxShadow: 'none', marginLeft: '30' }}>
                                 <CardContent className='home-card-content-style here-is-a-third-content-style' >
                                     <Typography variant="h5" >
                                         three easy steps:
                                     </Typography>
-
                                     <Typography variant='body1'>
                                         <span style={{ display: 'flex', alignItems: 'center', flexDirection: 'row', paddingLeft: 10 }}>
                                             <LooksOneRounded />
@@ -183,6 +186,7 @@ function Home() {
                                 </CardContent>
                             </Card>
                         </Grid>
+
                         <Grid item xs={12} className='fourth section image'>
                             <Card className='home-image-cards' sx={{ boxShadow: 'none' }}>
                                 <CardMedia className='home-image-style'
@@ -196,9 +200,9 @@ function Home() {
                                 </Typography>
                             </Card>
                         </Grid>
-
                     </Grid>
                 </Grid>
+
                 <Grid>
                     <Grid item xs={12} className='sign up button' sx={{ boxShadow: 'none' }}>
                         <Item sx={{ boxShadow: 'none' }}><Typography variant="h3" style={{ flexGrow: '6' }}>sign up to start vibin'</Typography>
@@ -215,6 +219,7 @@ function Home() {
                         </Item>
                     </Grid>
                 </Grid>
+
             </Container>
         </PageLayout >
     );

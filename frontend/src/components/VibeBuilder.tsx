@@ -1,4 +1,4 @@
-// frontend/src/components/Dashboard.tsx
+// frontend/src/components/VibeBuilder.tsx
 
 import { Card, CardMedia } from '@mui/material';
 import Container from '@mui/material/Container';
@@ -12,9 +12,7 @@ import { PageLayout } from './Page-Layout';
 import HorizontalLinearStepper from './Stepper';
 import PageLogo from '../assets/builderlogo.png'
 
-// TODO change all instances of DASHBOARD to VIBE BUILDER
-// TODO code cleanup
-// FUTURE.ENHANCEMENTS change stepper navigation on mobile
+// FUTURE.ENHANCEMENTS on mobile, simplify stepper navigation
 
 // mui setup
 const Item = styled(Paper)(({ theme }) => ({
@@ -25,11 +23,11 @@ const Item = styled(Paper)(({ theme }) => ({
     color: theme.palette.text.secondary,
 }));
 
-const Dashboard = () => {
+const VibeBuilder = () => {
     const theme = useTheme();
     const { getAccessTokenSilently } = useAuth0();
 
-    // user authentication
+    // User authentication
     useEffect(() => {
         let isMounted = true;
         const getMessage = async () => {
@@ -56,7 +54,7 @@ const Dashboard = () => {
                                 component="img"
                                 style={{ transform: 'scale(0.75)' }}
                                 image={PageLogo}
-                                alt="page-header-dashboard"
+                                alt="page-header-VibeBuilder"
                             />
                         </Card>
                     </Grid>
@@ -71,4 +69,4 @@ const Dashboard = () => {
     );
 };
 
-export default Dashboard;
+export default VibeBuilder;

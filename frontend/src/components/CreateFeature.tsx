@@ -1,15 +1,12 @@
 // frontend/src/components/CreateFeature.tsx
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Box from '@mui/material/Box';
-import { Card, Typography, CardContent, Button } from '@mui/material';
+import { Typography, CardContent, Button } from '@mui/material';
 import TextField from '@mui/material/TextField';
-import * as api from '../services/Api'
 import { useAuth0 } from "@auth0/auth0-react";
-import useStore, { Feature } from '../state';
+import useStore from '../state';
 
-
-// TODO cleanup unused code, write comments
 
 export default function CreateFeatureDialog() {
     const [open, setOpen] = React.useState(false);
