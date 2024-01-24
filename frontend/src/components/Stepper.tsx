@@ -21,7 +21,7 @@ import { useShallow } from 'zustand/react/shallow'
 import { Link } from 'react-router-dom';
 
 
-// TODO delete unused code (there's a bunch)
+// FUTURE.ENHANCEMENTS UI could be improved, especially on mobile
 
 const steps = ['standard home features', 'advanced home features', 'custom home features'];
 
@@ -30,16 +30,12 @@ export default function HorizontalLinearStepper() {
     const { getAccessTokenSilently } = useAuth0();
     const [hover, setHover] = React.useState<{ [id: number]: number | null }>({});
     const [activeStep, setActiveStep] = React.useState(0);
-    const [completed, setCompleted] = React.useState<{
+    const [completed] = React.useState<{
         [k: number]: boolean;
     }>({});
 
     const totalSteps = () => {
         return steps.length;
-    };
-
-    const completedSteps = () => {
-        return Object.keys(completed).length;
     };
 
     const isLastStep = () => {
@@ -64,11 +60,6 @@ export default function HorizontalLinearStepper() {
 
     const handleComplete = () => {
 
-    };
-
-    const handleReset = () => {
-        setActiveStep(0);
-        setCompleted({});
     };
 
     // Rating icon color
@@ -158,7 +149,7 @@ export default function HorizontalLinearStepper() {
                             name={`rating-${id}`}
                             color="secondary"
                             value={rating}
-                            getLabelText={(value: number) => {
+                            getLabelText={() => {
                                 if (hover[id] !== -1) {
                                     return (
                                         `${hover} Heart${hover[id] !== 1 ? "s" : ""}, ${labels[id]} `
@@ -171,7 +162,6 @@ export default function HorizontalLinearStepper() {
                                 if (newValue) {
                                     const accessToken = await getAccessTokenSilently();
                                     useStore.getState().rateFeature(id, newValue, accessToken)
-                                    const feature = useStore.getState().features.find(f => f.id === id)
                                 }
 
                             }}
@@ -204,10 +194,6 @@ export default function HorizontalLinearStepper() {
             {/* Stepper Logic */}
             <Stepper nonLinear={true} activeStep={activeStep} alternativeLabel>
                 {steps.map((label, index) => {
-                    const stepProps: { completed?: boolean } = {};
-                    const labelProps: {
-                        optional?: React.ReactNode;
-                    } = {};
 
                     return (
                         <Step key={label} completed={completed[index]}>
@@ -321,7 +307,7 @@ export default function HorizontalLinearStepper() {
                 </Card>
             )}
 
-            {/* This was a submit feature, now it's nothing but it won't let me delete it lol */}
+            {/* Setup step nav */}
             {activeStep === steps.length ? (
                 <React.Fragment>
                 </React.Fragment>

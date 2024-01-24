@@ -39,12 +39,6 @@
   display: none;
 }
 
-/* .MuiPaper-root  {
-  background-color: chartreuse !important;
-  box-shadow: none !important;
-  padding-bottom: 0;
-} */
-
 .nav-bar-buttons {
   display: flex;
 }
@@ -120,12 +114,6 @@
 .just-a-vibe {
   box-shadow: none !important;
 }
-
-/* @media (max-width: 500px) {
-  .change-box-display-on-small-screen {
-    background-color: crimson;
-  }
-} */
 
 @media screen and (max-width: 800px) {
   .here-is-a-third-content-style {

@@ -1,9 +1,8 @@
 // backend/src/index.ts
 
-import express, { Express, Request, Response } from "express";
+import express, { Express } from "express";
 import bodyParser from 'body-parser';
 import cors from 'cors';
-import db from "./db";
 import authRouter from './routes/auth'
 import featureRouter from "./routes/features";
 import dotenv from "dotenv";

@@ -5,6 +5,9 @@ generator client {
   binaryTargets = ["native", "linux-musl", "debian-openssl-3.0.x"]
 }
 
+// FUTURE.ENHANCEMENTS need to build out the seed data a bit more
+// FUTURE.ENHANCEMENTS and/or create routes to allow modifying the list of standard/advanced features using an API key
+
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
@@ -22,6 +25,7 @@ model User {
   acceptedConnections  UserConnection[] @relation("acceptingUser")
 }
 
+// FUTURE.ENHANCEMENTS add ability to set "number of ____"
 model HomeFeature {
   id             Int            @id @default(autoincrement())
   feature        String
@@ -46,6 +50,7 @@ model SavedFeature {
   @@map("saved_features")
 }
 
+// FUTURE.ENHANCEMENTS all of this... didn't happen here
 model UserConnection {
   id              Int  @id @default(autoincrement())
   initiatingUser  User @relation(fields: [initatingUserId], references: [id], name: "initatingUser")
@@ -62,6 +67,7 @@ enum FeatureType {
   CUSTOM
 }
 
+// Create "alternate/funny" rating systems
 enum Rating {
   NOT_ESSENTIAL
   NICE_BONUS

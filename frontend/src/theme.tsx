@@ -66,8 +66,6 @@ const theme = createTheme({
                     h6: 'h6',
                     subtitle1: 'sub1',
                     subtitle2: 'sub2',
-                    // body1: 'span1',
-                    // body2: 'span2',
                     caption: 'caption',
                 },
             },

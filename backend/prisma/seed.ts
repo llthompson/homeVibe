@@ -1,21 +1,6 @@
 import { PrismaClient, Rating, FeatureType } from '@prisma/client'
 const prisma = new PrismaClient()
 async function main() {
-  // const alice = await prisma.user.create ({
-  //   data: {
-  //     firstName: 'Alice',
-  //     lastName: 'Wonderland',
-  //     email: 'alice@prisma.io'
-  //   },
-  // })
-  // const bob = await prisma.user.create ({
-  //   data: {
-  //   firstName: 'Bob',
-  //   lastName: 'Belcher',
-  //   email: 'bob@prisma.io'
-  //   },
-  // })
-  // console.log({ alice, bob })
 
   const numBed = await prisma.homeFeature.create({
     data: {

@@ -1,6 +1,5 @@
 //Router.js
 
-import React from 'react';
 import { Routes, Route } from 'react-router';
 import Home from './components/Home';
 import LearnMore from './components/LearnMore';

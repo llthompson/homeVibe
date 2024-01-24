@@ -1,13 +1,11 @@
 // 
 
-import { Express, Request, Response } from "express"
+import { Response } from "express"
 import db from "../db"
 import { FeatureType, Rating } from "@prisma/client"
-import { error } from "console"
 
 
 export const createUserFeature = async (req: any, res: Response) => {
-    // console.log('where is my body', req.body)
     const user = await db.user.findFirst({
         where: {
             auth0ID: req.auth.payload.sub
@@ -48,23 +46,19 @@ function mapToRating(numberValue: number): Rating | null {
 
 
 export const saveFeaturesByUser = async (req: any, res: Response) => {
-    console.log('starting log to debug')
     const user = await db.user.findFirst({
         where: {
             auth0ID: req.auth.payload.sub
         }
     })
-    console.log('logging da user', user)
     const rating = mapToRating(req.body.rating)
-    console.log('logging da rating', rating)
+
     if (user) {
-        console.log('is it getting to this part')
         const savedFeatures = await db.savedFeature.upsert({
             where: {
                 featureId_userId: {
                     featureId: req.body.id, userId: user.id
                 }
-
             },
             update: {
                 rating: rating,
@@ -74,20 +68,14 @@ export const saveFeaturesByUser = async (req: any, res: Response) => {
                 rating: rating,
                 userId: user?.id
             },
-
         })
         res.json(savedFeatures)
-
     }
     else {
         throw new Error('')
     }
-
-
-
 }
 
-// change to get global features?
 export const getUserFeatures = async (req: any, res: Response) => {
 
     const user = await db.user.findFirst({

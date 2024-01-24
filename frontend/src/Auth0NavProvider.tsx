@@ -36,7 +36,6 @@ export const Auth0ProviderWithNavigate = ({
             }}
             onRedirectCallback={onRedirectCallback}
         >
-
             {children}
         </Auth0Provider>
     );
