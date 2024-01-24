@@ -4,11 +4,6 @@ import React, { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import { Card, Typography, CardContent, Button } from '@mui/material';
 import TextField from '@mui/material/TextField';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
 import * as api from '../services/Api'
 import { useAuth0 } from "@auth0/auth0-react";
 import useStore, { Feature } from '../state';
@@ -18,131 +13,71 @@ import useStore, { Feature } from '../state';
 
 export default function CreateFeatureDialog() {
     const [open, setOpen] = React.useState(false);
-
-    const handleClickOpen = () => {
-        setOpen(true);
-    };
-
-    const handleClose = () => {
-        setOpen(false);
-    };
-
     const { getAccessTokenSilently } = useAuth0();
     const [userFeature, setUserFeature] = useState('')
 
     return (
         <React.Fragment>
-            <Card className='big-card'
+            <Box
+                component="form"
                 sx={{
-                    minWidth: '100%'
-                }}>
-
-                <Box
-                    component="form"
-                    sx={{
-                        '& .MuiTextField-root': { m: 1, display: 'flex', },
-                    }}
-                    noValidate>
-                    <CardContent className='card-to-create-custom-feature'
-                        sx={{
-                            display: 'flex',
-                            flexDirection: 'row',
-                            justifyContent: 'flex-start',
-                            alignItems: 'center'
-                        }}>
-                        <Typography
-                            variant="h6"
-                            gutterBottom>
-                            <TextField className='custom-feature-text-field'
-                                id="outlined-helperText"
-                                label="Your Custom Feature"
-                                defaultValue=""
-                                helperText=""
-                                value={userFeature}
-
-                                onChange={(event) => {
-                                    setUserFeature(event.target.value)
-                                }
-                                }
-                                sx={{
-                                    width: '700px'
-                                }}
-                            />
-                        </Typography>
-                        <Button className='custom-feature-submit-button'
-                            size="medium"
-                            variant="contained"
-                            color="secondary"
-                            sx={{
-                                display: 'flex'
-                            }}
-                            type="submit"
-                            onClick={
-                                async (e) => {
-                                    e.preventDefault()
-                                    const accessToken = await getAccessTokenSilently();
-                                    useStore.getState().addFeature(userFeature, accessToken)
-                                    setUserFeature('')
-                                }
-                            }
-                        >
-                            <Typography
-                                style={{
-                                    fontSize: '18px',
-                                    marginBottom: 0,
-                                    whiteSpace: 'nowrap'
-                                }}>
-                                Submit
-                            </Typography>
-                        </Button>
-                    </CardContent>
-                </Box>
-            </Card>
-
-
-            <Dialog
-                open={open}
-                onClose={handleClose}
-                PaperProps={{
-                    component: 'form',
-                    onSubmit: async (event: React.FormEvent<HTMLFormElement>) => {
-                        event.preventDefault();
-                        const formData = new FormData(event.currentTarget);
-                        const formJson = Object.fromEntries((formData as any).entries());
-                        const accessToken = await getAccessTokenSilently();
-                        const feature = await api.createUserFeature(accessToken, formJson)
-                        handleClose();
-                    },
+                    '& .MuiTextField-root': { m: 1, display: 'flex', },
                 }}
-            >
-                <DialogTitle>Create a Custom Home Feature</DialogTitle>
-                <DialogContent>
-                    <DialogContentText>
-                        What very specific home feature do you just HAVE to have???
-                    </DialogContentText>
-                    <TextField
-                        autoFocus
-                        required
-                        margin="dense"
-                        id="name"
-                        name="feature"
-                        label="What feature would you like?"
-                        type="string"
-                        fullWidth
-                        variant="standard"
-                    />
-                </DialogContent>
-                <DialogActions>
-                    <Button
-                        onClick={handleClose}>
-                        Cancel
+                noValidate>
+                <CardContent className='card-to-create-custom-feature'
+                    sx={{
+                        display: 'flex',
+                        flexDirection: 'row',
+                        justifyContent: 'flex-start',
+                        alignItems: 'center',
+                        margin: '0',
+                    }}>
+                    <Typography
+                        variant="h6"
+                        gutterBottom>
+                        <TextField className='custom-feature-text-field'
+                            id="outlined-helperText"
+                            label="Your Custom Feature"
+                            defaultValue=""
+                            helperText=""
+                            value={userFeature}
+                            onChange={(event) => {
+                                setUserFeature(event.target.value)
+                            }
+                            }
+                            sx={{
+                                width: '700px'
+                            }}
+                        />
+                    </Typography>
+                    <Button className='custom-feature-submit-button'
+                        size="medium"
+                        variant="contained"
+                        color="secondary"
+                        sx={{
+                            display: 'flex'
+                        }}
+                        type="submit"
+                        onClick={
+                            async (e) => {
+                                e.preventDefault()
+                                const accessToken = await getAccessTokenSilently();
+                                useStore.getState().addFeature(userFeature, accessToken)
+                                setUserFeature('')
+                            }
+                        }
+                    >
+                        <Typography
+                            style={{
+                                fontSize: '18px',
+                                marginBottom: 0,
+                                whiteSpace: 'nowrap'
+                            }}>
+                            Submit
+                        </Typography>
                     </Button>
-                    <Button
-                        type="submit">
-                        Add Custom Feature
-                    </Button>
-                </DialogActions>
-            </Dialog>
+                </CardContent>
+            </Box>
         </React.Fragment>
     );
 }

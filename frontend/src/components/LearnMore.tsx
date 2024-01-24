@@ -4,7 +4,7 @@ import { Card, CardMedia, Typography, CardContent, Button } from '@mui/material'
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import { styled } from '@mui/material/styles';
-import { useTheme } from '@mui/system';
+import { display, useTheme } from '@mui/system';
 import Paper from '@mui/material/Paper';
 import Fab from '@mui/material/Fab';
 import NavigationIcon from '@mui/icons-material/Navigation';
@@ -122,14 +122,14 @@ const LearnMore = () => {
                                     So when it came time to decide on her capstone project to graduate from bootcamp, she knew she had to make the tool she wished she had had – an in depth, fully customizable, home feature rating system to keep track of all the details homebuyers are searching for. And because Lisa can’t do anything without injecting a little flair and creativity, she decided to give it a gen-Z inspired brand identity. homeVibe takes the homebuying process from basic and cray cray to lit and bussin’.
                                     <br />
                                     <br />
-                                    To learn more about Lisa and her coding journey, check out her
+                                    To learn more about Lisa and her coding journey, check out <Link to="https://llthompson.github.io/myPortfolio/index.html" style={{ display: 'in-line' }}>
+                                        <Typography component="div" variant="h5">
+                                            her profile.
+                                        </Typography>
+                                    </Link>
 
                                 </Typography>
-                                <Link to="https://llthompson.github.io/myPortfolio/index.html">
-                                    <Typography component="div" variant="h5">
-                                        my profile
-                                    </Typography>
-                                </Link>
+
                             </CardContent>
                         </Card>
                     </Grid>

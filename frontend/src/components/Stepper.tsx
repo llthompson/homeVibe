@@ -218,7 +218,7 @@ export default function HorizontalLinearStepper() {
                 <Card className='step1-standard' >
                     <CardContent>
 
-                        <Typography variant="h6" gutterBottom style={{
+                        <Typography variant="h6" style={{
                             fontSize: '24px',
                             marginBottom: 0,
                             paddingTop: 0,
@@ -228,11 +228,12 @@ export default function HorizontalLinearStepper() {
                             Step {activeStep + 1}: Select Standard Features
                         </Typography>
 
-                        <div style={{ height: 400, width: '100%' }}>
+                        <div style={{ height: '360px', width: '100%' }}>
                             <DataGrid
                                 rows={rows.filter(r => r.type === 'STANDARD')}
                                 columns={columns}
                                 checkboxSelection={false}
+                                hideFooter={true}
                             />
                         </div>
                     </CardContent>
@@ -243,7 +244,7 @@ export default function HorizontalLinearStepper() {
             {activeStep === 1 && (
                 <Card className='step2-advanced' >
                     <CardContent>
-                        <Typography variant="h6" gutterBottom style={{
+                        <Typography variant="h6" style={{
                             fontSize: '24px',
                             marginBottom: 0,
                             paddingTop: 0,
@@ -252,11 +253,13 @@ export default function HorizontalLinearStepper() {
                         }}>
                             Step {activeStep + 1}: Select Advanced Features
                         </Typography>
-                        <div style={{ height: 800, width: '100%' }}>
+                        <div style={{ height: '360px', width: '100%' }}>
                             <DataGrid
                                 rows={rows.filter(r => r.type === 'ADVANCED')}
                                 columns={columns}
                                 checkboxSelection={false}
+                                autoPageSize={false}
+                                hideFooter={true}
                             />
                         </div>
                     </CardContent>
@@ -267,7 +270,7 @@ export default function HorizontalLinearStepper() {
             {activeStep === 2 && (
                 <Card className='step3-custom' >
                     <CardContent>
-                        <Typography variant="h6" gutterBottom style={{
+                        <Typography variant="h6" style={{
                             fontSize: '24px',
                             marginBottom: 0,
                             paddingTop: 0,
@@ -278,12 +281,10 @@ export default function HorizontalLinearStepper() {
                         </Typography>
 
                         {/* Form to create Custom Features will come from CreateFeatureDialog */}
-                        <CardContent className='add-custom-feature' sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                            <CreateFeatureDialog></CreateFeatureDialog>
-                        </CardContent>
+                        <CreateFeatureDialog></CreateFeatureDialog>
 
                         {/* Created Custom Features List/Grid */}
-                        <Typography variant="h6" gutterBottom style={{
+                        <Typography variant="h6" style={{
                             fontSize: '18px',
                             marginBottom: 0,
                             paddingTop: 0,
@@ -291,33 +292,23 @@ export default function HorizontalLinearStepper() {
                             fontWeight: 500,
                         }}>
                             Custom Features
-                            {/* <Typography variant="caption" gutterBottom>
-                                Clic   k the button above to make your first custom feature!
-                            </Typography> */}
                         </Typography>
 
-                        <div style={{ height: 400, width: '100%' }}>
+                        <div style={{ height: 360, width: '100%' }}>
                             <DataGrid
                                 rows={rows.filter(r => r.type === 'CUSTOM')}
                                 columns={columns}
                                 checkboxSelection={false}
+                                hideFooter={true}
                             />
                         </div>
                     </CardContent>
                 </Card>
             )}
 
-            {/* PUT LOGIC IN FOR RETURN PAGE AND NOT RESET */}
-            {/* ACTUALLY I THINK THIS WHOLE THING CAN BE DELETED */}
+            {/* This was a submit feature, now it's nothing but it won't let me delete it lol */}
             {activeStep === steps.length ? (
                 <React.Fragment>
-                    <Typography sx={{ mt: 2, mb: 1 }}>
-                        All steps completed - you are finished
-                    </Typography>
-                    <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
-                        <Box sx={{ flex: '1 1 auto' }} />
-                        <Button onClick={handleReset}>Reset</Button>
-                    </Box>
                 </React.Fragment>
             ) : (
 

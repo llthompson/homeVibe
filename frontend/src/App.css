@@ -96,6 +96,11 @@
   color: #8d008d;
 }
 
+.card-to-create-custom-feature {
+  padding: 0 0 0 0 !important;
+  padding-top: -10px !important;
+}
+
 
 .here-is-a-third-content-style {
   margin-left: 80px !important;
