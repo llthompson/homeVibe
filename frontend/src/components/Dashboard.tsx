@@ -12,6 +12,9 @@ import { PageLayout } from './Page-Layout';
 import HorizontalLinearStepper from './Stepper';
 import PageLogo from '../assets/builderlogo.png'
 
+// TODO change all instances of DASHBOARD to VIBE BUILDER
+// TODO code cleanup
+// FUTURE.ENHANCEMENTS change stepper navigation on mobile
 
 // mui setup
 const Item = styled(Paper)(({ theme }) => ({

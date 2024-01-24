@@ -23,7 +23,6 @@ import React from 'react';
 import PageLogo from '../assets/features-logo2.png'
 
 
-// TODO the feature list UI is ugly, need to fix
 
 // Mui setup
 const Item = styled(Paper)(({ theme }) => ({
@@ -80,11 +79,11 @@ const Features = () => {
 
     // Table setup, rating logic
     const columns: GridColDef[] = [
-        { field: 'id', headerName: 'ID', width: 70, align: 'left', sortable: true },
-        { field: 'feature', headerName: 'Feature', width: 230, sortable: true },
-        { field: 'type', headerName: 'Type', width: 130, sortable: true },
+        { field: 'id', headerName: 'ID', flex: .05, align: 'left', sortable: true, },
+        { field: 'feature', headerName: 'Feature', flex: .25, sortable: true },
+        { field: 'type', headerName: 'Type', flex: .15, sortable: true },
         {
-            field: 'rating', headerName: 'Rating', width: 430, sortable: false,
+            field: 'rating', headerName: 'Rating', flex: .55, sortable: true,
             renderCell: (params) => {
                 const id: number = Number(params.id);
                 const feat = features.find(f => f.id === id)
@@ -98,7 +97,6 @@ const Features = () => {
                 return (
                     <Box
                         sx={{
-                            width: 200,
                             display: 'flex',
                             alignItems: 'center',
                         }}
@@ -174,26 +172,32 @@ const Features = () => {
                     <Grid item xs={12} className='user-features-table'>
                         <Item>
                             <Typography variant="h6" style={{ flexGrow: '1' }}>
-                                <Card>
-                                    <CardContent>
-                                        <Typography variant="h6" gutterBottom>
-                                            Your Features, Your Vibes
-                                        </Typography>
-                                        <div style={{ height: 1000, width: '100%' }}>
-                                            <DataGrid
-                                                rows={rows}
-                                                columns={columns}
-                                                slots={{ toolbar: GridToolbar }}
-                                            />
-                                        </div>
-                                    </CardContent>
-                                </Card>
+                                <CardContent>
+                                    <Typography variant="h6" style={{
+                                        fontSize: '24px',
+                                        marginBottom: 0,
+                                        paddingTop: 0,
+                                        color: theme.palette.info.dark,
+                                        fontWeight: 500,
+                                    }}>
+                                        Your Features, Your Vibes
+                                    </Typography>
+                                    <div style={{ height: '360px', width: '100%' }}>
+                                        <DataGrid
+                                            rows={rows}
+                                            columns={columns}
+                                            slots={{ toolbar: GridToolbar }}
+                                            hideFooter={true}
+                                            density='compact'
+                                        />
+                                    </div>
+                                </CardContent>
                             </Typography>
                         </Item>
                     </Grid>
 
-                    <Grid item xs={12} className='just a section'>
-                        <Item><Typography variant="h1" style={{ flexGrow: '6' }}>now that's a vibe</Typography>
+                    <Grid item xs={12} className='just-a-vibe' sx={{ boxShadow: ["none"] }}>
+                        <Item className='just-a-vibe'><Typography variant="h4" style={{ flexGrow: '6' }}>😎 now that’s a vibe 😎</Typography>
                         </Item>
                     </Grid>
 

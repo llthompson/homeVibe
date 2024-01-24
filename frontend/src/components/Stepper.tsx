@@ -6,13 +6,13 @@ import Box from '@mui/material/Box';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepButton from '@mui/material/StepButton';
-import { Card, Typography, CardContent, Button } from '@mui/material';
+import { Card, Typography, CardContent, Button, useMediaQuery } from '@mui/material';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import Rating from '@mui/material/Rating';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { styled } from '@mui/material/styles';
-import { useTheme } from '@mui/system';
+import { Theme, useTheme } from '@mui/system';
 import { useAuth0 } from "@auth0/auth0-react";
 import * as apiService from '../services/Api'
 import CreateFeatureDialog from './CreateFeature';
@@ -22,7 +22,7 @@ import { Link } from 'react-router-dom';
 
 
 // TODO delete unused code (there's a bunch)
-// TODO the feature list UI is ugly, need to fix
+// Reword the steps, it's confusing
 
 const steps = ['Select standard home features', 'Select advanced home features', 'Create your own custom features'];
 
@@ -115,13 +115,29 @@ export default function HorizontalLinearStepper() {
     const features = useStore(useShallow(state => state.features))
     const rows = features.map((item: Feature) => ({ id: item.id, feature: item.feature, __check__: false, type: item.type, rating: item.rating }));
 
+    const isSmallScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'));
+
+
+    const [columnVisibilityModel, setColumnVisibilityModel] = React.useState({
+        // Initially hide id and type on smaller screens
+        id: isSmallScreen ? false : true,
+        feature: true,
+        type: isSmallScreen ? false : true,
+        rating: true,
+    });
+
+    const handleColumnVisibilityModelChange = (newModel: any) => {
+        setColumnVisibilityModel(newModel);
+    };
+
+
     // Table setup, rating logic
     const columns: GridColDef[] = [
-        { field: 'id', headerName: 'ID', width: 70, align: 'left', sortable: false },
-        { field: 'feature', headerName: 'Feature', width: 200, sortable: false },
-        { field: 'type', headerName: 'Type', width: 130, sortable: false },
+        { field: 'id', headerName: 'ID', flex: .05, align: 'left', sortable: false, },
+        { field: 'feature', headerName: 'Feature', flex: .25, sortable: false },
+        { field: 'type', headerName: 'Type', flex: .15, sortable: false },
         {
-            field: 'rating', headerName: 'Rating', width: 430, sortable: false,
+            field: 'rating', headerName: 'Rating', flex: .55, sortable: false,
             renderCell: (params) => {
                 const id: number = Number(params.id);
                 const feat = features.find(f => f.id === id)
@@ -133,9 +149,8 @@ export default function HorizontalLinearStepper() {
                     rating = 0
                 }
                 return (
-                    <Box
+                    <Box className='change-box-display-on-small-screen'
                         sx={{
-                            width: 200,
                             display: 'flex',
                             alignItems: 'center',
                         }}
@@ -234,6 +249,9 @@ export default function HorizontalLinearStepper() {
                                 columns={columns}
                                 checkboxSelection={false}
                                 hideFooter={true}
+                                density='compact'
+                                columnVisibilityModel={columnVisibilityModel}
+                                onColumnVisibilityModelChange={handleColumnVisibilityModelChange}
                             />
                         </div>
                     </CardContent>
@@ -260,6 +278,9 @@ export default function HorizontalLinearStepper() {
                                 checkboxSelection={false}
                                 autoPageSize={false}
                                 hideFooter={true}
+                                density='compact'
+                                columnVisibilityModel={columnVisibilityModel}
+                                onColumnVisibilityModelChange={handleColumnVisibilityModelChange}
                             />
                         </div>
                     </CardContent>
@@ -294,12 +315,15 @@ export default function HorizontalLinearStepper() {
                             Custom Features
                         </Typography>
 
-                        <div style={{ height: 360, width: '100%' }}>
+                        <div style={{ height: 260, width: '100%' }}>
                             <DataGrid
                                 rows={rows.filter(r => r.type === 'CUSTOM')}
                                 columns={columns}
                                 checkboxSelection={false}
                                 hideFooter={true}
+                                density='compact'
+                                columnVisibilityModel={columnVisibilityModel}
+                                onColumnVisibilityModelChange={handleColumnVisibilityModelChange}
                             />
                         </div>
                     </CardContent>
@@ -315,7 +339,7 @@ export default function HorizontalLinearStepper() {
                 // Back button, set Step #, Finish button, Next button
                 <React.Fragment>
 
-                    <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
+                    <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2, paddingTop: 0 }}>
                         <Button className='back-button-logic'
                             color="inherit"
                             disabled={activeStep === 0}
@@ -352,7 +376,8 @@ export default function HorizontalLinearStepper() {
                                             fontSize: '18px',
                                             marginBottom: 0,
                                             whiteSpace: 'nowrap',
-                                            color: '#ffffff'
+                                            color: '#ffffff',
+                                            paddingTop: '1px',
                                         }}>
                                         Finish
                                     </Typography>

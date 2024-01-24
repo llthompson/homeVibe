@@ -18,11 +18,11 @@ import SearchingPic from '../assets/searching.jpg';
 import CinemaPic from '../assets/cinema.jpg';
 import LaptopPic from '../assets/laptop.jpg';
 import CoolnessPic from '../assets/coolness.jpg'
-// import SearchingPic from '../assets/searchingCROP.jpg';
-// import CinemaPic from '../assets/cinemaCROP.jpg';
-// import LaptopPic from '../assets/laptopCROP.jpeg';
-// import CoolnessPic from '../assets/coolnessCROP.jpg'
+import { LooksOneRounded, LooksTwoRounded, Looks3Rounded } from '@mui/icons-material';
 
+
+// TODO code cleanup
+// FUTURE.ENHANCEMENTS change order of grid items on mobile
 
 // mui setup
 const Item = styled(Paper)(({ theme }) => ({
@@ -165,7 +165,21 @@ function Home() {
                                     <Typography variant="h5" >
                                         three easy steps:
                                     </Typography>
-                                    <SillyIcons></SillyIcons>
+
+                                    <Typography variant='body1'>
+                                        <span style={{ display: 'flex', alignItems: 'center', flexDirection: 'row', paddingLeft: 10 }}>
+                                            <LooksOneRounded />
+                                            rate home features
+                                        </span>
+                                        <span style={{ display: 'flex', alignItems: 'center', flexDirection: 'row', paddingLeft: 10 }}>
+                                            <LooksTwoRounded />
+                                            add custom features
+                                        </span>
+                                        <span style={{ display: 'flex', alignItems: 'center', flexDirection: 'row', paddingLeft: 10, flexWrap: 'wrap' }}>
+                                            <Looks3Rounded />
+                                            use your results to shop til' you drop
+                                        </span>
+                                    </Typography>
                                 </CardContent>
                             </Card>
                         </Grid>

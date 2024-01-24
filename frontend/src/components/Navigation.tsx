@@ -73,23 +73,24 @@ const Navigation = () => {
                             </Link>
                         </ListItem>
 
+                        {!isAuthenticated ? null :
+                            <ListItem sx={{ justifyContent: 'center ' }}>
+                                <Link to="/Dashboard" style={{ textDecoration: 'underline', textDecorationThickness: '1px', textUnderlineOffset: '4px', textDecorationColor: '#333333' }}>
+                                    <Typography style={{ whiteSpace: 'nowrap', fontSize: '18px', marginBottom: 0, color: '#333333', fontWeight: '500' }}>
+                                        Rate Features
+                                    </Typography>
+                                </Link>
+                            </ListItem>}
 
-                        <ListItem sx={{ justifyContent: 'center ' }}>
-                            <Link to="/Dashboard" style={{ textDecoration: 'underline', textDecorationThickness: '1px', textUnderlineOffset: '4px', textDecorationColor: '#333333' }}>
-                                <Typography style={{ whiteSpace: 'nowrap', fontSize: '18px', marginBottom: 0, color: '#333333', fontWeight: '500' }}>
-                                    Rate Features
-                                </Typography>
-                            </Link>
-                        </ListItem>
-
-
-                        <ListItem sx={{ justifyContent: 'center ' }}>
-                            <Link to="/Features" style={{ textDecoration: 'underline', textDecorationThickness: '1px', textUnderlineOffset: '4px', textDecorationColor: '#333333' }}>
-                                <Typography style={{ whiteSpace: 'nowrap', fontSize: '18px', marginBottom: 0, color: '#333333', fontWeight: '500' }}>
-                                    Saved Features
-                                </Typography>
-                            </Link>
-                        </ListItem>
+                        {!isAuthenticated ? null :
+                            <ListItem
+                                sx={{ justifyContent: 'center ' }} >
+                                <Link to="/Features" style={{ textDecoration: 'underline', textDecorationThickness: '1px', textUnderlineOffset: '4px', textDecorationColor: '#333333' }}>
+                                    <Typography style={{ whiteSpace: 'nowrap', fontSize: '18px', marginBottom: 0, color: '#333333', fontWeight: '500' }}>
+                                        Saved Features
+                                    </Typography>
+                                </Link>
+                            </ListItem>}
 
 
                         <ListItem

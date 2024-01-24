@@ -12,40 +12,39 @@ import { LooksOneRounded, LooksTwoRounded, Looks3Rounded } from '@mui/icons-mate
 // TODO cleanup unused code, add comments
 
 const IconRow = () => {
+
+    // Tried a cool hover feature, didn't get it working
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const [selectedIcon, setSelectedIcon] = useState<string | null>(null);
-
     const handleMouseEnter = (event: React.MouseEvent<HTMLElement>, icon: string | null) => {
         setAnchorEl(event.currentTarget);
         setSelectedIcon(icon);
     };
-
     const handleMouseLeave = () => {
         setAnchorEl(null);
         setSelectedIcon(null);
     };
-
     const open = Boolean(anchorEl);
 
     return (
         <div>
             <IconButton
                 color="secondary"
-                onMouseEnter={(e) => handleMouseEnter(e, 'star')}
+                onMouseEnter={(e) => handleMouseEnter(e, 'LooksOneRounded')}
                 onMouseLeave={handleMouseLeave}
             >
                 <LooksOneRounded style={{ fontSize: 60 }} />
             </IconButton>
             <IconButton
                 color="secondary"
-                onMouseEnter={(e) => handleMouseEnter(e, 'thumbs-up')}
+                onMouseEnter={(e) => handleMouseEnter(e, 'LooksTwoRounded')}
                 onMouseLeave={handleMouseLeave}
             >
                 <LooksTwoRounded style={{ fontSize: 60 }} />
             </IconButton>
             <IconButton
                 color="secondary"
-                onMouseEnter={(e) => handleMouseEnter(e, 'checkmark')}
+                onMouseEnter={(e) => handleMouseEnter(e, 'Looks3Rounded')}
                 onMouseLeave={handleMouseLeave}
             >
                 <Looks3Rounded style={{ fontSize: 60 }} />
@@ -67,9 +66,9 @@ const IconRow = () => {
                 }}
             >
                 <Typography>
-                    {selectedIcon === 'star' && 'rate home features'}
-                    {selectedIcon === 'thumbs-up' && 'create custom home features'}
-                    {selectedIcon === 'checkmark' && 'get your personalized list!'}
+                    {selectedIcon === 'LooksOneRounded' && 'rate home features'}
+                    {selectedIcon === 'LooksTwoRounded' && 'create custom home features'}
+                    {selectedIcon === 'Looks3Rounded' && 'get your personalized list!'}
                 </Typography>
             </Popover>
 

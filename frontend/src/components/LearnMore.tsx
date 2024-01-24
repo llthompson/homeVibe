@@ -14,7 +14,9 @@ import PageLogo from '../assets/learn-more-logo2.png'
 import { useAuth0 } from "@auth0/auth0-react";
 
 
-// TODO make it DRY
+// TODO code cleanup
+// FUTURE.ENHANCEMENTS make it DRY
+// FUTURE.ENHANCEMENTS conditionally render sign up button - change to "get started" and redirect to VibeBuilder when authenticated
 
 // mui setup
 const Item = styled(Paper)(({ theme }) => ({
@@ -99,43 +101,30 @@ const LearnMore = () => {
                             </Fab>
                         </Item>
                     </Grid>
-                    <Grid item xs={10} className='content tile' sx={{ boxShadow: ["none"] }}>
+                    <Grid item xs={10} className='content tile' sx={{ boxShadow: ["none"], marginTop: 0, marginBottom: 0, padding: 0 }}>
                         <Card className='learn-more-cards' sx={{ boxShadow: ["none"] }}>
-                            <Item><Typography variant="h3" style={{ flexGrow: '1' }}>
+                            <Item><Typography variant="h4" style={{ flexGrow: '1', marginTop: '40px', marginBottom: 0, padding: 0 }}>
                                 about the creator</Typography></Item>
                         </Card>
-
                     </Grid>
 
-                    <Grid item xs={12} className='profile link'>
-                        <Card sx={{
-                            display: 'flex',
-                            margin: "0 auto",
-                            padding: "0.1em",
-                            boxShadow: ["none"]
-                        }}>
-                            <CardContent className='empty box 4 content' sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                                <Typography component="div" variant="body1" sx={{ alignItems: 'center', wordBreak: "break-word", textAlign: 'center' }}>
-                                    homeVibe is a fully original idea conceived by Lisa Thompson. The idea came to Lisa when she started her journey as a first-time homebuyer – while attending a full-stack engineering bootcamp and working a full-time job. Her hands were definitely full – and her brain was, too. It made it challenging to keep in mind everything she was hoping to find in a potential home, and trying to prioritize those wants and needs felt overwhelming. While there were some resources online to help with this task, they were low-key basic: barely going beyond the number of bedrooms or the type of flooring.
-                                    <br />
-                                    <br />
-                                    So when it came time to decide on her capstone project to graduate from bootcamp, she knew she had to make the tool she wished she had had – an in depth, fully customizable, home feature rating system to keep track of all the details homebuyers are searching for. And because Lisa can’t do anything without injecting a little flair and creativity, she decided to give it a gen-Z inspired brand identity. homeVibe takes the homebuying process from basic and cray cray to lit and bussin’.
-                                    <br />
-                                    <br />
-                                    To learn more about Lisa and her coding journey, check out <Link to="https://llthompson.github.io/myPortfolio/index.html" style={{ display: 'in-line' }}>
-                                        <Typography component="div" variant="h5">
-                                            her profile.
-                                        </Typography>
-                                    </Link>
-
-                                </Typography>
-
-                            </CardContent>
-                        </Card>
+                    <Grid item xs={12} className='profile-link'>
+                        <CardContent className='about-lisa-content' sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: 0 }}>
+                            <Typography component="div" variant="body1" sx={{ alignItems: 'center', wordBreak: "break-word", textAlign: 'center' }}>
+                                homeVibe is a fully original idea conceived by Lisa Thompson. The idea came to Lisa when she started her journey as a first-time homebuyer – while attending a full-stack engineering bootcamp and working a full-time job. Her hands were definitely full – and her brain was, too. It made it challenging to keep in mind everything she was hoping to find in a potential home, and trying to prioritize those wants and needs felt overwhelming. While there were some resources online to help with this task, they were low-key basic: barely going beyond the number of bedrooms or the type of flooring.
+                                <br />
+                                <br />
+                                So when it came time to decide on her capstone project to graduate from bootcamp, she knew she had to make the tool she wished she had had – an in depth, fully customizable, home feature rating system to keep track of all the details homebuyers are searching for. And because Lisa can’t do anything without injecting a little flair and creativity, she decided to give it a gen-Z inspired brand identity. homeVibe takes the homebuying process from basic and cray cray to lit and bussin’.
+                                <br />
+                                <br />
+                                To learn more about Lisa and her coding journey, check out <Link to="https://llthompson.github.io/myPortfolio/index.html" style={{ display: 'in-line' }}>
+                                    <Typography component="div" variant="body1">
+                                        her profile.
+                                    </Typography>
+                                </Link>
+                            </Typography>
+                        </CardContent>
                     </Grid>
-
-
-
                 </Grid>
             </Container>
         </PageLayout>
