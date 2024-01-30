@@ -36,7 +36,9 @@ function Home() {
     return (
 
         <PageLayout>
-            <Container sx={{ justifyContent: 'space-between' }} >
+            <Container className="great-grand-parent-container" sx={{ justifyContent: 'space-between' }} >
+
+                {/* Header */}
                 <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
 
                     <Grid item xs={12} className='card for logo'>
@@ -79,12 +81,13 @@ function Home() {
                 </Grid>
 
                 {/* MAIN CONTAINER FOR CONTENT COLUMNS */}
-                <Grid container>
-                    <Grid item direction={'column'} xs={12} sm={6} md={6} lg={6}
-                    >
-                        {/* FIRST COLUMN */}
+                <Grid container className="grid-parent-parent-container">
 
-                        <Grid item xs={12} className='first section image'>
+                    {/* FIRST COLUMN */}
+                    <Grid item order={1} className="grid-parent-container" direction={'column'} xs={12} sm={6} md={6} lg={6}
+                    >
+
+                        <Grid item order={1} xs={12} className='first-section-image'>
                             <Card className='home-image-cards' sx={{ boxShadow: 'none' }}>
                                 <CardMedia className='home-image-style'
                                     component="img"
@@ -98,7 +101,7 @@ function Home() {
                             </Card>
                         </Grid>
 
-                        <Grid item xs={12} className='second section content'>
+                        <Grid item xs={12} className='second-section-content'>
                             <Card className='home-wordy-cards-style' sx={{ boxShadow: 'none' }} >
                                 <CardContent className='home-card-content-style' >
                                     <Typography variant="h5">
@@ -108,7 +111,7 @@ function Home() {
                             </Card>
                         </Grid>
 
-                        <Grid item xs={12} className='third section image'>
+                        <Grid item xs={12} className='third-section-image'>
                             <Card className='home-image-cards' sx={{ boxShadow: 'none' }}>
                                 <CardMedia className='home-image-style'
                                     component="img"
@@ -122,7 +125,7 @@ function Home() {
                             </Card>
                         </Grid>
 
-                        <Grid item xs={12} className='fourth section content'>
+                        <Grid item xs={12} className='fourth-section-content'>
                             <Card className='home-wordy-cards-style' sx={{ boxShadow: 'none' }}>
                                 <CardContent className='home-card-content-style' >
                                     <Typography variant="h5">
@@ -131,12 +134,12 @@ function Home() {
                                 </CardContent>
                             </Card>
                         </Grid>
-
                     </Grid>
-                    {/* SECOND COLUMN */}
-                    <Grid item direction={'column'} xs={12} sm={6} md={6} lg={6}  >
 
-                        <Grid item xs={12} className='first section content'>
+                    {/* SECOND COLUMN */}
+                    <Grid item order={2} direction={'column'} xs={12} sm={6} md={6} lg={6}  >
+
+                        <Grid item xs={12} className='first-section-content'>
                             <Card className='home-wordy-cards-style' sx={{ boxShadow: 'none' }}>
                                 <CardContent className='home-card-content-style' >
                                     <Typography variant="h5">
@@ -146,7 +149,7 @@ function Home() {
                             </Card>
                         </Grid>
 
-                        <Grid item xs={12} className='second section image'>
+                        <Grid item xs={12} className='second-section-image'>
                             <Card className='home-image-cards' sx={{ boxShadow: 'none' }}>
                                 <CardMedia className='home-image-style'
                                     component="img"
@@ -160,7 +163,7 @@ function Home() {
                             </Card>
                         </Grid>
 
-                        <Grid item xs={12} className='third section content'>
+                        <Grid item xs={12} className='third-section-content'>
                             <Card className='home-wordy-cards-style here-is-a-third-content-style' sx={{ boxShadow: 'none', marginLeft: '30' }}>
                                 <CardContent className='home-card-content-style here-is-a-third-content-style' >
                                     <Typography variant="h5" >
@@ -184,7 +187,7 @@ function Home() {
                             </Card>
                         </Grid>
 
-                        <Grid item xs={12} className='fourth section image'>
+                        <Grid item xs={12} className='fourth-section-image'>
                             <Card className='home-image-cards' sx={{ boxShadow: 'none' }}>
                                 <CardMedia className='home-image-style'
                                     component="img"
@@ -200,8 +203,9 @@ function Home() {
                     </Grid>
                 </Grid>
 
+                {/* Footer */}
                 <Grid>
-                    <Grid item xs={12} className='sign up button' sx={{ boxShadow: 'none' }}>
+                    <Grid item xs={12} className='sign-up-button' sx={{ boxShadow: 'none' }}>
                         <Item sx={{ boxShadow: 'none' }}><Typography variant="h3" style={{ flexGrow: '6' }}>sign up to start vibin'</Typography>
                             <Fab variant="extended" color="secondary" onClick={() => loginWithRedirect({
                                 authorizationParams: {

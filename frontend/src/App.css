@@ -115,6 +115,7 @@
   box-shadow: none !important;
 }
 
+
 @media screen and (max-width: 800px) {
   .here-is-a-third-content-style {
     padding: 0 !important;
