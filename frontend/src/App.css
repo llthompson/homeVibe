@@ -116,12 +116,97 @@
 }
 
 
+
 @media screen and (max-width: 800px) {
   .here-is-a-third-content-style {
-    padding: 0 !important;
+    padding: 0 0 15px 0 !important;
     margin: 0 0 0 0 !important;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
   }
 }
+
+/* Target screens less than 700px wide */
+@media (max-width: 700px) {
+  .grid-parent-parent-container {
+    /* Force a single column layout */
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center;
+    direction: unset !important;
+  }
+
+  .grid-parent-container {
+    /* Remove unnecessary column-specific styles */
+    direction: unset !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    display: contents !important;
+  }
+
+  .this-is-second-col {
+    /* Remove unnecessary column-specific styles */
+    direction: unset !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    display: contents !important;
+  }
+
+  /* Adjust item order using the 'order' property */
+  .grid-parent-parent-container .first-section-image {
+    order: 1 !important;
+  }
+
+  .grid-parent-parent-container .first-section-content {
+    order: 2 !important;
+  }
+
+  .grid-parent-parent-container .second-section-image {
+    order: 3 !important;
+  }
+
+  .grid-parent-parent-container .second-section-content {
+    order: 4 !important;
+  }
+
+  .grid-parent-parent-container .third-section-image {
+    order: 5 !important;
+  }
+
+  .grid-parent-parent-container .third-section-content {
+    order: 6 !important;
+  }
+
+  .grid-parent-parent-container .fourth-section-image {
+    order: 7 !important;
+  }
+
+  .grid-parent-parent-container .fourth-section-content {
+    order: 8 !important;
+  }
+
+  .home-card-content-style {
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 0;
+    height: 90px;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 4px !important;
+  }
+
+  .home-wordy-cards-style {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    border-bottom: 2px outset #ca05a9;
+    border-radius: 0 !important;
+  }
+
+  .home-image-cards {
+    margin-top: 13px;
+  }
+}
+
+/* LET'S SEE IF THIS IS */

@@ -91,7 +91,7 @@ function Home() {
                     <Grid item order={1} className="grid-parent-container" direction={'column'} xs={12} sm={6} md={6} lg={6}
                     >
 
-                        <Grid item order={1} xs={12} className='first-section-image'>
+                        <Grid item xs={12} className='first-section-image'>
                             <Card className='home-image-cards' sx={{ boxShadow: 'none' }}>
                                 <CardMedia className='home-image-style'
                                     component="img"
@@ -141,7 +141,7 @@ function Home() {
                     </Grid>
 
                     {/* SECOND COLUMN */}
-                    <Grid item order={2} direction={'column'} xs={12} sm={6} md={6} lg={6}  >
+                    <Grid item className="this-is-second-col" order={2} direction={'column'} xs={12} sm={6} md={6} lg={6}  >
 
                         <Grid item xs={12} className='first-section-content'>
                             <Card className='home-wordy-cards-style' sx={{ boxShadow: 'none' }}>
