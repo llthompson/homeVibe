@@ -21,6 +21,34 @@ export const createUserFeature = async (req: any, res: Response) => {
     })
     res.json(feature)
 }
+
+export const adminFeatureAdd = async (req: any, res: Response) => {
+
+    const feature = await db.homeFeature.create({
+        data: {
+            feature: req.body.feature,
+            type: req.body.type,
+        }
+    })
+    res.json(feature)
+}
+
+export const adminFeatureDelete = async (req: any, res: Response) => {
+    const savedFeature = await db.savedFeature.deleteMany({
+        where: {
+            featureId: req.body.id,
+        },
+
+    })
+    const feature = await db.homeFeature.delete({
+        where: {
+            id: req.body.id,
+        },
+
+    })
+    res.json(feature)
+}
+
 function mapRatingToNumber(rating: Rating | null): number {
     const mapping: Record<Rating, number> = {
         "NOT_ESSENTIAL": 1,
