@@ -1,6 +1,6 @@
 // frontend/src/components/LearnMore.tsx
 
-import { Card, CardMedia, Typography, CardContent } from '@mui/material';
+import { Card, CardMedia, Typography, CardContent, Button } from '@mui/material';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import { styled } from '@mui/material/styles';
@@ -28,6 +28,9 @@ const Item = styled(Paper)(({ theme }) => ({
 const LearnMore = () => {
     const theme = useTheme();
     const { loginWithRedirect } = useAuth0();
+    const {
+        isAuthenticated
+    } = useAuth0();
 
     return (
         <PageLayout >
@@ -84,20 +87,48 @@ const LearnMore = () => {
                         </Card>
                     </Grid>
 
-                    <Grid item xs={12} className='sigup'>
-                        <Item sx={{ boxShadow: 'none' }}><Typography variant="h3" style={{ flexGrow: '6' }}>sign up to start vibin'</Typography>
-                            <Fab variant="extended" color="secondary" onClick={() => loginWithRedirect({
-                                authorizationParams: {
-                                    screen_hint: "signup"
-                                }
-                            })}>
-                                <NavigationIcon sx={{ mr: 1 }} />
-                                <Typography variant="h4" style={{ flexGrow: '6' }}>
-                                    SIGN UP
-                                </Typography>
-                            </Fab>
-                        </Item>
-                    </Grid>
+                    {!isAuthenticated ?
+                        < Grid item xs={12} className='sign-up-button' sx={{ boxShadow: 'none' }}>
+                            <Item sx={{ boxShadow: 'none' }}><Typography variant="h3" style={{ flexGrow: '6' }}>sign up to start vibin'</Typography>
+                                <Fab variant="extended" color="secondary" onClick={() => loginWithRedirect({
+                                    authorizationParams: {
+                                        screen_hint: "signup"
+                                    }
+                                })}>
+                                    <NavigationIcon sx={{ mr: 1 }} />
+                                    <Typography variant="h4" style={{ flexGrow: '6' }}>
+                                        SIGN UP
+                                    </Typography>
+                                </Fab>
+                            </Item>
+                        </Grid>
+                        :
+                        < Grid item xs={12} className='start-button' sx={{ boxShadow: 'none' }}>
+                            <Item sx={{ boxShadow: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center' }}><Typography variant="h3" style={{ flexGrow: '6' }}>let's get vibin'</Typography>
+                                <Button className='start-button-logic'
+                                    sx={{ display: 'flex', marginTop: '8px' }}
+                                    variant="contained"
+                                    color="secondary"
+                                >
+                                    <Link
+                                        to="/VibeBuilder"
+                                        style={{ textDecoration: 'none' }}
+                                    >
+                                        <Typography
+                                            style={{
+                                                fontSize: '18px',
+                                                marginBottom: 0,
+                                                whiteSpace: 'nowrap',
+                                                color: '#ffffff',
+                                                paddingTop: '1px',
+                                            }}>
+                                            Start
+                                        </Typography>
+                                    </Link>
+                                </Button>
+                            </Item>
+                        </Grid>
+                    }
 
                     <Grid item xs={10} className='content tile' sx={{ boxShadow: ["none"], marginTop: 0, marginBottom: 0, padding: 0 }}>
                         <Card className='learn-more-cards' sx={{ boxShadow: ["none"] }}>

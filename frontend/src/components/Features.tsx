@@ -1,12 +1,12 @@
 // frontend/src/components/Features.tsx
 
 import { useEffect } from 'react';
-import { Card, CardMedia, Typography, CardContent } from '@mui/material';
+import { Card, CardMedia, Typography, CardContent, useMediaQuery } from '@mui/material';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import { DataGrid, GridColDef, GridToolbar } from '@mui/x-data-grid';
 import { styled } from '@mui/material/styles';
-import { useTheme } from '@mui/system';
+import { Theme, useTheme } from '@mui/system';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import FavoriteIcon from '@mui/icons-material/Favorite';
@@ -73,14 +73,27 @@ const Features = () => {
     // Logic for pulling in features to rows
     const features = useStore(useShallow(state => state.features.filter(f => f.rating != 0 || f.type === 'CUSTOM')))
     const rows = features.map((item: Feature) => ({ id: item.id, feature: item.feature, __check__: false, type: item.type, rating: item.rating }));
+    const isSmallScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'));
+    const [columnVisibilityModel, setColumnVisibilityModel] = React.useState({
+        // Initially hide id and type on smaller screens
+        id: isSmallScreen ? false : true,
+        feature: true,
+        type: isSmallScreen ? false : true,
+        rating: true,
+    });
+
+    const handleColumnVisibilityModelChange = (newModel: any) => {
+        setColumnVisibilityModel(newModel);
+    };
+
 
     // Table setup, rating logic
     const columns: GridColDef[] = [
-        { field: 'id', headerName: 'ID', flex: .05, align: 'left', sortable: true, },
-        { field: 'feature', headerName: 'Feature', flex: .25, sortable: true },
-        { field: 'type', headerName: 'Type', flex: .15, sortable: true },
+        { field: 'id', headerName: 'ID', flex: .05, align: 'left', sortable: true, resizable: false },
+        { field: 'feature', headerName: 'Feature', flex: .25, sortable: true, resizable: true },
+        { field: 'type', headerName: 'Type', flex: .15, sortable: true, resizable: false },
         {
-            field: 'rating', headerName: 'Rating', flex: .55, sortable: true,
+            field: 'rating', headerName: 'Rating', flex: .55, sortable: true, resizable: false,
             renderCell: (params) => {
                 const id: number = Number(params.id);
                 const feat = features.find(f => f.id === id)
@@ -186,6 +199,8 @@ const Features = () => {
                                             slots={{ toolbar: GridToolbar }}
                                             hideFooter={true}
                                             density='compact'
+                                            columnVisibilityModel={columnVisibilityModel}
+                                            onColumnVisibilityModelChange={handleColumnVisibilityModelChange}
                                         />
                                     </div>
                                 </CardContent>
@@ -194,7 +209,7 @@ const Features = () => {
                     </Grid>
 
                     <Grid item xs={12} className='just-a-vibe' sx={{ boxShadow: ["none"] }}>
-                        <Item className='just-a-vibe'><Typography variant="h4" style={{ flexGrow: '6' }}>😎 now that’s a vibe 😎</Typography>
+                        <Item className='just-a-vibe'><Typography variant="h5" style={{ flexGrow: '6' }}>😎 now that’s a vibe 😎</Typography>
                         </Item>
                     </Grid>
 

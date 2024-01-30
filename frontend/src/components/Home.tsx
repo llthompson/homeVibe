@@ -2,7 +2,7 @@
 
 import { useAuth0 } from "@auth0/auth0-react";
 import { useTheme } from '@mui/system';
-import { Card, CardMedia, Typography, CardContent } from '@mui/material';
+import { Card, CardMedia, Typography, CardContent, Button } from '@mui/material';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import { styled } from '@mui/material/styles';
@@ -16,6 +16,7 @@ import CinemaPic from '../assets/cinema.jpg';
 import LaptopPic from '../assets/laptop.jpg';
 import CoolnessPic from '../assets/coolness.jpg'
 import { LooksOneRounded, LooksTwoRounded, Looks3Rounded } from '@mui/icons-material';
+import { Link } from "react-router-dom";
 
 
 // FUTURE.ENHANCEMENTS change order of grid items on mobile
@@ -32,6 +33,9 @@ const Item = styled(Paper)(({ theme }) => ({
 function Home() {
     const theme = useTheme();
     const { loginWithRedirect } = useAuth0();
+    const {
+        isAuthenticated
+    } = useAuth0();
 
     return (
 
@@ -205,20 +209,48 @@ function Home() {
 
                 {/* Footer */}
                 <Grid>
-                    <Grid item xs={12} className='sign-up-button' sx={{ boxShadow: 'none' }}>
-                        <Item sx={{ boxShadow: 'none' }}><Typography variant="h3" style={{ flexGrow: '6' }}>sign up to start vibin'</Typography>
-                            <Fab variant="extended" color="secondary" onClick={() => loginWithRedirect({
-                                authorizationParams: {
-                                    screen_hint: "signup"
-                                }
-                            })}>
-                                <NavigationIcon sx={{ mr: 1 }} />
-                                <Typography variant="h4" style={{ flexGrow: '6' }}>
-                                    SIGN UP
-                                </Typography>
-                            </Fab>
-                        </Item>
-                    </Grid>
+                    {!isAuthenticated ?
+                        < Grid item xs={12} className='sign-up-button' sx={{ boxShadow: 'none' }}>
+                            <Item sx={{ boxShadow: 'none' }}><Typography variant="h3" style={{ flexGrow: '6' }}>sign up to start vibin'</Typography>
+                                <Fab variant="extended" color="secondary" onClick={() => loginWithRedirect({
+                                    authorizationParams: {
+                                        screen_hint: "signup"
+                                    }
+                                })}>
+                                    <NavigationIcon sx={{ mr: 1 }} />
+                                    <Typography variant="h4" style={{ flexGrow: '6' }}>
+                                        SIGN UP
+                                    </Typography>
+                                </Fab>
+                            </Item>
+                        </Grid>
+                        :
+                        < Grid item xs={12} className='start-button' sx={{ boxShadow: 'none' }}>
+                            <Item sx={{ boxShadow: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center' }}><Typography variant="h3" style={{ flexGrow: '6' }}>let's get vibin'</Typography>
+                                <Button className='start-button-logic'
+                                    sx={{ display: 'flex', marginTop: '8px' }}
+                                    variant="contained"
+                                    color="secondary"
+                                >
+                                    <Link
+                                        to="/VibeBuilder"
+                                        style={{ textDecoration: 'none' }}
+                                    >
+                                        <Typography
+                                            style={{
+                                                fontSize: '18px',
+                                                marginBottom: 0,
+                                                whiteSpace: 'nowrap',
+                                                color: '#ffffff',
+                                                paddingTop: '1px',
+                                            }}>
+                                            Start
+                                        </Typography>
+                                    </Link>
+                                </Button>
+                            </Item>
+                        </Grid>
+                    }
                 </Grid>
 
             </Container>

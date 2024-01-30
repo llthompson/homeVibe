@@ -115,11 +115,11 @@ export default function HorizontalLinearStepper() {
 
     // Table setup, rating logic
     const columns: GridColDef[] = [
-        { field: 'id', headerName: 'ID', flex: .05, align: 'left', sortable: false, },
-        { field: 'feature', headerName: 'Feature', flex: .25, sortable: false },
+        { field: 'id', headerName: 'ID', flex: .05, align: 'left', sortable: true, },
+        { field: 'feature', headerName: 'Feature', flex: .25, sortable: true },
         { field: 'type', headerName: 'Type', flex: .15, sortable: false },
         {
-            field: 'rating', headerName: 'Rating', flex: .55, sortable: false,
+            field: 'rating', headerName: 'Rating', flex: .55, sortable: true,
             renderCell: (params) => {
                 const id: number = Number(params.id);
                 const feat = features.find(f => f.id === id)
