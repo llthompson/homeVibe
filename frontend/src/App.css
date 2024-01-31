@@ -207,6 +207,32 @@
   .home-image-cards {
     margin-top: 13px;
   }
+
+  .card-content-for-resize {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .card-content-for-resize>h6 {
+    font-size: 18px !important;
+  }
+
+  .card-to-create-custom-feature {
+    flex-direction: column !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    /* width: 100% !important; */
+  }
+
+  /* .test-box-for-me {
+    max-width: 90px;
+  } */
+
+  .custom-feature-text-field {
+    /* width: 100% !important; */
+    margin: auto !important;
+    width: 266px !important;
+  }
 }
 
 /* LET'S SEE IF THIS IS */

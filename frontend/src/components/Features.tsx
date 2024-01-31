@@ -90,10 +90,10 @@ const Features = () => {
     // Table setup, rating logic
     const columns: GridColDef[] = [
         { field: 'id', headerName: 'ID', flex: .05, align: 'left', sortable: true, resizable: false },
-        { field: 'feature', headerName: 'Feature', flex: .25, sortable: true, resizable: true },
+        { field: 'feature', headerName: 'Feature', flex: isSmallScreen ? 0.55 : 0.25, sortable: true, resizable: true },
         { field: 'type', headerName: 'Type', flex: .15, sortable: true, resizable: false },
         {
-            field: 'rating', headerName: 'Rating', flex: .55, sortable: true, resizable: false,
+            field: 'rating', headerName: 'Rating', flex: isSmallScreen ? 0.45 : 0.55, sortable: true, resizable: false,
             renderCell: (params) => {
                 const id: number = Number(params.id);
                 const feat = features.find(f => f.id === id)
@@ -182,7 +182,7 @@ const Features = () => {
                     <Grid item xs={12} className='user-features-table'>
                         <Item>
                             <Typography variant="h6" style={{ flexGrow: '1' }}>
-                                <CardContent>
+                                <CardContent className='card-content-for-resize'>
                                     <Typography variant="h6" style={{
                                         fontSize: '24px',
                                         marginBottom: 0,

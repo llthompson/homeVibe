@@ -15,6 +15,7 @@ export default function CreateFeatureForm() {
     return (
         <React.Fragment>
             <Box
+                className='test-box-for-me'
                 component="form"
                 sx={{
                     '& .MuiTextField-root': { m: 1, display: 'flex', },

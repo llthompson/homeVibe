@@ -116,10 +116,10 @@ export default function HorizontalLinearStepper() {
     // Table setup, rating logic
     const columns: GridColDef[] = [
         { field: 'id', headerName: 'ID', flex: .05, align: 'left', sortable: true, },
-        { field: 'feature', headerName: 'Feature', flex: .25, sortable: true },
+        { field: 'feature', headerName: 'Feature', flex: isSmallScreen ? 0.55 : 0.25, sortable: true },
         { field: 'type', headerName: 'Type', flex: .15, sortable: false },
         {
-            field: 'rating', headerName: 'Rating', flex: .55, sortable: true,
+            field: 'rating', headerName: 'Rating', flex: isSmallScreen ? 0.45 : 0.55, sortable: true,
             renderCell: (params) => {
                 const id: number = Number(params.id);
                 const feat = features.find(f => f.id === id)
@@ -208,7 +208,7 @@ export default function HorizontalLinearStepper() {
             {/* Step 1 Standard Features */}
             {activeStep === 0 && (
                 <Card className='step1-standard' >
-                    <CardContent>
+                    <CardContent className='card-content-for-resize'>
 
                         <Typography variant="h6" style={{
                             fontSize: '24px',
@@ -238,7 +238,7 @@ export default function HorizontalLinearStepper() {
             {/* Step 2 Advanced Features */}
             {activeStep === 1 && (
                 <Card className='step2-advanced' >
-                    <CardContent>
+                    <CardContent className='card-content-for-resize'>
                         <Typography variant="h6" style={{
                             fontSize: '24px',
                             marginBottom: 0,
@@ -267,7 +267,7 @@ export default function HorizontalLinearStepper() {
             {/* Step 3 Custom Features */}
             {activeStep === 2 && (
                 <Card className='step3-custom' >
-                    <CardContent>
+                    <CardContent className='card-content-for-resize'>
                         <Typography variant="h6" style={{
                             fontSize: '24px',
                             marginBottom: 0,
