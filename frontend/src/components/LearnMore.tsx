@@ -35,7 +35,7 @@ const LearnMore = () => {
     return (
         <PageLayout >
             <Container sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: ["none"] }}>
-                <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: ["none"] }} >
+                <Grid container className='learn-more-big-container'  rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: ["none"] }} >
 
                     <Grid item xs={12} className='page-header'>
                         <Card sx={{ maxHeight: 150, boxShadow: ["none"] }}>
