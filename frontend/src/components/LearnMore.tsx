@@ -50,11 +50,22 @@ const LearnMore = () => {
 
                     <Grid item xs={10} className='content tile' sx={{ boxShadow: ["none"], margin: '0', padding: '0' }}>
                         <Card className='learn-more-cards' sx={{ boxShadow: ["none"], margin: '0', padding: '0' }}>
-                            <Item><Typography variant="h3" style={{ flexGrow: '1', margin: '0' }}>homeVibe:
-                                <br></br>
+                            <Item><Typography variant="h3" style={{ flexGrow: '1', margin: '0' }}>
                                 the G.O.A.T. house hunting tool</Typography></Item>
                         </Card>
                     </Grid>
+
+                    <Grid item xs={12} className='card-for-video'>
+                        <Card sx={{ boxShadow: ["none"] }}>
+                            <CardMedia className='homevibe-demo-video'
+                            sx={{ height: 400 }}
+                                component="iframe"
+                                src="https://www.loom.com/embed/6d80b2d8a8d34ff9a06a5104afb011ec?sid=afa04d2a-38dc-4753-aada-2a4d6daf80bf"
+                            />
+                        </Card>
+                    </Grid>
+
+                    
 
 
                     <Grid item xs={10} className='homeVibe-Learn-More' sx={{ boxShadow: ["none"] }} >
