@@ -210,7 +210,7 @@ function Home() {
                 {/* Footer */}
                 <Grid>
                     {!isAuthenticated ?
-                        < Grid item xs={12} className='sign-up-button' sx={{ boxShadow: 'none' }}>
+                        < Grid item xs={12} className='sign-up-button-to-start-button' sx={{ boxShadow: 'none' }}>
                             <Item sx={{ boxShadow: 'none' }}><Typography variant="h3" style={{ flexGrow: '6' }}>sign up to start vibin'</Typography>
                                 <Fab variant="extended" color="secondary" onClick={() => loginWithRedirect({
                                     authorizationParams: {
@@ -225,10 +225,10 @@ function Home() {
                             </Item>
                         </Grid>
                         :
-                        < Grid item xs={12} className='start-button' sx={{ boxShadow: 'none' }}>
+                        < Grid item xs={12} className='sign-up-button-to-start-button' sx={{ boxShadow: 'none' }}>
                             <Item sx={{ boxShadow: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center' }}><Typography variant="h3" style={{ flexGrow: '6' }}>let's get vibin'</Typography>
                                 <Button className='start-button-logic'
-                                    sx={{ display: 'flex', marginTop: '8px' }}
+                                    sx={{ display: 'flex', marginTop: '8px', marginBottom: '100px' }}
                                     variant="contained"
                                     color="secondary"
                                 >
