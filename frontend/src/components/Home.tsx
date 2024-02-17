@@ -211,7 +211,7 @@ function Home() {
                 <Grid>
                     {!isAuthenticated ?
                         < Grid item xs={12} className='sign-up-button-to-start-button' sx={{ boxShadow: 'none' }}>
-                            <Item sx={{ boxShadow: 'none' }}><Typography variant="h3" style={{ flexGrow: '6' }}>sign up to start vibin'</Typography>
+                            <Item sx={{ boxShadow: 'none' }}><Typography variant="h3" style={{ flexGrow: '6' }}>sign up to create your list</Typography>
                                 <Fab variant="extended" color="secondary" onClick={() => loginWithRedirect({
                                     authorizationParams: {
                                         screen_hint: "signup"

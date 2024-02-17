@@ -3,6 +3,7 @@
 import React from 'react';
 import { AppBar, Toolbar, Typography, List, ListItem } from '@mui/material';
 import { Link } from 'react-router-dom';
+// import styled from 'styled-components';
 import { useTheme, Container } from '@mui/system';
 import LoginButton from './LoginButton';
 import { useAuth0 } from '@auth0/auth0-react';
@@ -18,6 +19,9 @@ const Navigation = () => {
     const {
         isAuthenticated
     } = useAuth0();
+    // const specialLink = styled(Link)`
+    // background: #b50965;
+    // `
 
     return (
         <AppBar position="sticky">
@@ -32,7 +36,7 @@ const Navigation = () => {
                         }
                     }}
                 >
-                    <Link to="/">
+                    <Link to="/" >
                         <img src={MiniLogo} style={{ height: '42px', width: 'auto', justifyContent: 'center' }} ></img>
                     </Link>
 
@@ -50,7 +54,10 @@ const Navigation = () => {
                         }}
                     >
 
-                        <ListItem sx={{ justifyContent: 'center ' }}>
+                        <ListItem sx={{ justifyContent: 'center ', 
+                        '@media (max-width: 848px)': {
+                            display: 'none'
+                        } }}>
                             <Link to="/LearnMore" style={{ textDecoration: 'underline', textDecorationThickness: '1px', textUnderlineOffset: '4px', textDecorationColor: '#333333' }}>
                                 <Typography style={{ whiteSpace: 'nowrap', fontSize: '18px', marginBottom: 0, color: '#333333', fontWeight: '500' }}>
                                     Learn More
